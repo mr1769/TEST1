@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no, maximun-scale=1"
+    />
+    <title>너의 마음을 말해보는, 타임</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.js"
+      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+
+  <body id="intro">
+    <!-- Hearder nav -->
+    <nav>
+      <div class="menu-icon side"></div>
+
+      <div class="center">
+        <img src="./images/logo.png" alt="logo" class="logo" />
+      </div>
+
+      <div class="side"></div>
+    </nav>
+    <!-- Hearder nav -->
+
+    <div class="main-swiper-container">
+      <div class="btn left">
+        <img src="./images/prev_gray.png" alt="next" />
+      </div>
+      <!-- Swiper -->
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <!-- intro 1 -->
+          <div class="swiper-slide">
+            <!-- Content -->
+            <div class="content">
+              <div class="mind-desc">
+                <p>요즘, 참 힘들었지요?</p>
+                <p>다른 사람은 상상할 수 없을 정도로 힘들었을 거예요.</p>
+                <p>
+                  힘들다고, 불안하고 외롭다고 누군가에게 말하고, 이해받고
+                  싶은데..
+                </p>
+                <p>
+                  그렇게 할 수 없어, 답답한 마음에 ____친구 스스로에게 고통을
+                  주는 방식으로 나의 힘듦을 표현 했다는 것을 우리는 알고 있어요.
+                </p>
+                <p>
+                  그리고 자해로 남겨진 상처들을 보면서 화, 미움 그리고 깊은
+                  후회를 하고 있겠죠.
+                </p>
+              </div>
+            </div>
+            <!-- Content -->
+          </div>
+
+          <!-- intro 2 -->
+          <div class="swiper-slide">
+            <!-- Content -->
+            <div class="content">
+              <div class="intro-desc">
+                <div>
+                  괜찮아요. <br />
+                  괜찮습니다.<br />
+                  너무 스스로 자책을 하거나 원망하지 않았으면 좋겠어요. 지금
+                  제가
+                  <span>____</span>친구에게 해 주고 싶은 말은,
+                </div>
+
+                <div class="strong">그래도 버텨줘서 고맙습니다.</div>
+
+                <div class="start-btn"><a href="./home.html">시작하기</a></div>
+              </div>
+            </div>
+            <!-- Content -->
+          </div>
+        </div>
+      </div>
+
+      <div class="btn right">
+        <img src="./images/next_gray.png" alt="next" />
+      </div>
+    </div>
+
+    <!-- Initialize Swiper -->
+    <script>
+      var swiper = new Swiper(".swiper-container", {
+        on: {
+          transitionEnd: function () {
+            var firstPage = $(".swiper-slide-active")
+              .attr("aria-label")
+              .charAt(0);
+            var lastPageLength = $(".swiper-slide-active").attr("aria-label")
+              .length;
+            var lastPage = $(".swiper-slide-active")
+              .attr("aria-label")
+              .charAt(lastPageLength - 1);
+
+            if (firstPage === "1") {
+              $(".btn.left").css("visibility", "hidden");
+              $(".btn.right").css("visibility", "visible");
+            } else if (firstPage === lastPage) {
+              $(".btn.right").css("visibility", "hidden");
+              $(".btn.left").css("visibility", "visible");
+            } else {
+              $(".btn.left").css("visibility", "visible");
+              $(".btn.right").css("visibility", "visible");
+            }
+          },
+        },
+      });
+    </script>
+
+    <script src="./js/scripts.js"></script>
+  </body>
+</html>

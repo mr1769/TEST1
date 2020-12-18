@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no, maximun-scale=1"
+    />
+    <title>너의 마음을 말해보는, 타임</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.js"
+      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+
+  <body class="mind-content">
+    <!-- Hearder nav -->
+    <nav>
+      <div onclick="ShowMenu()" class="menu-icon side">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+
+      <div class="center">
+        <img src="./images/logo.png" alt="logo" class="logo" />
+      </div>
+
+      <div class="side"></div>
+    </nav>
+    <!-- Hearder nav -->
+
+    <div class="main-swiper-container">
+      <div class="btn left">
+        <img src="./images/prev_blue.png" alt="next" />
+      </div>
+      <!-- Swiper -->
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <!-- mind 1 -->
+          <div class="swiper-slide" id="mind-1">
+            <!-- Content -->
+            <div class="content">
+              <div class="mind-desc">
+                <p>
+                  먼저, 나 스스로에게 고통을 주고 싶은, 자해충동이 들 때의
+                  상황을 본인 스스로 확인하는 것이 중요합니다.
+                </p>
+                <p>
+                  가장 최근에 어떤 상황이나 생각들이 나를 괴롭히고 불안하게
+                  하며, 자해로 이어지게 했는지 적어볼께요.
+                </p>
+                <p>꼭 하나의 상황만 있는 것은 아닐 것이라 생각해요.</p>
+                <p>생각나는 대로 모두 적어도 괜찮아요.</p>
+              </div>
+            </div>
+            <!-- Content -->
+          </div>
+
+          <!-- mind 2 -->
+          <div class="swiper-slide" id="mind-2">
+            <!-- Content -->
+            <div class="content">
+              <div>
+                <div class="write-column">
+                  <textarea
+                    name=""
+                    id=""
+                    onclick="hiddenTeatarea(1)"
+                  ></textarea>
+                  <div
+                    class="mind-write-container write-container write-container1"
+                  >
+                    <div class="write-icon">
+                      <img src="./images/write.png" alt="작성하기" />
+                    </div>
+                    <h1>작성하기</h1>
+                  </div>
+                </div>
+                <div class="mind-desc">
+                  <p>혹시 아무런 이유가 없다고 생각하나요?</p>
+                  <p>
+                    자해를 하기 직전의 일이 아니어도 평소 여러분들을 괴롭히고
+                    불안하게 하며, 힘들게 하는 상황들을 적어보세요.
+                  </p>
+                  <p>자해충동을 억제하는 첫 번째 발걸음이 될 수 있습니다.</p>
+                </div>
+              </div>
+            </div>
+            <!-- Content -->
+          </div>
+
+          <!-- mind 3 -->
+          <div class="swiper-slide" id="mind-3">
+            <!-- Content -->
+            <div class="content">
+              <div>
+                <div class="mind-desc">
+                  이런 상황과 부정적인 감정에서 벗어나고 싶어서 ____친구는 어떤
+                  방법으로 스스로에게 상처를 주었나요? 몸에 상처가 없다면 글로
+                  적어도 되고, 상처가 있다면 한번 사진으로 찍어보세요.
+                </div>
+
+                <div class="write-and-camera">
+                  <div class="write-column">
+                    <textarea
+                      name=""
+                      id=""
+                      onclick="hiddenTeatarea(2)"
+                    ></textarea>
+                    <div
+                      class="mind-write-container write-container write-container2"
+                    >
+                      <div class="write-icon">
+                        <img src="./images/write.png" alt="작성하기" />
+                      </div>
+                      <h1>작성하기</h1>
+                    </div>
+                  </div>
+                  <div class="write-column">
+                    <div class="mind-camera-container"></div>
+                    <div class="mind-write-container">
+                      <div class="write-icon">
+                        <img src="./images/camera.png" alt="카메라" />
+                      </div>
+                      <h1>사진으로 찍어보기</h1>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Content -->
+          </div>
+
+          <!-- mind 4 -->
+          <div class="swiper-slide" id="mind-4">
+            <!-- Content -->
+            <div class="content">
+              <div>
+                <div class="mind-desc">
+                  나 자신에게 스스로 상처를 준 적은 언제부터였나요?
+                </div>
+
+                <div class="mind-desc input-desc">
+                  아마도
+                  <input
+                    type="number"
+                    name="year"
+                    id="year"
+                    maxlength="4"
+                    oninput="maxLengthCheck(this)"
+                    onfocusout="yearValidation(this.value,event)"
+                    min="1920"
+                  />년
+
+                  <input
+                    type="number"
+                    name="month"
+                    id="month"
+                    maxlength="2"
+                    oninput="maxLengthCheck(this)"
+                    onfocusout="monthValidation(this.value,event)"
+                    min="1"
+                    max="12"
+                  />월
+
+                  <input
+                    type="number"
+                    name="day"
+                    id="day"
+                    maxlength="2"
+                    oninput="maxLengthCheck(this)"
+                    onfocusout="dayValidation(this.value,event)"
+                    min="1"
+                    max="31"
+                    onkeyup="printDiff()"
+                  />일
+                  <p>부터일거야.</p>
+                </div>
+
+                <div class="balloon">
+                  <span>
+                    에고 …. <span id="result-year">____</span>년
+                    <span id="result-month">____</span>개월동안 많이
+                    힘들었겠구나….
+                  </span>
+                </div>
+              </div>
+            </div>
+            <!-- Content -->
+          </div>
+
+          <!-- mind 5 -->
+          <div class="swiper-slide" id="mind-5">
+            <!-- Content -->
+            <div class="content">
+              <div>
+                <div class="mind-desc">
+                  <p>
+                    힘들 때 나 스스로에게 고통을 주었던 자해 행동을 보니
+                    어떤가요.
+                  </p>
+                  <p>
+                    여기 _____친구처럼 힘들 때 자해를 했지만 이를 극복한 친구가
+                    ‘자신의 몸에 난 자해 상처’에 대한 이런 이야기를 했어요.
+                  </p>
+                </div>
+
+                <div class="listen-btn" onclick="openModal(1);">들어보기</div>
+              </div>
+            </div>
+            <!-- Content -->
+          </div>
+
+          <!-- mind 6 -->
+          <div class="swiper-slide" id="mind-6">
+            <!-- Content -->
+            <div class="content">
+              <div>
+                <div class="mind-desc">
+                  <p>
+                    ____친구를 힘들게 하는 상황과 부정적인 감정을 어떻게
+                    해소해야 할지 몰라서 선택했던 자해, 지금까지는 유일한
+                    방법이었지만.. 지금부터는 자해충동이 들 때 즉시 그 자리에서
+                    해볼 수 있는 기분이 편안해지는 나만의 방법, 한번
+                    생각해볼까요?
+                  </p>
+                  <p>이제 우리는 이 방법들을</p>
+                  <br />
+                  <p class="stop-bold">STOP방법이라고 부르겠습니다. </p>
+                </div>
+              </div>
+            </div>
+            <!-- Content -->
+          </div>
+
+          <!-- mind 7 -->
+          <div class="swiper-slide" id="mind-7">
+            <!-- Content -->
+            <div class="content">
+              <div>
+                <div class="mind-desc">
+                  <p>
+                    평소 편안할 때 하는 활동이 하나의 STOP방법이 될 수 있습니다.
+                  </p>
+                  <p>
+                    아직, 한번도 내가 무엇을 하면 기분이 편안해지고 좋아지는지..
+                  </p>
+                  <p>생각해본 적이 없나요?</p>
+                  <p>
+                    그럼 여기 ____친구와 비슷한 경험을 가진 친구의 이야기를
+                    들어볼까요?
+                  </p>
+                </div>
+
+                <div class="listen-btn" onclick="openModal(2);">들어보기</div>
+              </div>
+            </div>
+            <!-- Content -->
+          </div>
+
+          <!-- mind 8 -->
+          <div class="swiper-slide" id="mind-8">
+            <!-- Content -->
+            <div class="content">
+              <div>
+                <div class="mind-desc">
+                  <p>
+                    비슷한 고민으로 힘들어하던 친구들이 자해충동을 극복하기 위해
+                    실제로 사용하고 효과가 있었던 STOP방법들이 있습니다.
+                  </p>
+                  <p>
+                    ____친구가 생각했던 방법들과 비슷하거나 혹시 전혀 예상치
+                    못한 방법들이 있나요?
+                  </p>
+                  <p>
+                    나만의 방법으로 시도해보고 싶은 활동들이 있다면
+                    선택해보세요.
+                  </p>
+                  <p>
+                    그리고 그 방법들이 거부감이 들지 않는다면, 지금 한번
+                    시도해보세요
+                  </p>
+                </div>
+
+                <div class="listen-btn">
+                  <a href="./mind-2.html">선택하기</a>
+                </div>
+              </div>
+            </div>
+            <!-- Content -->
+          </div>
+        </div>
+      </div>
+
+      <div class="btn right">
+        <img src="./images/next_blue.png" alt="next" />
+      </div>
+    </div>
+
+    <!-- Layer Popup 1 -->
+    <div class="modal-background1 modal-background">
+      <div class="modal-content">
+        <div class="sound-icon">
+          <img src="./images/sound.png" alt="듣기" />
+        </div>
+
+        <div class="modal-desc">
+          "그렇게까지 결함이 있는 사람이고 싶지 않았어요. 흉터남으면 안되니까.
+          어릴 땐 여기다 하면 아무도 모를거라 생각했는데, 누가 봐도 커팅이니깐,
+          누가 내 몸을 보고 알아보는게 너무 싫죠. 이상한 사람이 되는 거니깐.
+          다쳤다고 하면 계속 물어보니깐…"
+        </div>
+
+        <div class="close">닫기</div>
+      </div>
+    </div>
+
+    <!-- Layer Popup 2 -->
+    <div class="modal-background2 modal-background">
+      <div class="modal-content">
+        <div class="sound-icon">
+          <img src="./images/sound.png" alt="듣기" />
+        </div>
+
+        <div class="modal-desc mind-modal-desc"></div>
+
+        <div class="modal-next">다음</div>
+      </div>
+    </div>
+
+    <!-- 사이드 메뉴 -->
+    <div class="menu_bg">
+      <div class="menu">
+        <!-- 닫기 -->
+        <div onclick="HideMenu()" class="cancel-icon">
+          <img src="./images/cancel.png" alt="cancel" />
+        </div>
+
+        <div class="menu-container">
+          <!-- 메뉴 1 -->
+          <div class="menu-column">
+            <div class="munu-wrapper" onclick="ShowSubMenu(1)">
+              <div>
+                <span class="menu-strong">TAYM-mind</span>
+                <span class="menu-title">너의 마음을 말할, 타임</span>
+              </div>
+              <img
+                src="./images/open_menu.png"
+                alt="펼치기"
+                class="show-icon1"
+              />
+            </div>
+
+            <!-- 펼침 메뉴 -->
+            <div class="menu_2" id="sub1">
+              <ul>
+                <li><a href="">상황인식</a></li>
+                <li><a href="">감정인식</a></li>
+                <li><a href="">stop 방법찾기</a></li>
+                <li><a href="">사회적 지지체계</a></li>
+                <li><a href="">위기사항 119</a></li>
+                <li><a href="">자해방지서약서 작성해보기</a></li>
+                <li><a href="" class="last">완성된 '내 마음, TAYM'</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- 메뉴 2 -->
+          <div class="menu-column">
+            <div class="munu-wrapper" onclick="ShowSubMenu(2)">
+              <div>
+                <span class="menu-strong">TAYM-mood</span>
+                <span class="menu-title">오늘 기분은 어때?</span>
+              </div>
+              <img
+                src="./images/open_menu.png"
+                alt="펼치기"
+                class="show-icon2"
+              />
+            </div>
+
+            <!-- 펼침 메뉴 -->
+            <div class="menu_2" id="sub2">
+              <ul>
+                <li><a href="">오늘의 감정 확인, 표현해보기</a></li>
+                <li><a href="">우울척도 검사해보기</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- 메뉴 3 -->
+          <div class="menu-column">
+            <a href="">
+              <div>
+                <span class="menu-strong">TAYM-you</span>
+                <span class="menu-title">너는 어떤 친구이니?</span>
+              </div>
+            </a>
+          </div>
+
+          <!-- 메뉴 4 -->
+          <div class="menu-column">
+            <a href="./junior-1.html">
+              <div>
+                <span class="menu-strong">TAYM-junior</span>
+                <span class="menu-title">너는 어떤 친구이니?</span>
+              </div>
+            </a>
+          </div>
+
+          <!-- 메뉴 3 -->
+          <div class="menu-column">
+            <a href="">
+              <div>
+                <span class="menu-strong">TAYM-info</span>
+                <span class="menu-title">전문적인 정보</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 사이드 메뉴 -->
+
+    <!-- Footer nav -->
+    <footer>
+      <footer>
+        <div>
+          <a href="./home.html">
+            <img src="./images/footer_icon_1.png" alt="home" />
+          </a>
+        </div>
+        <div>
+          <a href="">
+            <img src="./images/footer_icon_2.png" alt="modify" />
+          </a>
+        </div>
+        <div>
+          <a href="">
+            <img src="./images/footer_icon_3.png" alt="graph" />
+          </a>
+        </div>
+        <div>
+          <a href="">
+            <img src="./images/footer_icon_4.png" alt="call" />
+          </a>
+        </div>
+      </footer>
+    </footer>
+
+    <!-- Initialize Swiper -->
+    <script>
+      var swiper = new Swiper(".swiper-container", {
+        on: {
+          transitionEnd: function () {
+            var firstPage = $(".swiper-slide-active")
+              .attr("aria-label")
+              .charAt(0);
+            var lastPageLength = $(".swiper-slide-active").attr("aria-label")
+              .length;
+            var lastPage = $(".swiper-slide-active")
+              .attr("aria-label")
+              .charAt(lastPageLength - 1);
+
+            if (firstPage === "1") {
+              $(".btn.left").css("visibility", "hidden");
+              $(".btn.right").css("visibility", "visible");
+            } else if (firstPage === lastPage) {
+              $(".btn.right").css("visibility", "hidden");
+              $(".btn.left").css("visibility", "visible");
+            } else {
+              $(".btn.left").css("visibility", "visible");
+              $(".btn.right").css("visibility", "visible");
+            }
+          },
+        },
+      });
+    </script>
+
+    <script src="./js/scripts.js"></script>
+  </body>
+</html>

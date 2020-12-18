@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximun-scale=1" />
+  <title>너의 마음을 말해보는, 타임</title>
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="./css/styles.css" />
+</head>
+
+<body class="mind-content">
+  <!-- Hearder nav -->
+  <nav>
+    <div onclick="ShowMenu()" class="menu-icon side">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+
+    <div class="center">
+      <img src="./images/logo.png" alt="logo" class="logo" />
+    </div>
+
+    <div class="side"></div>
+  </nav>
+  <!-- Hearder nav -->
+
+  <div class="main-swiper-container">
+    <div class="btn left">
+      <img src="./images/prev_blue.png" alt="next" />
+    </div>
+    <!-- Swiper -->
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        <!-- mind 9 -->
+        <div class="swiper-slide" id="mind-9">
+          <!-- Content -->
+          <div class="content">
+            <div class="mind-select-container">
+              <div class="mind-select-title">STOP 방법들을 선택해볼까?</div>
+              <div class="mind-desc" id="select-desc">
+                <label class="wrapper-label">
+                  <input type="checkbox" id="cb" />
+                  <label for="cb">
+                    <div class="cb-checked"></div>
+                  </label>빨간색
+                  볼펜으로 자해하고 싶은 부분에 그려보기
+                </label>
+
+                <label class="wrapper-label">
+                  <input type="checkbox" id="cb" />
+                  <label for="cb">
+                    <div class="cb-checked"></div>
+                  </label>심호흡
+                  크게 해보기
+                </label>
+
+                <label class="wrapper-label">
+                  <input type="checkbox" id="cb" />
+                  <label for="cb">
+                    <div class="cb-checked"></div>
+                  </label>무작정
+                  그 자리를 떠나서 동네주변을 걷거나 뛰기
+                </label>
+
+                <label class="wrapper-label">
+                  <input type="checkbox" id="cb" />
+                  <label for="cb">
+                    <div class="cb-checked"></div>
+                  </label>얼음움켜쥐기
+                </label>
+
+                <label class="wrapper-label">
+                  <input type="checkbox" id="cb" />
+                  <label for="cb">
+                    <div class="cb-checked"></div>
+                  </label>가장
+                  좋아하는 노래 무작정 부르기
+                </label>
+
+                <label class="wrapper-label">
+                  <input type="checkbox" id="cb" />
+                  <label for="cb">
+                    <div class="cb-checked"></div>
+                  </label>빨간색
+                  물감을 자해하고 싶은 부위에 떨어트려보기
+                </label>
+
+                <label class="wrapper-label">
+                  <input type="checkbox" id="cb" />
+                  <label for="cb">
+                    <div class="cb-checked"></div>
+                  </label>노래
+                  들으면서 마음껏 울어버리기
+                </label>
+
+                <label class="wrapper-label">
+                  <input type="checkbox" id="cb" />
+                  <label for="cb">
+                    <div class="cb-checked"></div>
+                  </label>매운음식먹으러 밖에 나가기
+                </label>
+              </div>
+            </div>
+          </div>
+          <!-- Content -->
+        </div>
+
+        <!-- mind 10 -->
+        <div class="swiper-slide" id="mind-10">
+          <!-- Content -->
+          <div class="content">
+            <div class="mind-select-container">
+              <div class="mind-select-title">STOP 방법들을 선택해볼까?</div>
+              <div class="mind-desc" id="select-desc">
+                <label class="wrapper-label">
+                  <input type="checkbox" id="cb" />
+                  <label for="cb">
+                    <div class="cb-checked"></div>
+                  </label>매운음식먹으러 밖에 나가기
+                </label>
+
+                <label class="wrapper-label">
+                  <input type="checkbox" id="cb" />
+                  <label for="cb">
+                    <div class="cb-checked"></div>
+                  </label>평소
+                  Youtube에서 재밌게 본 프로그램 짤보기
+                </label>
+
+                <label class="wrapper-label">
+                  <input type="checkbox" id="cb" />
+                  <label for="cb">
+                    <div class="cb-checked"></div>
+                  </label>그
+                  자리에서 맨손 줄넘기해보기
+                </label>
+
+                <label class="wrapper-label">
+                  <input type="checkbox" id="cb" />
+                  <label for="cb">
+                    <div class="cb-checked"></div>
+                  </label>손
+                  맞잡고 머리 위로 쭉! 기지개 펴듯 스트레칭하기
+                </label>
+
+                <label class="wrapper-label">
+                  <input type="checkbox" id="cb" />
+                  <label for="cb">
+                    <div class="cb-checked"></div>
+                  </label>바로
+                  네*버 켜서 연애 뉴스 보기
+                </label>
+
+                <label class="wrapper-label">
+                  <input type="checkbox" id="cb" />
+                  <label for="cb">
+                    <div class="cb-checked"></div>
+                  </label>인터넷
+                  쇼핑몰 찾아서 최신 신상품 구경하기
+                </label>
+
+                <label class="wrapper-label">
+                  <input type="checkbox" id="cb" />
+                  <label for="cb">
+                    <div class="cb-checked"></div>
+                  </label>애완동물이 있다면, 애완동물 돌보기
+                </label>
+
+                <label class="wrapper-label">
+                  <input type="checkbox" id="cb" />
+                  <label for="cb">
+                    <div class="cb-checked"></div>
+                  </label>소리
+                  한번 크게 질러보기
+                </label>
+
+                <label class="wrapper-label stop-bold">
+                  <input type="checkbox" id="cb" />
+                  <label for="cb">
+                    <div class="cb-checked"></div>
+                  </label> 내
+                  손목 사진 위에 빨간색으로 칠해보기
+                </label>
+
+                <div class="listen-btn" onclick="openModal(1);">선택완료</div>
+              </div>
+            </div>
+          </div>
+          <!-- Content -->
+        </div>
+      </div>
+    </div>
+
+    <div class="btn right">
+      <img src="./images/next_blue.png" alt="next" />
+    </div>
+  </div>
+
+  <!-- Layer Popup 1 -->
+  <div class="modal-background1 modal-background">
+    <div class="modal-content">
+      <div>
+        <img src="./images/wrist_bg.png" alt="손목" class="wrist-bg" />
+      </div>
+
+      <div class="wrist-write">
+        <img src="./images/wrist_write.png" alt="그리기" />
+
+        <span>그려보기</span>
+      </div>
+
+      <div class="close" id="blue-close">
+        <a href="./mind-3.html">완료</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 사이드 메뉴 -->
+  <div class="menu_bg">
+    <div class="menu">
+      <!-- 닫기 -->
+      <div onclick="HideMenu()" class="cancel-icon">
+        <img src="./images/cancel.png" alt="cancel" />
+      </div>
+
+      <div class="menu-container">
+        <!-- 메뉴 1 -->
+        <div class="menu-column">
+          <div class="munu-wrapper" onclick="ShowSubMenu(1)">
+            <div>
+              <span class="menu-strong">TAYM-mind</span>
+              <span class="menu-title">너의 마음을 말할, 타임</span>
+            </div>
+            <img src="./images/open_menu.png" alt="펼치기" class="show-icon1" />
+          </div>
+
+          <!-- 펼침 메뉴 -->
+          <div class="menu_2" id="sub1">
+            <ul>
+              <li><a href="">상황인식</a></li>
+              <li><a href="">감정인식</a></li>
+              <li><a href="">stop 방법찾기</a></li>
+              <li><a href="">사회적 지지체계</a></li>
+              <li><a href="">위기사항 119</a></li>
+              <li><a href="">자해방지서약서 작성해보기</a></li>
+              <li><a href="" class="last">완성된 '내 마음, TAYM'</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 메뉴 2 -->
+        <div class="menu-column">
+          <div class="munu-wrapper" onclick="ShowSubMenu(2)">
+            <div>
+              <span class="menu-strong">TAYM-mood</span>
+              <span class="menu-title">오늘 기분은 어때?</span>
+            </div>
+            <img src="./images/open_menu.png" alt="펼치기" class="show-icon2" />
+          </div>
+
+          <!-- 펼침 메뉴 -->
+          <div class="menu_2" id="sub2">
+            <ul>
+              <li><a href="">오늘의 감정 확인, 표현해보기</a></li>
+              <li><a href="">우울척도 검사해보기</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 메뉴 3 -->
+        <div class="menu-column">
+          <a href="">
+            <div>
+              <span class="menu-strong">TAYM-you</span>
+              <span class="menu-title">너는 어떤 친구이니?</span>
+            </div>
+          </a>
+        </div>
+
+        <!-- 메뉴 4 -->
+        <div class="menu-column">
+          <a href="./junior-1.html">
+            <div>
+              <span class="menu-strong">TAYM-junior</span>
+              <span class="menu-title">너는 어떤 친구이니?</span>
+            </div>
+          </a>
+        </div>
+
+        <!-- 메뉴 3 -->
+        <div class="menu-column">
+          <a href="">
+            <div>
+              <span class="menu-strong">TAYM-info</span>
+              <span class="menu-title">전문적인 정보</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- 사이드 메뉴 -->
+
+  <!-- Footer nav -->
+  <footer>
+    <footer>
+      <div>
+        <a href="./home.html">
+          <img src="./images/footer_icon_1.png" alt="home" />
+        </a>
+      </div>
+      <div>
+        <a href="">
+          <img src="./images/footer_icon_2.png" alt="modify" />
+        </a>
+      </div>
+      <div>
+        <a href="">
+          <img src="./images/footer_icon_3.png" alt="graph" />
+        </a>
+      </div>
+      <div>
+        <a href="">
+          <img src="./images/footer_icon_4.png" alt="call" />
+        </a>
+      </div>
+    </footer>
+  </footer>
+
+  <!-- Initialize Swiper -->
+  <script>
+    var swiper = new Swiper(".swiper-container", {
+      on: {
+        transitionEnd: function () {
+          var firstPage = $(".swiper-slide-active")
+            .attr("aria-label")
+            .charAt(0);
+          var lastPageLength = $(".swiper-slide-active").attr("aria-label")
+            .length;
+          var lastPage = $(".swiper-slide-active")
+            .attr("aria-label")
+            .charAt(lastPageLength - 1);
+
+          if (firstPage === "1") {
+            console.log("첫페이지");
+            $(".btn.left").css("visibility", "hidden");
+            $(".btn.right").css("visibility", "visible");
+          } else if (firstPage === lastPage) {
+            console.log("마지막페이지");
+            $(".btn.right").css("visibility", "hidden");
+            $(".btn.left").css("visibility", "visible");
+          } else {
+            console.log("가운데페이지");
+            $(".btn.left").css("visibility", "visible");
+            $(".btn.right").css("visibility", "visible");
+          }
+        },
+      },
+    });
+  </script>
+
+  <script src="./js/scripts.js"></script>
+</body>
+
+</html>

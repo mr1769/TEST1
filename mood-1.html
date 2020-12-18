@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no, maximun-scale=1"
+    />
+    <title>너의 마음을 말해보는, 타임</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.js"
+      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+
+  <body id="mood">
+    <!-- Hearder nav -->
+    <nav>
+      <div onclick="ShowMenu()" class="menu-icon side">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+
+      <div class="center">
+        <img src="./images/logo.png" alt="logo" class="logo" />
+      </div>
+
+      <div class="side"></div>
+    </nav>
+    <!-- Hearder nav -->
+
+    <div class="main-swiper-container">
+      <div class="btn left">
+        <img src="./images/prev_blue.png" alt="next" />
+      </div>
+      <!-- Swiper -->
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <!-- mood 1 -->
+          <div class="swiper-slide mood">
+            <!-- Content -->
+            <div class="content">
+              <div class="mind-select-container">
+                <div class="mind-select-title">오늘 하루, 어땠나요?</div>
+                <div class="mind-desc">
+                  <p>오늘 하루, 어땠나요?</p>
+                  <p>혹시 오늘 하루,</p>
+                  <p>
+                    무척이나 답답하고, 불안하고, 힘들었나요? 아니면 소소한
+                    즐거움으로 웃었나요?
+                  </p>
+                  <br />
+                  <p>오늘 하루, ____친구의 감정을</p>
+                  <p>스스로 공감해 주는 시간</p>
+                  <p>TAYM mood를 가져보세요.</p>
+                </div>
+              </div>
+            </div>
+            <!-- Content -->
+          </div>
+
+          <!-- mood 2 -->
+          <div class="swiper-slide mood mood-2">
+            <!-- Content -->
+            <div class="content">
+              <div class="mind-select-container">
+                <div style="display: grid; height: 60%">
+                  <div class="mind-select-title">
+                    (얼굴표정)을 수직선 상의 원하는 위치까지 드래그해보세요.
+                  </div>
+                  <div class="mind-desc">
+                    <p>
+                      오늘 하루, 나의 기분에 __________ 친구 스스로
+                      공감해주세요.
+                    </p>
+                    <p>기쁨과 우울 중 어느 쪽에 더 가까웠나요?</p>
+                  </div>
+
+                  <div class="mood-bar-container">
+                    <div class="mood-bar-column">
+                      <div
+                        class="mood-bar mood-bar1"
+                        onclick="clickMoodBar(1)"
+                      ></div>
+                      <div
+                        class="mood-bar mood-bar2"
+                        onclick="clickMoodBar(2)"
+                      ></div>
+                      <div
+                        class="mood-bar mood-bar3"
+                        onclick="clickMoodBar(3)"
+                      ></div>
+                      <div
+                        class="mood-bar mood-bar4"
+                        onclick="clickMoodBar(4)"
+                      ></div>
+                      <div
+                        class="mood-bar mood-bar5"
+                        onclick="clickMoodBar(5)"
+                      ></div>
+                      <div
+                        class="mood-bar mood-bar6"
+                        onclick="clickMoodBar(6)"
+                      ></div>
+                      <div
+                        class="mood-bar mood-bar7"
+                        onclick="clickMoodBar(7)"
+                      ></div>
+                      <div
+                        class="mood-bar mood-bar8"
+                        onclick="clickMoodBar(8)"
+                      ></div>
+                      <div
+                        class="mood-bar mood-bar9"
+                        onclick="clickMoodBar(9)"
+                      ></div>
+                      <div
+                        class="mood-bar mood-bar10"
+                        onclick="clickMoodBar(10)"
+                      ></div>
+                    </div>
+                    <div class="mood-bar-name">
+                      <span>기쁨</span>
+                      <span>우울</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- face icon bubble -->
+                <div class="mood-bubble smile">
+                  <div class="mood-bubble-column">
+                    <img
+                      src="./images/smile.png"
+                      alt="face"
+                      class="face-icon"
+                    />
+                    <div class="mood-state">
+                      <p>그래도,</p>
+                      <p>좋은하루였다!</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mood-bubble soso">
+                  <div class="mood-bubble-column">
+                    <img src="./images/soso.png" alt="face" class="face-icon" />
+                    <span class="mood-state">그냥 그랬어</span>
+                  </div>
+                </div>
+
+                <div class="mood-bubble tired">
+                  <div class="mood-bubble-column">
+                    <div class="mood-state">
+                      <p>휴~</p>
+                      <p>힘들다...</p>
+                    </div>
+                    <img
+                      src="./images/tired.png"
+                      alt="face"
+                      class="face-icon"
+                    />
+                  </div>
+                </div>
+
+                <div class="show-graph">
+                  <a href="">
+                    <span> 그래프보기</span>
+                    <img
+                      src="./images/show_graph.png"
+                      alt="show"
+                      class="show-graph-icon"
+                    />
+                  </a>
+                </div>
+              </div>
+            </div>
+            <!-- Content -->
+          </div>
+
+          <!-- mood 3 -->
+          <div class="swiper-slide mood mood-3">
+            <!-- Content -->
+            <div class="content">
+              <div class="mind-select-container">
+                <div class="mind-select-title">
+                  <p>조금 더 나의 기분과</p>
+                  <p>마음에 대해 적어보고 싶어요.</p>
+                </div>
+
+                <div class="write-column">
+                  <textarea
+                    name=""
+                    id=""
+                    onclick="hiddenTeatarea(1)"
+                  ></textarea>
+                  <div
+                    class="mind-write-container write-container write-container1"
+                  >
+                    <div class="write-icon">
+                      <img src="./images/write.png" alt="작성하기" />
+                    </div>
+                    <h1>작성하기</h1>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Content -->
+          </div>
+
+          <!-- mood 4 -->
+          <div class="swiper-slide mood">
+            <!-- Content -->
+            <div class="content">
+              <div class="mood-check-intro">
+                <div class="mind-select-title center">체크해볼까요?</div>
+                <div class="mind-desc">
+                  <p>
+                    다음의 내용은 사람들이 느끼거나 행동할 (가능성이 있는)
+                    방식을 열거한 것입니다.
+                  </p>
+                  지난 일주일 동안 얼마나 자주 이런 식으로 느꼈는지 표시해
+                  주세요.
+                </div>
+
+                <div class="listen-btn">
+                  <a href="./mood-2.html">시작하기</a>
+                </div>
+              </div>
+            </div>
+            <!-- Content -->
+          </div>
+        </div>
+      </div>
+
+      <div class="btn right">
+        <img src="./images/next_blue.png" alt="next" />
+      </div>
+    </div>
+
+    <!-- Layer Popup 1 -->
+    <div class="modal-background1 modal-background">
+      <div class="modal-content">
+        <div class="modal-desc">우울한 마음을 털어놓을까?</div>
+
+        <div class="modal-btn-column">
+          <a href="tel:1388">
+            <div class="call-btn">
+              <img src="./images/call.png" alt="call" />
+              <span>1388</span>
+            </div>
+          </a>
+          <div class="close">괜찮아</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 사이드 메뉴 -->
+    <div class="menu_bg">
+      <div class="menu">
+        <!-- 닫기 -->
+        <div onclick="HideMenu()" class="cancel-icon">
+          <img src="./images/cancel.png" alt="cancel" />
+        </div>
+
+        <div class="menu-container">
+          <!-- 메뉴 1 -->
+          <div class="menu-column">
+            <div class="munu-wrapper" onclick="ShowSubMenu(1)">
+              <div>
+                <span class="menu-strong">TAYM-mind</span>
+                <span class="menu-title">너의 마음을 말할, 타임</span>
+              </div>
+              <img
+                src="./images/open_menu.png"
+                alt="펼치기"
+                class="show-icon1"
+              />
+            </div>
+
+            <!-- 펼침 메뉴 -->
+            <div class="menu_2" id="sub1">
+              <ul>
+                <li><a href="">상황인식</a></li>
+                <li><a href="">감정인식</a></li>
+                <li><a href="">stop 방법찾기</a></li>
+                <li><a href="">사회적 지지체계</a></li>
+                <li><a href="">위기사항 119</a></li>
+                <li><a href="">자해방지서약서 작성해보기</a></li>
+                <li><a href="" class="last">완성된 '내 마음, TAYM'</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- 메뉴 2 -->
+          <div class="menu-column">
+            <div class="munu-wrapper" onclick="ShowSubMenu(2)">
+              <div>
+                <span class="menu-strong">TAYM-mood</span>
+                <span class="menu-title">오늘 기분은 어때?</span>
+              </div>
+              <img
+                src="./images/open_menu.png"
+                alt="펼치기"
+                class="show-icon2"
+              />
+            </div>
+
+            <!-- 펼침 메뉴 -->
+            <div class="menu_2" id="sub2">
+              <ul>
+                <li><a href="">오늘의 감정 확인, 표현해보기</a></li>
+                <li><a href="">우울척도 검사해보기</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- 메뉴 3 -->
+          <div class="menu-column">
+            <a href="">
+              <div>
+                <span class="menu-strong">TAYM-you</span>
+                <span class="menu-title">너는 어떤 친구이니?</span>
+              </div>
+            </a>
+          </div>
+
+          <!-- 메뉴 4 -->
+          <div class="menu-column">
+            <a href="./junior-1.html">
+              <div>
+                <span class="menu-strong">TAYM-junior</span>
+                <span class="menu-title">너는 어떤 친구이니?</span>
+              </div>
+            </a>
+          </div>
+
+          <!-- 메뉴 3 -->
+          <div class="menu-column">
+            <a href="">
+              <div>
+                <span class="menu-strong">TAYM-info</span>
+                <span class="menu-title">전문적인 정보</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 사이드 메뉴 -->
+
+    <!-- Footer nav -->
+    <footer>
+      <div>
+        <a href="./home.html">
+          <img src="./images/footer_icon_1.png" alt="home" class="home-icon" />
+        </a>
+      </div>
+      <div>
+        <a href="">
+          <img
+            src="./images/footer_icon_2.png"
+            alt="modify"
+            class="modify-icon"
+          />
+        </a>
+      </div>
+      <div>
+        <a href="">
+          <img
+            src="./images/footer_icon_3.png"
+            alt="graph"
+            class="graph-icon"
+          />
+        </a>
+      </div>
+      <div>
+        <a href="">
+          <img src="./images/footer_icon_4.png" alt="call" class="call-icon" />
+        </a>
+      </div>
+    </footer>
+
+    <!-- Initialize Swiper -->
+    <script>
+      var swiper = new Swiper(".swiper-container", {
+        on: {
+          transitionEnd: function () {
+            var firstPage = $(".swiper-slide-active")
+              .attr("aria-label")
+              .charAt(0);
+            var lastPageLength = $(".swiper-slide-active").attr("aria-label")
+              .length;
+            var lastPage = $(".swiper-slide-active")
+              .attr("aria-label")
+              .charAt(lastPageLength - 1);
+
+            if (firstPage === "1") {
+              $(".btn.left").css("visibility", "hidden");
+              $(".btn.right").css("visibility", "visible");
+            } else if (firstPage === lastPage) {
+              $(".btn.right").css("visibility", "hidden");
+              $(".btn.left").css("visibility", "visible");
+            } else {
+              $(".btn.left").css("visibility", "visible");
+              $(".btn.right").css("visibility", "visible");
+            }
+          },
+        },
+      });
+    </script>
+
+    <script src="./js/scripts.js"></script>
+  </body>
+</html>

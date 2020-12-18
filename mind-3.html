@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no, maximun-scale=1"
+    />
+    <title>너의 마음을 말해보는, 타임</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.js"
+      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+
+  <body class="mind-content">
+    <!-- Hearder nav -->
+    <nav>
+      <div onclick="ShowMenu()" class="menu-icon side">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+
+      <div class="center">
+        <img src="./images/logo.png" alt="logo" class="logo" />
+      </div>
+
+      <div class="side"></div>
+    </nav>
+    <!-- Hearder nav -->
+
+    <div class="main-swiper-container">
+      <div class="btn left">
+        <img src="./images/prev_blue.png" alt="next" />
+      </div>
+      <!-- Swiper -->
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <!-- mind 11 -->
+          <div class="swiper-slide" id="mind-11">
+            <!-- Content -->
+            <div class="content">
+              <div class="mind-wrapper">
+                <div class="mind-desc">
+                  <p>
+                    스스로 상처를 내는 행동들은 바로 즉시 멈춰지지 않을 수도
+                    있습니다.
+                  </p>
+                  <p>
+                    자해충동이 들 때 나만의 STOP방법으로도 부정적인 생각이
+                    사라지지 않는다면,
+                  </p>
+                  <p>
+                    ____친구의 불안하고, 힘듦을 묵묵히 들어주고 이해해주는
+                    사람의 이름과 연락처를 적어보세요.
+                  </p>
+                  <p>많을 필요는 없습니다. 1명이면 충분합니다.</p>
+                </div>
+                <div class="trust-icon">
+                  <img src="./images/trust.png" alt="의지하는사람" />
+                </div>
+
+                <div class="mind-desc">
+                  내가 믿고 의지하는 사람
+                  <div>
+                    <input type="text" name="name" id="name" />
+                  </div>
+                  연락처
+                  <div>
+                    <input type="tel" name="tel" id="tel" />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Content -->
+          </div>
+
+          <!-- mind 12 -->
+          <div class="swiper-slide" id="mind-12">
+            <!-- Content -->
+            <div class="content">
+              <div>
+                <div class="mind-desc">
+                  <p>혹시 떠오르는 사람이 없거나,</p>
+                  <p>혹은 모르는 사람이었으면 좋겠다라는 생각을 하고 있나요?</p>
+                  <p>
+                    여기 ____친구의 속상함과 힘든 일, 불안한 마음을 들어주기
+                    위해 24시간 옆에서 기다려주는 상담사분들이 있습니다.
+                    온라인채팅상담실도 있습니다.
+                  </p>
+                </div>
+                <div class="mind-btn-wrapper">
+                  <div class="mind-btn">
+                    <a href="https://www.cyber1388.kr:447/" target="blank">
+                      <img src="./images/advice_logo.png" alt="상담센터" />
+                    </a>
+                  </div>
+
+                  <div class="mind-btn">
+                    <a
+                      class="no-login-link"
+                      href="https://www.cyber1388.kr:447/new_/counsel2_/bbs5/default.asp?id=board_coun)"
+                      target="blank"
+                    >
+                      <img
+                        src="./images/chat_no_login.png"
+                        alt="chat"
+                        class="chat-icon"
+                      />
+                      <span>댓글상담실 (로그인필요없음)</span>
+                    </a>
+                  </div>
+
+                  <div class="mind-btn">
+                    <a
+                      class="login-link"
+                      href="https://www.cyber1388.kr:447/new_/confirm_chat.asp?id=board_chat)"
+                      target="blank"
+                    >
+                      <img
+                        src="./images/chat_login.png"
+                        alt="chat"
+                        class="chat-icon"
+                      />
+                      <span>채팅상담실 (로그인필요)</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Content -->
+          </div>
+        </div>
+      </div>
+
+      <div class="btn right">
+        <img src="./images/next_blue.png" alt="next" />
+      </div>
+    </div>
+
+    <!-- 사이드 메뉴 -->
+    <div class="menu_bg">
+      <div class="menu">
+        <!-- 닫기 -->
+        <div onclick="HideMenu()" class="cancel-icon">
+          <img src="./images/cancel.png" alt="cancel" />
+        </div>
+
+        <div class="menu-container">
+          <!-- 메뉴 1 -->
+          <div class="menu-column">
+            <div class="munu-wrapper" onclick="ShowSubMenu(1)">
+              <div>
+                <span class="menu-strong">TAYM-mind</span>
+                <span class="menu-title">너의 마음을 말할, 타임</span>
+              </div>
+              <img
+                src="./images/open_menu.png"
+                alt="펼치기"
+                class="show-icon1"
+              />
+            </div>
+
+            <!-- 펼침 메뉴 -->
+            <div class="menu_2" id="sub1">
+              <ul>
+                <li><a href="">상황인식</a></li>
+                <li><a href="">감정인식</a></li>
+                <li><a href="">stop 방법찾기</a></li>
+                <li><a href="">사회적 지지체계</a></li>
+                <li><a href="">위기사항 119</a></li>
+                <li><a href="">자해방지서약서 작성해보기</a></li>
+                <li><a href="" class="last">완성된 '내 마음, TAYM'</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- 메뉴 2 -->
+          <div class="menu-column">
+            <div class="munu-wrapper" onclick="ShowSubMenu(2)">
+              <div>
+                <span class="menu-strong">TAYM-mood</span>
+                <span class="menu-title">오늘 기분은 어때?</span>
+              </div>
+              <img
+                src="./images/open_menu.png"
+                alt="펼치기"
+                class="show-icon2"
+              />
+            </div>
+
+            <!-- 펼침 메뉴 -->
+            <div class="menu_2" id="sub2">
+              <ul>
+                <li><a href="">오늘의 감정 확인, 표현해보기</a></li>
+                <li><a href="">우울척도 검사해보기</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- 메뉴 3 -->
+          <div class="menu-column">
+            <a href="">
+              <div>
+                <span class="menu-strong">TAYM-you</span>
+                <span class="menu-title">너는 어떤 친구이니?</span>
+              </div>
+            </a>
+          </div>
+
+          <!-- 메뉴 4 -->
+          <div class="menu-column">
+            <a href="./junior-1.html">
+              <div>
+                <span class="menu-strong">TAYM-junior</span>
+                <span class="menu-title">너는 어떤 친구이니?</span>
+              </div>
+            </a>
+          </div>
+
+          <!-- 메뉴 3 -->
+          <div class="menu-column">
+            <a href="">
+              <div>
+                <span class="menu-strong">TAYM-info</span>
+                <span class="menu-title">전문적인 정보</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 사이드 메뉴 -->
+
+    <!-- Footer nav -->
+    <footer>
+      <footer>
+        <div>
+          <a href="./home.html">
+            <img src="./images/footer_icon_1.png" alt="home" />
+          </a>
+        </div>
+        <div>
+          <a href="">
+            <img src="./images/footer_icon_2.png" alt="modify" />
+          </a>
+        </div>
+        <div>
+          <a href="">
+            <img src="./images/footer_icon_3.png" alt="graph" />
+          </a>
+        </div>
+        <div>
+          <a href="">
+            <img src="./images/footer_icon_4.png" alt="call" />
+          </a>
+        </div>
+      </footer>
+    </footer>
+
+    <!-- Initialize Swiper -->
+    <script>
+      var swiper = new Swiper(".swiper-container", {
+        on: {
+          transitionEnd: function () {
+            var firstPage = $(".swiper-slide-active")
+              .attr("aria-label")
+              .charAt(0);
+            var lastPageLength = $(".swiper-slide-active").attr("aria-label")
+              .length;
+            var lastPage = $(".swiper-slide-active")
+              .attr("aria-label")
+              .charAt(lastPageLength - 1);
+
+            if (firstPage === "1") {
+              $(".btn.left").css("visibility", "hidden");
+              $(".btn.right").css("visibility", "visible");
+            } else if (firstPage === lastPage) {
+              $(".btn.right").css("visibility", "hidden");
+              $(".btn.left").css("visibility", "visible");
+            } else {
+              $(".btn.left").css("visibility", "visible");
+              $(".btn.right").css("visibility", "visible");
+            }
+          },
+        },
+      });
+    </script>
+
+    <script src="./js/scripts.js"></script>
+  </body>
+</html>

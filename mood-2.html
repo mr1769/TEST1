@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no, maximun-scale=1"
+    />
+    <title>너의 마음을 말해보는, 타임</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.js"
+      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+
+  <body id="mood" class="mood-survey" onload="loadList(0)">
+    <!-- Hearder nav -->
+    <nav>
+      <div onclick="ShowMenu()" class="menu-icon side">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+
+      <div class="center">
+        <img src="./images/logo.png" alt="logo" class="logo" />
+      </div>
+
+      <div class="side"></div>
+    </nav>
+    <!-- Hearder nav -->
+
+    <!-- <div class="btn left">
+        <img src="./images/prev_blue.png" alt="next" />
+      </div> -->
+
+    <div>
+      <!-- mood 5 -->
+      <div class="mood content">
+        <!-- Content -->
+        <form id="survey_form">
+          <div class="mood-test-container">
+            <div class="mind-select-title center small">
+              해당하는 기한에 맞춰 번호를 선택해주세요.
+            </div>
+
+            <div class="day-standard">
+              <div>1일 미만</div>
+              <div>1~2일</div>
+              <div>3~4일</div>
+              <div>5~7일</div>
+              <div>
+                2주간 <br />
+                거의 매일
+              </div>
+            </div>
+
+            <div class="mood-test-wrapper">
+              <div
+                class="mood-test-title survey0 survey5 survey10 survey15"
+              ></div>
+              <div class="mood-test-num-wrapper">
+                <input type="radio" name="radio1" value="0" id="1-0" />
+                <label class="mood-test-num" for="1-0">0</label>
+
+                <input type="radio" name="radio1" value="1" id="1-1" />
+                <label class="mood-test-num" for="1-1">1</label>
+
+                <input type="radio" name="radio1" value="2" id="1-2" />
+                <label class="mood-test-num" for="1-2">2</label>
+
+                <input type="radio" name="radio1" value="3" id="1-3" />
+                <label class="mood-test-num" for="1-3">3</label>
+
+                <input type="radio" name="radio1" value="4" id="1-4" />
+                <label class="mood-test-num" for="1-4">4</label>
+              </div>
+            </div>
+
+            <div class="mood-test-wrapper">
+              <div
+                class="mood-test-title survey1 survey6 survey11 survey16"
+              ></div>
+              <div class="mood-test-num-wrapper">
+                <input type="radio" name="radio2" value="0" id="2-0" />
+                <label class="mood-test-num" for="2-0">0</label>
+
+                <input type="radio" name="radio2" value="1" id="2-1" />
+                <label class="mood-test-num" for="2-1">1</label>
+
+                <input type="radio" name="radio2" value="2" id="2-2" />
+                <label class="mood-test-num" for="2-2">2</label>
+
+                <input type="radio" name="radio2" value="3" id="2-3" />
+                <label class="mood-test-num" for="2-3">3</label>
+
+                <input type="radio" name="radio2" value="4" id="2-4" />
+                <label class="mood-test-num" for="2-4">4</label>
+              </div>
+            </div>
+
+            <div class="mood-test-wrapper">
+              <div
+                class="mood-test-title survey2 survey7 survey12 survey17"
+              ></div>
+              <div class="mood-test-num-wrapper">
+                <input type="radio" name="radio3" value="0" id="3-0" />
+                <label class="mood-test-num" for="3-0">0</label>
+
+                <input type="radio" name="radio3" value="1" id="3-1" />
+                <label class="mood-test-num" for="3-1">1</label>
+
+                <input type="radio" name="radio3" value="2" id="3-2" />
+                <label class="mood-test-num" for="3-2">2</label>
+
+                <input type="radio" name="radio3" value="3" id="3-3" />
+                <label class="mood-test-num" for="3-3">3</label>
+
+                <input type="radio" name="radio3" value="4" id="3-4" />
+                <label class="mood-test-num" for="3-4">4</label>
+              </div>
+            </div>
+
+            <div class="mood-test-wrapper">
+              <div
+                class="mood-test-title survey3 survey8 survey13 survey18"
+              ></div>
+              <div class="mood-test-num-wrapper">
+                <input type="radio" name="radio4" value="0" id="4-0" />
+                <label class="mood-test-num" for="4-0">0</label>
+
+                <input type="radio" name="radio4" value="1" id="4-1" />
+                <label class="mood-test-num" for="4-1">1</label>
+
+                <input type="radio" name="radio4" value="2" id="4-2" />
+                <label class="mood-test-num" for="4-2">2</label>
+
+                <input type="radio" name="radio4" value="3" id="4-3" />
+                <label class="mood-test-num" for="4-3">3</label>
+
+                <input type="radio" name="radio4" value="4" id="4-4" />
+                <label class="mood-test-num" for="4-4">4</label>
+              </div>
+            </div>
+
+            <div class="mood-test-wrapper">
+              <div
+                class="mood-test-title survey4 survey9 survey14 survey19"
+              ></div>
+              <div class="mood-test-num-wrapper">
+                <input type="radio" name="radio5" value="0" id="5-0" />
+                <label class="mood-test-num" for="5-0">0</label>
+
+                <input type="radio" name="radio5" value="1" id="5-1" />
+                <label class="mood-test-num" for="5-1">1</label>
+
+                <input type="radio" name="radio5" value="2" id="5-2" />
+                <label class="mood-test-num" for="5-2">2</label>
+
+                <input type="radio" name="radio5" value="3" id="5-3" />
+                <label class="mood-test-num" for="5-3">3</label>
+
+                <input type="radio" name="radio5" value="4" id="5-4" />
+                <label class="mood-test-num" for="5-4">4</label>
+              </div>
+            </div>
+
+            <div class="btn-container"></div>
+          </div>
+        </form>
+        <!-- Content -->
+      </div>
+    </div>
+
+    <!-- <div class="btn right">
+        <img src="./images/next_blue.png" alt="next" />
+      </div> -->
+
+    <!-- 사이드 메뉴 -->
+    <div class="menu_bg">
+      <div class="menu">
+        <!-- 닫기 -->
+        <div onclick="HideMenu()" class="cancel-icon">
+          <img src="./images/cancel.png" alt="cancel" />
+        </div>
+
+        <div class="menu-container">
+          <!-- 메뉴 1 -->
+          <div class="menu-column">
+            <div class="munu-wrapper" onclick="ShowSubMenu(1)">
+              <div>
+                <span class="menu-strong">TAYM-mind</span>
+                <span class="menu-title">너의 마음을 말할, 타임</span>
+              </div>
+              <img
+                src="./images/open_menu.png"
+                alt="펼치기"
+                class="show-icon1"
+              />
+            </div>
+
+            <!-- 펼침 메뉴 -->
+            <div class="menu_2" id="sub1">
+              <ul>
+                <li><a href="">상황인식</a></li>
+                <li><a href="">감정인식</a></li>
+                <li><a href="">stop 방법찾기</a></li>
+                <li><a href="">사회적 지지체계</a></li>
+                <li><a href="">위기사항 119</a></li>
+                <li><a href="">자해방지서약서 작성해보기</a></li>
+                <li><a href="" class="last">완성된 '내 마음, TAYM'</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- 메뉴 2 -->
+          <div class="menu-column">
+            <div class="munu-wrapper" onclick="ShowSubMenu(2)">
+              <div>
+                <span class="menu-strong">TAYM-mood</span>
+                <span class="menu-title">오늘 기분은 어때?</span>
+              </div>
+              <img
+                src="./images/open_menu.png"
+                alt="펼치기"
+                class="show-icon2"
+              />
+            </div>
+
+            <!-- 펼침 메뉴 -->
+            <div class="menu_2" id="sub2">
+              <ul>
+                <li><a href="">오늘의 감정 확인, 표현해보기</a></li>
+                <li><a href="">우울척도 검사해보기</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- 메뉴 3 -->
+          <div class="menu-column">
+            <a href="">
+              <div>
+                <span class="menu-strong">TAYM-you</span>
+                <span class="menu-title">너는 어떤 친구이니?</span>
+              </div>
+            </a>
+          </div>
+
+          <!-- 메뉴 4 -->
+          <div class="menu-column">
+            <a href="./junior-1.html">
+              <div>
+                <span class="menu-strong">TAYM-junior</span>
+                <span class="menu-title">너는 어떤 친구이니?</span>
+              </div>
+            </a>
+          </div>
+
+          <!-- 메뉴 3 -->
+          <div class="menu-column">
+            <a href="">
+              <div>
+                <span class="menu-strong">TAYM-info</span>
+                <span class="menu-title">전문적인 정보</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 사이드 메뉴 -->
+
+    <!-- Footer nav -->
+    <footer>
+      <div>
+        <a href="./home.html">
+          <img src="./images/footer_icon_1.png" alt="home" class="home-icon" />
+        </a>
+      </div>
+      <div>
+        <a href="">
+          <img
+            src="./images/footer_icon_2.png"
+            alt="modify"
+            class="modify-icon"
+          />
+        </a>
+      </div>
+      <div>
+        <a href="">
+          <img
+            src="./images/footer_icon_3.png"
+            alt="graph"
+            class="graph-icon"
+          />
+        </a>
+      </div>
+      <div>
+        <a href="">
+          <img src="./images/footer_icon_4.png" alt="call" class="call-icon" />
+        </a>
+      </div>
+    </footer>
+
+    <script src="./js/scripts.js"></script>
+  </body>
+</html>
