@@ -8,30 +8,24 @@ function ShowMenu() {
   $(".menu").css({
     left: "-100%",
   });
-  $(".menu").animate(
-    {
-      left: "0px",
-    },
-    {
-      duration: giMenuDuration,
-    }
-  );
+  $(".menu").animate({
+    left: "0px",
+  }, {
+    duration: giMenuDuration,
+  });
 }
 
 function HideMenu() {
-  $(".menu").animate(
-    {
-      left: "-100%",
+  $(".menu").animate({
+    left: "-100%",
+  }, {
+    duration: giMenuDuration,
+    complete: function () {
+      $(".menu_bg").css({
+        display: "none",
+      });
     },
-    {
-      duration: giMenuDuration,
-      complete: function () {
-        $(".menu_bg").css({
-          display: "none",
-        });
-      },
-    }
-  );
+  });
 }
 
 function ShowSubMenu(num) {
@@ -48,9 +42,11 @@ function ShowSubMenu(num) {
 
 function openModal(num) {
   $(".modal-background" + num).fadeIn();
+  $(".modal-content" + num).fadeIn();
 
   $(".close").click(function () {
     $(".modal-background" + num).fadeOut();
+    $(".modal-content" + num).fadeOut();
   });
 }
 
@@ -93,6 +89,26 @@ function avatarNameChange(num) {
   localStorage.setItem("avatarName", changeName);
   $(".modal-background" + num).fadeOut();
   $(".avatar-name").text(changeName);
+}
+
+// 아바타 이름변경
+function trustNameChange(num) {
+  var changeName = $("#trust-name").val();
+  var changeTel = $("#trust-tel").val();
+  if (changeName === "") {
+    alert("이름을 적어주세요");
+    $("#trust-name").focus();
+    return;
+  }
+  if (changeTel === "") {
+    alert("전화번호를 적어주세요");
+    $("#trust-tel").focus();
+    return;
+  }
+
+  localStorage.setItem("trust-name", changeName);
+  localStorage.setItem("trust-tel", changeTel);
+  $(".modal-background" + num).fadeOut();
 }
 
 function hiddenTeatarea(num) {
@@ -174,9 +190,9 @@ function loadList(num) {
   $(".btn-container")
     .empty()
     .append(
-      num === 15
-        ? `<div class="listen-btn" onclick="loadList(${num + 5})">제출</div>`
-        : `<div class="listen-btn" onclick="loadList(${num + 5})">다음</div>`
+      num === 15 ?
+      `<div class="listen-btn" onclick="loadList(${num + 5})">제출</div>` :
+      `<div class="listen-btn" onclick="loadList(${num + 5})">다음</div>`
     );
 }
 
@@ -200,8 +216,10 @@ var selectList = [
 ];
 
 function loadMindSelectList() {
+  var getCheckList = localStorage.getItem("checkList");
+  var getCheckListToArray = getCheckList.split(",");
+  console.log(getCheckListToArray);
   for (var i = 0; i < selectList.length; i++) {
-    console.log(selectList[i]);
     $(`#mind-${i < 8 ? 9 : 10} .mind-desc`).append(`
     <label class="wrapper-label">
       <input type="checkbox" id="cb" name="checkbox${i}" value="${i}" />
@@ -211,6 +229,15 @@ function loadMindSelectList() {
     `);
   }
 
+  if ($("body").hasClass("re-select")) {
+    for (var i = 0; i < getCheckListToArray.length; i++) {
+      $(`input:checkbox[name="checkbox${getCheckListToArray[i]}"]`).attr(
+        "checked",
+        "checked"
+      );
+    }
+  }
+
   $(`#mind-10 .mind-desc`).append(`
     <div class="listen-btn" onclick="selectConfirm()">선택완료</div>
     `);
@@ -218,30 +245,39 @@ function loadMindSelectList() {
 
 function loadSelectList() {
   var getCheckList = localStorage.getItem("checkList");
-  var getCheckListToArray = getCheckList.split(",");
-
-  if (getCheckListToArray == "") {
-    $(".blue-btn").append(`
-    <a href="./mind-2.html">선택하기</a>
-    `);
-    return;
+  var getCheckListToArray;
+  if (getCheckList === "") {
+    getCheckListToArray = [];
   } else {
-    $(".blue-btn").append(`
-    <a href="./taym-6.html">수정하기</a>
-    `);
+    getCheckListToArray = getCheckList.split(",");
   }
 
   for (var i = 0; i < getCheckListToArray.length; i++) {
-    $("#select-desc").append(`
+    $(`#mind-${i < 8 ? 9 : 10} .mind-desc`).append(`
     <label class="wrapper-label">
       <input type="checkbox" id="cb" name="checkbox${
         getCheckListToArray[i]
       }" value="${getCheckListToArray[i]}" checked disabled />
-      <label for="cb"> <div class="cb-checked"></div> </label>
-      ${selectList[getCheckListToArray[i]]}
-      </label>
+      <label for="cb"> 
+        <div class="cb-checked"></div> 
+      </label>${selectList[getCheckListToArray[i]]}</label>
     `);
   }
+
+  $(`#mind-${i < 8 ? 9 : 10} .mind-desc`).append(`
+    <div class="taym-btn-container">
+      <div class="blue-btn back">
+        <a href="./taym-1.html"> 뒤로가기 </a>
+      </div>
+      <div class="blue-btn">
+      ${
+        getCheckListToArray.length == 0
+          ? `<a href="./mind-2.html">선택하기</a>`
+          : `<a href="./taym-6.html">수정하기</a>`
+      }
+      </div>
+    </div>
+    `);
 }
 
 function selectConfirm() {
@@ -252,10 +288,11 @@ function selectConfirm() {
       checkArr.push(checkVal);
     }
   }
-  var id_by_body = $("body").attr("id");
-  console.log(id_by_body);
   if ($("body").hasClass("mind-2-select")) {
     openModal(1);
+  }
+  if ($("body").hasClass("re-select")) {
+    $(location).attr("href", "taym-5.html");
   }
   localStorage.setItem("checkList", checkArr);
 }
@@ -295,6 +332,12 @@ function loadModal() {
 }
 
 $(document).ready(function () {
+  $(".emergency-btn")
+    .parent()
+    .click(function (e) {
+      console.log("부모");
+    });
+
   $(".finger-icon").on("touchstart", function () {
     $(".finger-icon").attr("src", "./images/finger_end.png");
     vibrate();
@@ -342,10 +385,19 @@ $(document).ready(function () {
     }
   }
 
+  if ($("body").hasClass("taym-call")) {
+    var getTrustTel = localStorage.getItem("trust-tel");
+    var getTrustName = localStorage.getItem("trust-name");
+    $(".taym-call-connect").attr("href", `tel:${getTrustTel}`);
+    $("#trust-name").val(getTrustName);
+    $("#trust-tel").val(getTrustTel);
+  }
+
   switch (id_by_body) {
     case "intro":
       localStorage.setItem("avatarName", "TAYM");
       localStorage.setItem("selectView", true);
+      localStorage.setItem("checkList", "");
       break;
 
     case "home":
@@ -361,7 +413,7 @@ $(document).ready(function () {
   }
 
   var getMoodScore = localStorage.getItem("moodScore");
-  if (class_by_body === "junior-1") {
+  if ($("body").hasClass("junior-1")) {
     console.log(getMoodScore);
     if (getMoodScore === null) {
       $(".meet-btn").click(function () {
@@ -374,7 +426,7 @@ $(document).ready(function () {
     }
   }
 
-  if (class_by_body === "junior-4") {
+  if ($("body").hasClass("junior-4")) {
     if (getMoodScore <= 4) {
       $(".junior-content").css(
         "background-image",
@@ -429,8 +481,7 @@ function yearValidation(year) {
   if (year < 1920 || year > current_year) {
     $("#year").val(""); // 빈값으로 처리하기
     $("#year").focus(); // 빈공간(연도)에 다시 포커스 시키기
-  } else {
-  }
+  } else {}
 }
 
 // 월은 1월 부터 12월 까지만 입력 되도록 처리
@@ -439,8 +490,7 @@ function monthValidation(month) {
   if (month < 1 || month > 12) {
     $("#month").val("");
     $("#month").focus();
-  } else {
-  }
+  } else {}
 }
 
 // 일은 1일 부터 31일 까지만 입력 되도록 처리
@@ -449,8 +499,7 @@ function dayValidation(day) {
   if (day < 1 || day > 31) {
     $("#day").val("");
     $("#day").focus();
-  } else {
-  }
+  } else {}
 }
 
 // 가져온 현재날짜와 입력날짜 차이를 구하기
@@ -548,3 +597,13 @@ $(function () {
     $("#pic").attr("src", URL.createObjectURL(e.target.files[0]));
   });
 });
+
+// 리셋 버튼 누르면 사진찍기와 사진불러오기 화면으로 가기
+
+function clearCanvas() {
+  var canvas = document.getElementById("drawCanvas");
+  canvas.getContext("2d").clearRect(0, 0, canvas.width, canvas.height);
+  document.getElementById("drawCanvas").style.backgroundImage = "";
+  $("#import-photo").show();
+  $("#take-photo").show();
+}

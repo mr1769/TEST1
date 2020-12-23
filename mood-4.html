@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
 
-  <body id="mood" class="blue-nav">
+  <body id="mood" class="blue-nav mood-book">
     <!-- Hearder nav -->
     <nav>
       <div onclick="ShowMenu()" class="menu-icon side">
@@ -44,140 +44,63 @@
       <!-- Swiper -->
       <div class="swiper-container">
         <div class="swiper-wrapper">
-          <!-- mood 1 -->
-          <div class="swiper-slide mood">
+          <!-- mood book main -->
+          <div class="swiper-slide mood" id="mood-book-main">
             <!-- Content -->
             <div class="content">
               <div class="mind-select-container">
-                <div class="mind-select-title">오늘 하루, 어땠나요?</div>
                 <div class="mind-desc">
-                  <p>오늘 하루, 어땠나요?</p>
-                  <p>혹시 오늘 하루,</p>
+                  <p>마음과 생각이 복잡한데..</p>
+                  <p>이게 어떤 기분인지..</p>
                   <p>
-                    무척이나 답답하고, 불안하고, 힘들었나요? 아니면 소소한
-                    즐거움으로 웃었나요?
+                    어떻게 해야 할지 ___친구 <br />
+                    스스로 잘 모르는 경우가 있습니다.
                   </p>
-                  <br />
-                  <p>오늘 하루, ____친구의 감정을</p>
-                  <p>스스로 공감해 주는 시간</p>
-                  <p>TAYM mood를 가져보세요.</p>
+
+                  <p>
+                    내 기분과 생각인데, 내가 잘 모를 수 있을까?.. 실제로 많은
+                    사람들이 자신의 감정과 마음을 잘 모르는 경우가 많아요. 내
+                    감정과 생각이기 때문에 스스로 들여다보고, 관심가지면서 왜
+                    그럴까라고 곰곰이 생각해보면 어렴풋이 보일 수 있어요.
+                  </p>
+                  ____친구의 감정을 읽는데, 도움이 될 만한 책을 추전합니다. 한번
+                  꼭, 읽어보길 권해요.
                 </div>
               </div>
             </div>
             <!-- Content -->
           </div>
 
-          <!-- mood 2 -->
-          <div class="swiper-slide mood mood-2">
+          <!-- mood book 1 -->
+          <div class="swiper-slide mood" id="mood-book-1">
             <!-- Content -->
             <div class="content">
               <div class="mind-select-container">
-                <div style="display: grid; height: 60%">
-                  <div class="mind-select-title">
-                    (얼굴표정)을 수직선 상의 원하는 위치까지 터치해보세요.
-                  </div>
-                  <div class="mind-desc">
-                    <p>
-                      오늘 하루, 나의 기분에 __________ 친구 스스로
-                      공감해주세요.
-                    </p>
-                    <p>기쁨과 우울 중 어느 쪽에 더 가까웠나요?</p>
-                  </div>
-
-                  <div class="mood-bar-container">
-                    <div class="mood-bar-column">
-                      <div
-                        class="mood-bar mood-bar1"
-                        onclick="clickMoodBar(1)"
-                      ></div>
-                      <div
-                        class="mood-bar mood-bar2"
-                        onclick="clickMoodBar(2)"
-                      ></div>
-                      <div
-                        class="mood-bar mood-bar3"
-                        onclick="clickMoodBar(3)"
-                      ></div>
-                      <div
-                        class="mood-bar mood-bar4"
-                        onclick="clickMoodBar(4)"
-                      ></div>
-                      <div
-                        class="mood-bar mood-bar5"
-                        onclick="clickMoodBar(5)"
-                      ></div>
-                      <div
-                        class="mood-bar mood-bar6"
-                        onclick="clickMoodBar(6)"
-                      ></div>
-                      <div
-                        class="mood-bar mood-bar7"
-                        onclick="clickMoodBar(7)"
-                      ></div>
-                      <div
-                        class="mood-bar mood-bar8"
-                        onclick="clickMoodBar(8)"
-                      ></div>
-                      <div
-                        class="mood-bar mood-bar9"
-                        onclick="clickMoodBar(9)"
-                      ></div>
-                      <div
-                        class="mood-bar mood-bar10"
-                        onclick="clickMoodBar(10)"
-                      ></div>
-                    </div>
-                    <div class="mood-bar-name">
-                      <span>기쁨</span>
-                      <span>우울</span>
-                    </div>
+                <div class="book-title-container">
+                  <img
+                    src="./images/book_name_1.png"
+                    alt="토닥토닥 마음톡"
+                    class="book-name-1"
+                  />
+                  <div class="book-title-small">
+                    감정, 관계, 일상에 고민이 많은 십대를 위한 치유서
                   </div>
                 </div>
-
-                <!-- face icon bubble -->
-                <div class="mood-bubble smile">
-                  <div class="mood-bubble-column">
-                    <img
-                      src="./images/smile.png"
-                      alt="face"
-                      class="face-icon"
-                    />
-                    <div class="mood-state">
-                      <p>그래도,</p>
-                      <p>좋은하루였다!</p>
-                    </div>
-                  </div>
+                <div class="book-cover">
+                  <img src="./images/book_cover_1.png" alt="토닥토닥 마음톡" />
                 </div>
 
-                <div class="mood-bubble soso">
-                  <div class="mood-bubble-column">
-                    <img src="./images/soso.png" alt="face" class="face-icon" />
-                    <span class="mood-state">그냥 그랬어</span>
-                  </div>
+                <div class="book-desc">
+                  감정의 파도가 요동치는 시기를 통과하는 <br />
+                  십대들에게 지금 겪는 감정이 지극히 자연스러운 것임을
+                  가르쳐주는 책입니다.
                 </div>
 
-                <div class="mood-bubble tired">
-                  <div class="mood-bubble-column">
-                    <div class="mood-state">
-                      <p>휴~</p>
-                      <p>힘들다...</p>
-                    </div>
-                    <img
-                      src="./images/tired.png"
-                      alt="face"
-                      class="face-icon"
-                    />
-                  </div>
-                </div>
-
-                <div class="show-graph">
-                  <a href="">
-                    <span> 그래프보기</span>
-                    <img
-                      src="./images/show_graph.png"
-                      alt="show"
-                      class="show-graph-icon"
-                    />
+                <div class="book-link-btn">
+                  <a
+                    href="http://www.yes24.com/Product/Goods/74971697"
+                    target="blank"
+                    >책보러가기
                   </a>
                 </div>
               </div>
@@ -185,53 +108,83 @@
             <!-- Content -->
           </div>
 
-          <!-- mood 3 -->
-          <div class="swiper-slide mood mood-3">
+          <!-- mood book 2 -->
+          <div class="swiper-slide mood" id="mood-book-2">
             <!-- Content -->
             <div class="content">
               <div class="mind-select-container">
-                <div class="mind-select-title">
-                  <p>조금 더 나의 기분과</p>
-                  <p>마음에 대해 적어보고 싶어요.</p>
+                <div class="book-title-container">
+                  <img
+                    src="./images/book_name_2.png"
+                    alt="아무것도 하고싶지 않는 나에게"
+                    class="book-name-2"
+                  />
+                  <div class="book-title-small">
+                    무기력한 십대를 위한 처방전
+                  </div>
+                </div>
+                <div class="book-cover">
+                  <img
+                    src="./images/book_cover_2.png"
+                    alt="아무것도 하고싶지 않는 나에게"
+                  />
                 </div>
 
-                <div class="write-column">
-                  <textarea
-                    name=""
-                    id=""
-                    onclick="hiddenTeatarea(4)"
-                  ></textarea>
-                  <div
-                    class="mind-write-container write-container write-container4"
-                  >
-                    <div class="write-icon">
-                      <img src="./images/write.png" alt="작성하기" />
-                    </div>
-                    <h1>작성하기</h1>
-                  </div>
+                <div class="book-desc">
+                  무기력에서 벗어나 내 삶의 주인으로 살기! 십대의 생기를 빼앗고,
+                  삶의 답을 찾지 못한 십대들을 위해 무기력을 코끼리에 비유하여
+                  이 무기력 코끼리의 정체를 정확히 알고 자기 자신에 있는 힘을
+                  믿는다면 어떤 육중한 무기력 코끼리라도 거뜬히 쫒아낼 수 있다고
+                  말하고 있습니다.
+                </div>
+
+                <div class="book-link-btn">
+                  <a
+                    href="http://www.yes24.com/Product/Goods/53584432"
+                    target="blank"
+                    >책보러가기
+                  </a>
                 </div>
               </div>
             </div>
             <!-- Content -->
           </div>
 
-          <!-- mood 4 -->
-          <div class="swiper-slide mood">
+          <!-- mood book 3 -->
+          <div class="swiper-slide mood" id="mood-book-3">
             <!-- Content -->
             <div class="content">
-              <div class="mood-check-intro">
-                <div class="mind-select-title center">체크해볼까요?</div>
-                <div class="mind-desc">
-                  <p>
-                    다음의 내용은 사람들이 느끼거나 행동할 (가능성이 있는)
-                    방식을 열거한 것입니다.
-                  </p>
-                  지난 일주일 동안 얼마나 자주 이런 식으로 느꼈는지 표시해
-                  주세요.
+              <div class="mind-select-container">
+                <div class="book-title-container">
+                  <img
+                    src="./images/book_name_3.png"
+                    alt="나에게도 자존감이란 무기가 생겼습니다"
+                    class="book-name-3"
+                  />
+                  <div class="book-title-small">
+                    십대들을 위한 자존감 UP 특강
+                  </div>
+                </div>
+                <div class="book-cover">
+                  <img
+                    src="./images/book_cover_3.png"
+                    alt="나에게도 자존감이란 무기가 생겼습니다"
+                  />
                 </div>
 
-                <div class="listen-btn">
-                  <a href="./mood-2.html">시작하기</a>
+                <div class="book-desc">
+                  공부에 지쳐 무기력해지고 실수도 많고, 실패도 경험하고, 마음이
+                  너무 어려서 상처받아 힘들어하는 청소년들에게 위로와 용기를
+                  북돋아주는 이 책은 십대들 자신들의 가치를 재발견하는 다섯 가지
+                  생각습관을 길러주도록 보여주는 책입니다.
+                </div>
+
+                <div class="book-link-btn">
+                  <a
+                    href="http://www.yes24.com/Product/Goods/78582665"
+                    target="blank"
+                    >책보러가기
+                  </a>
                 </div>
               </div>
             </div>

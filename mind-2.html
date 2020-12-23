@@ -68,25 +68,17 @@
   <!-- Layer Popup 1 -->
   <div class="modal-background1 modal-background">
     <div class="modal-content">
-      <div class="wrist-bg">
+      <div class="canvas-content">
 
         <!--canvas 공간-->
-        <canvas id="drawCanvas" class="drawCanvas" width="270" height="200" style="
-                    border-radius: 5px;
-                    background-color: white;
-                    background-position: center;
-                    background-repeat: no-repeat;
-                    background-size: cover;
-                    -moz-box-shadow: 2px 2px 4px gray;
-		                -webkit-box-shadow: 2px 2px 4px gray;
-		                box-shadow: 2px 2px 4px glay;
-                  "></canvas>
+        <canvas id="drawCanvas" class="drawCanvas"></canvas>
         <!--canvas 공간-->
 
         <!--사진찍기-->
-        <div class="take-photo" id="take-photo" onclick="">
-          <img src="images/minicamera.png" alt="사진찍기">
-          <label for="upImgFile" class="import-file-button">사진찍기</label>
+        <div class=" take-photo" id="take-photo">
+          <div class="wrist-write"><img src="images/camera_gray.png" alt="사진찍기">
+            <label for="upImgFile" class="import-file-button"><span>사진찍기</span></label>
+          </div>
           <input type="file" id="camera" name="camera" capture="camera" accept="image/*" style="display:none" />
 
         </div>
@@ -95,8 +87,9 @@
         <!--사진 불러오기-->
         <div class="import-photo" id="import-photo" onclick="uploadImgPreview()">
 
-          <img src="images/miniimage.png" alt="사진 불러오기">
-          <label for="upImgFile" class="import-file-button">사진불러오기</label>
+          <div class="wrist-write"><img src="images/image_file.png" alt="사진 불러오기">
+            <label for="upImgFile" class="import-file-button"><span>사진불러오기</span></label>
+          </div>
           <input type="file" id="upImgFile" class="upImgFile" onChange="uploadImgPreview();" accept="image/*"
             style="display:none" />
         </div>
@@ -105,14 +98,13 @@
 
       <div class="wrist-write" onclick="drawing()">
         <img src="./images/wrist_write.png" alt="그리기" />
-        <span>그려보기</span>
+        <span>그려보기 <span class="reset-button" onclick="clearCanvas()">| 초기화</span></span>
       </div>
 
       <div class="close" id="blue-close">
-        <a href="./mind-3.html">완료</a>
+        <a href="./mind-3.html" style="color:white">완료</a>
       </div>
     </div>
-
   </div>
 
   <!-- 사이드 메뉴 -->

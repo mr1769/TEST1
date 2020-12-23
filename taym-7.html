@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
 
-  <body id="taym" class="blue-nav" onload="loadModal()">
+  <body class="mind-content taym-call" id="taym-detail" onload="getTeatarea(1)">
     <!-- Hearder nav -->
     <nav>
       <div onclick="ShowMenu()" class="menu-icon side">
@@ -39,90 +39,74 @@
 
     <!-- Content -->
     <div class="content">
-      <div class="mind-select-container">
-        <div class="mind-select-title">
-          내가 작성한<br />
-          나만의 TAYM mind
+      <div class="taym-title call-title">
+        그래도 불안하고 힘들면 <br />
+        전화나 상담해보자
+      </div>
+      <div class="mind-btn-wrapper">
+        <div class="mind-btn taym-call">
+          <a class="taym-call-connect" href="">
+            <img
+              src="./images/home_call.png"
+              alt="call"
+              class="taym-call-icon"
+            />
+            <span>내가 의지하는 사람</span>
+          </a>
+          <div class="call-modify" onclick="openModal(2);">수정</div>
         </div>
-        <div class="taym-main">
-          <div class="taym-main-btn">
-            <a href="./taym-2.html">
-              <span>나를 힘들게 하는 상황</span>
-              <img src="./images/next_blue.png" alt="이동" />
-            </a>
-          </div>
-          <div class="taym-main-btn">
-            <a href="./taym-3.html">
-              <span>그 때 나의 기분</span>
-              <img src="./images/next_blue.png" alt="이동" />
-            </a>
-          </div>
-          <div class="taym-main-btn">
-            <a href="./taym-4.html">
-              <span>그럴 때 내가 나에게 했던 상처들</span>
-              <img src="./images/next_blue.png" alt="이동" />
-            </a>
-          </div>
-          <div class="taym-main-btn">
-            <a href="./taym-5.html">
-              <span>이제는 안그럴꺼야, 나만의 STOP방법들</span>
-              <img src="./images/next_blue.png" alt="이동" />
-            </a>
-          </div>
-          <div class="taym-main-btn">
-            <a href="./taym-7.html">
-              <span>그래도 불안하고 힘들면 전화나 상담해보자</span>
-              <img src="./images/next_blue.png" alt="이동" />
-            </a>
-          </div>
-          <div class="taym-main-btn" onclick="openModal(2);">
-            <span>혹시 위급하다면 119로!</span>
-            <img src="./images/next_blue.png" alt="이동" />
-          </div>
+
+        <div class="mind-btn">
+          <a href="https://www.cyber1388.kr:447/" target="blank">
+            <img src="./images/advice_logo.png" alt="상담센터" />
+          </a>
         </div>
-        <div class="taym-main-finger">
-          <span> 나의 다짐 서명 </span>
-          <img src="./images/finger_end.png" alt="지문" />
+
+        <div class="mind-btn">
+          <a
+            class="no-login-link"
+            href="https://www.cyber1388.kr:447/new_/counsel2_/bbs5/default.asp?id=board_coun)"
+            target="blank"
+          >
+            <img
+              src="./images/chat_no_login.png"
+              alt="chat"
+              class="chat-icon"
+            />
+            <span>댓글상담실 (로그인필요없음)</span>
+          </a>
         </div>
+
+        <div class="mind-btn">
+          <a
+            class="login-link"
+            href="https://www.cyber1388.kr:447/new_/confirm_chat.asp?id=board_chat)"
+            target="blank"
+          >
+            <img src="./images/chat_login.png" alt="chat" class="chat-icon" />
+            <span>채팅상담실 (로그인필요)</span>
+          </a>
+        </div>
+      </div>
+      <div class="blue-btn back">
+        <a href="./taym-1.html"> 뒤로가기 </a>
       </div>
     </div>
     <!-- Content -->
 
-    <!-- Layer Popup 1 -->
-    <div class="modal-background1 modal-background">
-      <div class="modal-content">
-        <div class="modal-desc">
-          <p>___________친구가</p>
-          <p>
-            지금 작성한 TAYM mind 내용들은 힘든 이 시기를 극복해가고 성장해가는
-            과정에서 언제든지 변경될 수 있습니다.
-          </p>
-          <p>TAYM mind을 변경하고 싶은 경우 상단 혹은 하단메뉴의</p>
-          ‘TAYM mind‘을 눌러 수정할 수 있습니다 .
-        </div>
-
-        <div class="modal-btn-column">
-          <div class="view" onclick="selectView()">
-            <div class="check-view"></div>
-            <span>다시 보지 않기</span>
+    <!-- 아바타 이름 수정 -->
+    <div class="modal-background2 modal-background modify-background">
+      <div class="modal-content" id="modify-name">
+        <div class="modify-name-title">
+          <div class="side-btn close">
+            <img src="./images/cancel.png" alt="닫기" />
           </div>
-          <div class="close" id="close">닫기</div>
+          <div class="cheer-title">내가 의지하는 사람</div>
+          <div class="confirm-btn" onclick="trustNameChange(2)">확인</div>
         </div>
-      </div>
-    </div>
 
-    <!-- Layer Popup 2 -->
-    <div class="modal-background2 modal-background close"></div>
-    <div class="modal-content emergency modal-content2">
-      <div class="modal-content-inner">
-        <div class="cheer-title emergency">119에 전화하기</div>
-
-        <div class="emergency-btn">
-          <a href="tel:119">
-            <img src="./images/call.png" alt="긴급전화" />
-            <span>119</span>
-          </a>
-        </div>
+        <input type="search" name="trust-name" id="trust-name" />
+        <input type="search" name="trust-tel" id="trust-tel" />
       </div>
     </div>
 

@@ -20,7 +20,11 @@
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
 
-  <body class="mind-content" id="taym-detail" onload="loadSelectList()">
+  <body
+    class="mind-content mind-2-select"
+    onload="loadSelectList()"
+    id="taym-detail"
+  >
     <!-- Hearder nav -->
     <nav>
       <div onclick="ShowMenu()" class="menu-icon side">
@@ -39,12 +43,12 @@
 
     <!-- Content -->
     <div id="mind-2-select">
-      <div class="taym-title scratch-title">
+      <div class="mind-select-title result">
         이제는 안그럴꺼야, <br />
         나만의 STOP방법들
       </div>
 
-      <div class="main-swiper-container">
+      <div class="main-swiper-container result">
         <div class="btn left">
           <img src="./images/prev_blue.png" alt="next" />
         </div>
@@ -54,8 +58,8 @@
             <!-- mind 9 -->
             <div class="swiper-slide" id="mind-9">
               <!-- Content -->
-              <div class="mind-desc" id="select-desc">
-                <div style="width: 375px"></div>
+              <div class="mind-desc result" id="select-desc">
+                <div style="width: 9999px"></div>
               </div>
               <!-- Content -->
             </div>
@@ -63,7 +67,7 @@
             <!-- mind 10 -->
             <div class="swiper-slide" id="mind-10">
               <!-- Content -->
-              <div class="mind-desc" id="select-desc"></div>
+              <div class="mind-desc result" id="select-desc"></div>
               <!-- Content -->
             </div>
           </div>
@@ -195,10 +199,8 @@
           />
         </a>
       </div>
-      <div>
-        <a href="">
-          <img src="./images/footer_icon_4.png" alt="call" class="call-icon" />
-        </a>
+      <div onclick="openModal(2);">
+        <img src="./images/footer_icon_4.png" alt="call" class="call-icon" />
       </div>
     </footer>
 
@@ -236,6 +238,8 @@
             },
           },
         });
+      } else {
+        $(".btn.right").css("visibility", "hidden");
       }
     </script>
 

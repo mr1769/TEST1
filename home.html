@@ -95,6 +95,21 @@
       <!-- Content -->
     </div>
 
+    <!-- Layer Popup 2 -->
+    <div class="modal-background2 modal-background close"></div>
+    <div class="modal-content emergency modal-content2">
+      <div class="modal-content-inner">
+        <div class="cheer-title emergency">119에 전화하기</div>
+
+        <div class="emergency-btn">
+          <a href="tel:119">
+            <img src="./images/call.png" alt="긴급전화" />
+            <span>119</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
     <!-- 사이드 메뉴 -->
     <div class="menu_bg">
       <div class="menu">
@@ -214,10 +229,8 @@
           />
         </a>
       </div>
-      <div>
-        <a href="">
-          <img src="./images/footer_icon_4.png" alt="call" class="call-icon" />
-        </a>
+      <div onclick="openModal(2);">
+        <img src="./images/footer_icon_4.png" alt="call" class="call-icon" />
       </div>
     </footer>
     <script src="./js/scripts.js"></script>
