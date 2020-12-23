@@ -97,6 +97,26 @@ function avatarNameChange(num) {
 
 function hiddenTeatarea(num) {
   $(`.write-container${num}`).css("display", "none");
+  $(`#mind-write-${num}`).on(
+    "propertychange change keyup paste input",
+    function () {
+      var currentVal = $(this).val();
+      localStorage.setItem(`mind-write-${num}`, currentVal);
+    }
+  );
+}
+
+function getTeatarea(num) {
+  var getMindWrite = localStorage.getItem(`mind-write-${num}`);
+  $(`#mind-write-${num}`).val(getMindWrite);
+}
+
+function changeInput(id) {
+  console.log(id);
+  $(`#${id}`).on("propertychange change keyup paste input", function () {
+    var currentVal = $(this).val();
+    localStorage.setItem(id, currentVal);
+  });
 }
 
 var surveyList = [
@@ -123,6 +143,7 @@ var surveyList = [
 ];
 
 var radioTotal = 0;
+
 function loadList(num) {
   if (num > 0) {
     for (var i = 1; i < 6; i++) {
@@ -159,7 +180,130 @@ function loadList(num) {
     );
 }
 
+var selectList = [
+  "빨간색 볼펜으로 자해하고 싶은 부분에 그려보기",
+  "심호흡 크게 해보기",
+  "무작정 그 자리를 떠나서 동네주변을 걷거나 뛰기",
+  "얼음움켜쥐기",
+  "가장 좋아하는 노래 무작정 부르기",
+  "빨간색 물감을 자해하고 싶은 부위에 떨어트려보기",
+  "노래 들으면서 마음껏 울어버리기",
+  "매운음식먹으러 밖에 나가기",
+  "평소 Youtube에서 재밌게 본 프로그램 짤보기",
+  "그 자리에서 맨손 줄넘기해보기",
+  "손 맞잡고 머리 위로 쭉! 기지개 펴듯 스트레칭하기",
+  "바로 네*버 켜서 연애 뉴스 보기",
+  "인터넷 쇼핑몰 찾아서 최신 신상품 구경하기",
+  "애완동물이 있다면, 애완동물 돌보기",
+  "소리 한번 크게 질러보기",
+  "내 손목 사진 위에 빨간색으로 칠해보기",
+];
+
+function loadMindSelectList() {
+  for (var i = 0; i < selectList.length; i++) {
+    console.log(selectList[i]);
+    $(`#mind-${i < 8 ? 9 : 10} .mind-desc`).append(`
+    <label class="wrapper-label">
+      <input type="checkbox" id="cb" name="checkbox${i}" value="${i}" />
+      <label for="cb"> 
+        <div class="cb-checked"></div> 
+      </label>${selectList[i]}</label>
+    `);
+  }
+
+  $(`#mind-10 .mind-desc`).append(`
+    <div class="listen-btn" onclick="selectConfirm()">선택완료</div>
+    `);
+}
+
+function loadSelectList() {
+  var getCheckList = localStorage.getItem("checkList");
+  var getCheckListToArray = getCheckList.split(",");
+
+  if (getCheckListToArray == "") {
+    $(".blue-btn").append(`
+    <a href="./mind-2.html">선택하기</a>
+    `);
+    return;
+  } else {
+    $(".blue-btn").append(`
+    <a href="./taym-6.html">수정하기</a>
+    `);
+  }
+
+  for (var i = 0; i < getCheckListToArray.length; i++) {
+    $("#select-desc").append(`
+    <label class="wrapper-label">
+      <input type="checkbox" id="cb" name="checkbox${
+        getCheckListToArray[i]
+      }" value="${getCheckListToArray[i]}" checked disabled />
+      <label for="cb"> <div class="cb-checked"></div> </label>
+      ${selectList[getCheckListToArray[i]]}
+      </label>
+    `);
+  }
+}
+
+function selectConfirm() {
+  var checkArr = [];
+  for (var i = 0; i < 17; i++) {
+    var checkVal = $(`input[name="checkbox${i}"]:checked`).val();
+    if (checkVal !== undefined) {
+      checkArr.push(checkVal);
+    }
+  }
+  var id_by_body = $("body").attr("id");
+  console.log(id_by_body);
+  if ($("body").hasClass("mind-2-select")) {
+    openModal(1);
+  }
+  localStorage.setItem("checkList", checkArr);
+}
+
+navigator.vibrate =
+  navigator.vibrate ||
+  navigator.webkitVibrate ||
+  navigator.mozVibrate ||
+  navigator.msVibrate;
+
+function vibrate() {
+  if (navigator.vibrate) {
+    navigator.vibrate(1000); // 진동을 울리게 한다. 1000ms = 1초
+  }
+}
+
+function selectView() {
+  var selectBtn = document.querySelector(".check-view");
+  var CLICKED_CLASS = "clicked";
+
+  selectBtn.classList.toggle(CLICKED_CLASS);
+
+  console.log(selectBtn.classList.contains(CLICKED_CLASS));
+  if (selectBtn.classList.contains(CLICKED_CLASS)) {
+    localStorage.setItem("selectView", false);
+  } else {
+    localStorage.setItem("selectView", true);
+  }
+}
+
+function loadModal() {
+  var getSelectView = localStorage.getItem("selectView");
+  console.log(getSelectView);
+  if (getSelectView === "true") {
+    openModal(1);
+  }
+}
+
 $(document).ready(function () {
+  $(".finger-icon").on("touchstart", function () {
+    $(".finger-icon").attr("src", "./images/finger_end.png");
+    vibrate();
+  });
+
+  $(".finger-icon").on("touchend", function () {
+    openModal(1);
+  });
+
   $(".menu_2").hide();
 
   // 모달 텍스트 변경
@@ -184,26 +328,36 @@ $(document).ready(function () {
   // footer menu 페이지에 따른 아이콘 변경
   var id_by_body = $("body").attr("id");
   var class_by_body = $("body").attr("class");
-  if (
-    id_by_body === "home" ||
-    id_by_body === "mood" ||
-    id_by_body === "junior"
-  ) {
+
+  if ($("body").hasClass("blue-nav")) {
     // console.log(id_by_body);
     $("footer").css("background-color", "#73d1e6");
     $(".home-icon").attr("src", "./images/footer_icon_1_white.png");
     $(".modify-icon").attr("src", "./images/footer_icon_2_blue.png");
     $(".graph-icon").attr("src", "./images/footer_icon_3_blue.png");
     $(".call-icon").attr("src", "./images/footer_icon_4_blue.png");
+    if (id_by_body === "taym") {
+      $(".home-icon").attr("src", "./images/footer_icon_1_blue.png");
+      $(".modify-icon").attr("src", "./images/footer_icon_2_white.png");
+    }
   }
 
-  if (id_by_body === "home") {
-    $(".logo").attr("src", "./images/logo_home.png");
-    $(".menu-icon div").css("background-color", "#ffffff");
-  }
+  switch (id_by_body) {
+    case "intro":
+      localStorage.setItem("avatarName", "TAYM");
+      localStorage.setItem("selectView", true);
+      break;
 
-  if (id_by_body === "intro") {
-    localStorage.setItem("avatarName", "TAYM");
+    case "home":
+      $(".logo").attr("src", "./images/logo_home.png");
+      $(".menu-icon div").css("background-color", "#ffffff");
+      break;
+
+    case "taym-detail":
+      console.log("taym-detail");
+      $(".home-icon").attr("src", "./images/footer_icon_1_gray.png");
+      $(".modify-icon").attr("src", "./images/footer_icon_2_blue_select.png");
+      break;
   }
 
   var getMoodScore = localStorage.getItem("moodScore");
@@ -322,3 +476,75 @@ function printDiff() {
   console.log(month);
   $("#result-month").text(month);
 }
+
+// 파일 업로드
+
+// 자바스크립트 사용 할 때
+function uploadImgPreview() {
+  let fileInfo = document.getElementById("upImgFile").files[0];
+  let reader = new FileReader();
+
+  reader.onload = function () {
+    document.getElementById(
+      "drawCanvas"
+    ).style.backgroundImage = `url(${reader.result})`;
+
+    // 사진외에 화면은 다 지웁니다.
+    $("#import-photo").hide();
+    $("#take-photo").hide();
+  };
+
+  if (fileInfo) {
+    reader.readAsDataURL(fileInfo);
+  }
+}
+
+// 그림 그리기
+
+function drawing() {
+  var drawCanvas = document.getElementById("drawCanvas");
+
+  if (typeof drawCanvas.getContext == "function") {
+    var ctx = drawCanvas.getContext("2d");
+    var width = 10;
+    var color = "red";
+    var pDraw = $("#drawCanvas").offset();
+    var currP = null;
+
+    $("#drawCanvas").bind("touchstart", function (e) {
+      e.preventDefault();
+      ctx.beginPath();
+    });
+
+    $("#drawCanvas").bind("touchmove", function (e) {
+      var event = e.originalEvent;
+      e.preventDefault();
+      currP = {
+        X: event.touches[0].pageX - pDraw.left,
+        Y: event.touches[0].pageY - pDraw.top,
+      };
+      draw_line(currP);
+    });
+
+    $("#drawCanvas").bind("touchend", function (e) {
+      e.preventDefault();
+    });
+
+    function draw_line(p) {
+      ctx.lineWidth = width;
+      ctx.lineCap = "round";
+      ctx.lineTo(p.X, p.Y);
+      ctx.moveTo(p.X, p.Y);
+      ctx.strokeStyle = color;
+      ctx.stroke();
+    }
+  }
+}
+
+// 사진 찍기
+
+$(function () {
+  $("#camera").change(function (e) {
+    $("#pic").attr("src", URL.createObjectURL(e.target.files[0]));
+  });
+});

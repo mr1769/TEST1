@@ -71,8 +71,7 @@
               <div>
                 <div class="write-column">
                   <textarea
-                    name=""
-                    id=""
+                    id="mind-write-1"
                     onclick="hiddenTeatarea(1)"
                   ></textarea>
                   <div
@@ -97,6 +96,38 @@
             <!-- Content -->
           </div>
 
+          <!-- mind 2-1 -->
+          <div class="swiper-slide" id="mind-2-1">
+            <!-- Content -->
+            <div class="content">
+              <div>
+                <div class="mind-desc">
+                  <p>그 때 ____친구의 기분은 어땠을까요.</p>
+                  <p>
+                    불안, 외로움, 슬픔, 두려움, 무서움, 무기력함 등이었나요?
+                  </p>
+                  <p>그 때 들었던 기분에 대해 적어보세요.</p>
+                </div>
+
+                <div class="write-column">
+                  <textarea
+                    id="mind-write-2"
+                    onclick="hiddenTeatarea(2)"
+                  ></textarea>
+                  <div
+                    class="mind-write-container write-container write-container2"
+                  >
+                    <div class="write-icon">
+                      <img src="./images/write.png" alt="작성하기" />
+                    </div>
+                    <h1>작성하기</h1>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Content -->
+          </div>
+
           <!-- mind 3 -->
           <div class="swiper-slide" id="mind-3">
             <!-- Content -->
@@ -111,12 +142,11 @@
                 <div class="write-and-camera">
                   <div class="write-column">
                     <textarea
-                      name=""
-                      id=""
-                      onclick="hiddenTeatarea(2)"
+                      id="mind-write-3"
+                      onclick="hiddenTeatarea(3)"
                     ></textarea>
                     <div
-                      class="mind-write-container write-container write-container2"
+                      class="mind-write-container write-container write-container3"
                     >
                       <div class="write-icon">
                         <img src="./images/write.png" alt="작성하기" />
@@ -432,28 +462,34 @@
 
     <!-- Footer nav -->
     <footer>
-      <footer>
-        <div>
-          <a href="./home.html">
-            <img src="./images/footer_icon_1.png" alt="home" />
-          </a>
-        </div>
-        <div>
-          <a href="">
-            <img src="./images/footer_icon_2.png" alt="modify" />
-          </a>
-        </div>
-        <div>
-          <a href="">
-            <img src="./images/footer_icon_3.png" alt="graph" />
-          </a>
-        </div>
-        <div>
-          <a href="">
-            <img src="./images/footer_icon_4.png" alt="call" />
-          </a>
-        </div>
-      </footer>
+      <div>
+        <a href="./home.html">
+          <img src="./images/footer_icon_1.png" alt="home" class="home-icon" />
+        </a>
+      </div>
+      <div>
+        <a href="./taym-1.html">
+          <img
+            src="./images/footer_icon_2.png"
+            alt="modify"
+            class="modify-icon"
+          />
+        </a>
+      </div>
+      <div>
+        <a href="">
+          <img
+            src="./images/footer_icon_3.png"
+            alt="graph"
+            class="graph-icon"
+          />
+        </a>
+      </div>
+      <div>
+        <a href="">
+          <img src="./images/footer_icon_4.png" alt="call" class="call-icon" />
+        </a>
+      </div>
     </footer>
 
     <!-- Initialize Swiper -->

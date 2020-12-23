@@ -71,11 +71,21 @@
                 <div class="mind-desc">
                   내가 믿고 의지하는 사람
                   <div>
-                    <input type="text" name="name" id="name" />
+                    <input
+                      type="text"
+                      name="trust-name"
+                      id="trust-name"
+                      onclick="changeInput(id)"
+                    />
                   </div>
                   연락처
                   <div>
-                    <input type="tel" name="tel" id="tel" />
+                    <input
+                      type="tel"
+                      name="trust-tel"
+                      id="trust-tel"
+                      onclick="changeInput(id)"
+                    />
                   </div>
                 </div>
               </div>
@@ -138,11 +148,95 @@
             </div>
             <!-- Content -->
           </div>
+
+          <!-- mind 13 -->
+          <div class="swiper-slide" id="mind-13">
+            <!-- Content -->
+            <div class="content">
+              <div>
+                <div class="mind-desc">
+                  <p>
+                    ____친구 스스로에게 심각하고 위급한 응급상황이 발생하거나
+                    의료적인 도움이 필요한 경우 119로 연락할 수 있습니다.
+                  </p>
+                  주저하지 말고 도움을 요청하세요.
+                </div>
+                <div class="mind-btn-wrapper">
+                  <div class="mind-btn">
+                    <a class="login-link" href="tel:119">
+                      <img
+                        src="./images/call_white.png"
+                        alt="call"
+                        class="call-icon"
+                      />
+                      <span>긴급전화</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Content -->
+          </div>
+
+          <!-- mind 14 -->
+          <div class="swiper-slide" id="mind-14">
+            <!-- Content -->
+            <div class="content">
+              <div>
+                <div class="mind-desc">
+                  <p>우리 여기, 함께 고민하고 생각해서 작성한 타임</p>
+                  <p>TAYM, ____친구만의 STOP방법이 있습니다.</p>
+                  <p>
+                    혹시 답답해서, 힘들고 불안해서 나 스스로에게 고통을 주고
+                    싶은 충동이 생길 때, 이 타임 TAYM STOP방법을 사용하겠다고
+                    약속해요!
+                  </p>
+                  <p>더 이상 건강하지 못한 자해는 STOP! NO, 자해!</p>
+
+                  <div class="strong">
+                    <p>
+                      나 스스로에게 고통을 주고 싶은 충동이 생길 때 건강한
+                      방법인 타임
+                    </p>
+                    <p>
+                      TAYM STOP방법을 사용하여 멈출 것을, 그 무엇보다 소중한 나
+                      자신과 약속합니다
+                    </p>
+                  </div>
+                </div>
+                <div class="finger-container">
+                  <div class="finger-column">
+                    <img
+                      src="./images/finger_start.png"
+                      alt="지문"
+                      class="finger-icon"
+                    />
+                    <span>지문을 눌러주세요!</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Content -->
+          </div>
         </div>
       </div>
 
       <div class="btn right">
         <img src="./images/next_blue.png" alt="next" />
+      </div>
+    </div>
+
+    <!-- Layer Popup 1 -->
+    <div class="modal-background1 modal-background">
+      <div class="modal-content finger">
+        <div class="modal-desc">
+          <p>지금까지 작성한 TAMY mind가 완성되었습니다.</p>
+          <p>같이 확인하러 가볼까요?</p>
+        </div>
+
+        <div id="blue-close">
+          <a href="./taym-1.html"> 보러가기</a>
+        </div>
       </div>
     </div>
 
@@ -242,28 +336,34 @@
 
     <!-- Footer nav -->
     <footer>
-      <footer>
-        <div>
-          <a href="./home.html">
-            <img src="./images/footer_icon_1.png" alt="home" />
-          </a>
-        </div>
-        <div>
-          <a href="">
-            <img src="./images/footer_icon_2.png" alt="modify" />
-          </a>
-        </div>
-        <div>
-          <a href="">
-            <img src="./images/footer_icon_3.png" alt="graph" />
-          </a>
-        </div>
-        <div>
-          <a href="">
-            <img src="./images/footer_icon_4.png" alt="call" />
-          </a>
-        </div>
-      </footer>
+      <div>
+        <a href="./home.html">
+          <img src="./images/footer_icon_1.png" alt="home" class="home-icon" />
+        </a>
+      </div>
+      <div>
+        <a href="./taym-1.html">
+          <img
+            src="./images/footer_icon_2.png"
+            alt="modify"
+            class="modify-icon"
+          />
+        </a>
+      </div>
+      <div>
+        <a href="">
+          <img
+            src="./images/footer_icon_3.png"
+            alt="graph"
+            class="graph-icon"
+          />
+        </a>
+      </div>
+      <div>
+        <a href="">
+          <img src="./images/footer_icon_4.png" alt="call" class="call-icon" />
+        </a>
+      </div>
     </footer>
 
     <!-- Initialize Swiper -->
