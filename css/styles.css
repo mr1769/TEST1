@@ -562,7 +562,7 @@ nav .center img {
   margin-top: 8px;
 }
 
-input[id="cb"]+label {
+input[id="cb"] + label {
   display: inline-block;
   width: 16px;
   height: 16px;
@@ -576,7 +576,7 @@ input[id="cb"]+label {
   margin-right: 8px;
 }
 
-input[id="cb"]:checked+label {
+input[id="cb"]:checked + label {
   padding: 0px;
 }
 
@@ -909,7 +909,7 @@ input[id="cb"] {
   margin: 0 10px;
 }
 
-input[type="radio"]+label {
+input[type="radio"] + label {
   width: 32px;
   height: 32px;
   background-color: #ececec;
@@ -923,7 +923,7 @@ input[type="radio"]+label {
   color: #999999;
 }
 
-input[type="radio"]:checked+label {
+input[type="radio"]:checked + label {
   background-color: #73d1e6 !important;
   color: #ffffff !important;
 }
@@ -1683,7 +1683,7 @@ footer img {
 }
 
 #mind-2-select .taym-title.scratch-title {
-  height: 17%;
+  height: 27%;
   display: flex;
   align-items: center;
   padding: 0 24px;
@@ -1752,13 +1752,11 @@ footer img {
   position: absolute;
   top: 80px;
   left: 120px;
-
 }
 
 .take-photo span {
   margin-left: 10px;
   margin-top: 3px;
-
 }
 
 .import-photo {
