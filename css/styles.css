@@ -206,7 +206,8 @@ nav .center img {
   font-weight: 500;
 }
 
-#intro {
+#intro,
+.info {
   height: 100%;
   background-image: url("../images/intro_bg.png");
   background-repeat: no-repeat;
@@ -283,14 +284,15 @@ nav .center img {
   padding: 0 24px;
   height: 100vh;
   padding-bottom: 160px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
+  display: grid;
+  grid-gap: 32px;
 }
 
 .home-round-btn {
   display: grid;
   grid-gap: 16px;
+  height: fit-content;
+  align-self: end;
 }
 
 .home-round-btn .btn-column {
@@ -336,6 +338,7 @@ nav .center img {
 .mid-btn-wrapper {
   display: grid;
   grid-gap: 16px;
+  height: fit-content;
 }
 
 .mid-btn-column {
@@ -430,6 +433,11 @@ nav .center img {
   padding-bottom: 160px;
 }
 
+.content.info-content {
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
 #mind-9 .content .btn {
   width: auto;
 }
@@ -482,6 +490,11 @@ nav .center img {
   height: 100%;
   display: grid;
   width: 100%;
+}
+
+.mind-select-container.info-container {
+  height: fit-content;
+  grid-gap: 24px;
 }
 
 #taym .mind-select-container {
@@ -537,12 +550,24 @@ nav .center img {
   color: #333333;
 }
 
+.mind-select-title.you-school {
+  font-size: 22px;
+  font-weight: 900;
+  color: #333333;
+  align-self: end;
+}
+
 .mind-select-title {
   font-size: 24px;
   font-weight: bold;
   line-height: 1.5;
   color: #73d1e6;
   align-self: center;
+}
+
+.mind-select-title.you-intro {
+  align-self: end;
+  font-weight: 900;
 }
 
 #taym .mind-select-title {
@@ -588,7 +613,7 @@ nav .center img {
   margin-top: 8px;
 }
 
-input[id="cb"]+label {
+input[id="cb"] + label {
   display: inline-block;
   width: 16px;
   height: 16px;
@@ -602,7 +627,7 @@ input[id="cb"]+label {
   margin-right: 8px;
 }
 
-input[id="cb"]:checked+label {
+input[id="cb"]:checked + label {
   padding: 0px;
 }
 
@@ -687,6 +712,17 @@ input[id="cb"] {
 #mind-14 .mind-desc {
   padding: 0;
   margin-top: 80px;
+}
+
+.mind-desc.you-school {
+  text-align: left;
+  padding: 0;
+  align-self: center;
+}
+
+.mind-desc.you-desc {
+  align-self: center;
+  text-align: center;
 }
 
 #mind-14 .strong {
@@ -945,7 +981,7 @@ input[id="cb"] {
   margin: 0 10px;
 }
 
-input[type="radio"]+label {
+input[type="radio"] + label {
   width: 32px;
   height: 32px;
   background-color: #ececec;
@@ -959,7 +995,7 @@ input[type="radio"]+label {
   color: #999999;
 }
 
-input[type="radio"]:checked+label {
+input[type="radio"]:checked + label {
   background-color: #73d1e6 !important;
   color: #ffffff !important;
 }
@@ -1067,12 +1103,22 @@ input[type="radio"] {
   justify-content: center;
 }
 
+.listen-btn.you-intro,
+.listen-btn.intro-place {
+  margin: 0 auto;
+  align-self: start;
+}
+
 .listen-btn a,
 #blue-close a {
   font-size: 18px;
   font-weight: 500;
   line-height: 1.5;
   color: #ffffff;
+}
+
+.listen-btn.homepage a {
+  font-size: 16px;
 }
 
 #year {
@@ -1407,6 +1453,12 @@ footer img {
   margin-bottom: 32px;
 }
 
+.modal-content .mind-modal-desc.you-intro {
+  margin-top: 17px;
+  margin-bottom: 24px;
+  font-size: 16px;
+}
+
 .modal-content .modal-next {
   width: 102px;
   height: 44px;
@@ -1587,6 +1639,22 @@ footer img {
   text-align: center;
   width: 85%;
   margin: auto;
+  color: #333333;
+}
+
+.junior-intro-desc.you-intro {
+  width: 100%;
+  text-align: left;
+}
+
+.junior-intro-desc.you-intro p:nth-child(1) {
+  width: 65%;
+  word-break: keep-all;
+}
+
+.junior-intro-desc.you-intro p:nth-child(2) {
+  width: 85%;
+  word-break: keep-all;
 }
 
 .junior-intro-desc.avatar {
@@ -1771,6 +1839,11 @@ footer img {
   padding: 46px 0;
 }
 
+.taym-title.info-title {
+  font-weight: bold;
+  padding: 0;
+}
+
 .taym-title.call-title {
   padding: 0;
   height: 25%;
@@ -1779,7 +1852,7 @@ footer img {
 }
 
 .taym-title.scratch-title {
-  padding-bottom: 32px;
+  height: 17%;
 }
 
 .taym-title.select-title {
@@ -1866,6 +1939,7 @@ footer img {
   height: 200px;
   border-radius: 14px;
   margin-bottom: 20px;
+  background-size: cover;
 }
 
 .take-photo {
@@ -1873,7 +1947,6 @@ footer img {
   position: absolute;
   top: 80px;
   left: 120px;
-
 }
 
 .import-photo {
@@ -1918,9 +1991,9 @@ footer img {
   padding: 0;
   overflow: visible;
   cursor: pointer;
-  color: #dcdcdc;
-
 }
+
+/* 사진찍기와 불러오기 css 부분 */
 
 .taym-call-connect {
   width: 80%;
@@ -2012,4 +2085,93 @@ footer img {
   line-height: 1.5;
   text-align: center;
   color: #ffffff;
+}
+
+.you-btns {
+  display: grid;
+  grid-gap: 16px;
+}
+
+.you-btn {
+  width: 272px;
+  height: 66px;
+  border-radius: 34px;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+  background-color: #ffffff;
+  margin: 0 auto;
+}
+
+.you-btn a {
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1.43;
+  text-align: center;
+  color: #333333;
+}
+
+.you-btn.orange a {
+  color: #ff987e;
+}
+
+.dream {
+  width: 272px;
+  height: 281px;
+  border-radius: 34px;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+  background-color: #ffffff;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.dream h1 {
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 1.5;
+  text-align: center;
+  color: #333333;
+}
+
+.dream .dream-desc {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  text-align: center;
+  color: #333333;
+  margin: 16px 0;
+}
+
+.info-swiper-container {
+  width: 100%;
+  margin-bottom: 30vw;
+}
+
+.info-swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  width: 270px;
+  height: 180px;
+  border-radius: 19px;
+  border: solid 1px #73d1e6;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 1.5;
+  color: #333333;
+}
+
+.info-swiper-slide .desc {
+  font-weight: 500;
+  margin: 8px 0;
+}
+
+.info-swiper-slide .tel-num {
+  font-weight: bold;
+}
+
+.intro-place a {
+  font-size: 16px;
 }

@@ -7,16 +7,21 @@
       content="width=device-width, initial-scale=1.0, user-scalable=no, maximun-scale=1"
     />
     <title>너의 마음을 말해보는, 타임</title>
-    <link rel="stylesheet" href="./css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script
       src="https://code.jquery.com/jquery-3.5.1.js"
       integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
       crossorigin="anonymous"
     ></script>
+    <link rel="stylesheet" href="./css/styles.css" />
   </head>
 
-  <body id="junior" class="junior-intro blue-nav">
-    <div class="junior-content">
+  <body id="mood" class="info">
+    <div class="mood-content">
       <!-- Hearder nav -->
       <nav>
         <div onclick="ShowMenu()" class="menu-icon side">
@@ -34,59 +39,82 @@
       <!-- Hearder nav -->
 
       <!-- Content -->
-      <div class="content">
-        <div class="bubble-wrapper">
-          <img src="./images/center_bubble.png" alt="말풍선" />
-          <div class="junior-bubble-text">
-            <p>_____친구야,</p>
-            <p>안녕!</p>
+      <div class="content mood-result info-content">
+        <div class="mind-select-container info-container">
+          <div class="taym-title info-title">
+            항상 여러분 곁에, <br />
+            여러분이 힘들 때마다 <br />
+            힘이 되어주고, <br />
+            이야기를 들어 주기 위하여 <br />
+            노력하는 분들이 있습니다.
           </div>
-        </div>
 
-        <div class="junior-intro-desc avatar">
-          <img src="./images/hello_avatar.png" alt="avatar" class="avatar" />
-        </div>
+          <!-- Swiper -->
+          <div class="swiper-container info-swiper-container">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide info-swiper-slide">
+                <h1>경상북도 정신건강복지센터</h1>
+                <div class="desc">
+                  마음이 힘든 청소년들을 위한 상담, <br />
+                  응급출동을 통한 위기개입<span class="tel-num">
+                    1577-0199</span
+                  >
+                </div>
+                <div class="listen-btn intro-place">
+                  <a href="">위치보기</a>
+                </div>
+              </div>
 
-        <div class="listen-btn move-mood">
-          <a href="./junior-4.html">주니어 만나기</a>
+              <div class="swiper-slide info-swiper-slide">
+                <h1>경주시 정신건강복지센터</h1>
+                <div class="desc">
+                  정신건강검진, 상담, <br />
+                  교육 및 사례관리<span class="tel-num"> 054-777-1577</span>
+                </div>
+                <div class="listen-btn intro-place">
+                  <a href="">위치보기</a>
+                </div>
+              </div>
+
+              <div class="swiper-slide info-swiper-slide">
+                <h1>경주시 청소년상담복지센터</h1>
+                <div class="desc">
+                  청소년 동반자 찾아가는 상담<br />
+                  <span class="tel-num"> 054-760-7771</span>
+                </div>
+                <div class="listen-btn intro-place">
+                  <a href="">위치보기</a>
+                </div>
+              </div>
+
+              <div class="swiper-slide info-swiper-slide">
+                <h1>경북남부아동보호전문기관</h1>
+                <div class="desc">
+                  만 18세 미만 아동학대피해아동-상담/의료지원/심리검사 및
+                  치료/수사지원/사회복지서비스 연계/문화체험 및 일상생활지원,
+                  학대행위자-상담/처분에 따른 부모교육 및 양육기술
+                  상담/심리치료<span class="tel-num"> 054-745-1391</span>
+                </div>
+                <div class="listen-btn intro-place">
+                  <a href="">위치보기</a>
+                </div>
+              </div>
+
+              <div class="swiper-slide info-swiper-slide">
+                <h1>경주시 드림스타트</h1>
+                <div class="desc">
+                  초등학생을 위한 심리검사, 심리치료,<br />
+                  예체능학원 지원<span class="tel-num"> 054-760-2231</span>
+                </div>
+                <div class="listen-btn intro-place">
+                  <a href="">위치보기</a>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <!-- Content -->
-    </div>
-
-    <!-- Layer Popup -->
-    <div class="modal-background1 modal-background">
-      <div class="modal-content">
-        <div class="cheer-title">위로해줄까?</div>
-
-        <div class="cheer-btn-wrapper">
-          <div class="cheer-btn cheer-list">운동하기</div>
-          <div class="cheer-btn cheer-list">산책하기</div>
-          <div class="cheer-btn cheer-list">맛있는 거 먹기</div>
-          <div class="cheer-btn cheer-list">나의 STOP 방법 사용하기</div>
-          <div class="cheer-btn cheer-list close">괜찮아</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 아바타 이름 수정 -->
-    <div class="modal-background2 modal-background modify-background">
-      <div class="modal-content" id="modify-name">
-        <div class="modify-name-title">
-          <div class="side-btn close">
-            <img src="./images/cancel.png" alt="닫기" />
-          </div>
-          <div class="cheer-title">이름변경</div>
-          <div class="confirm-btn" onclick="avatarNameChange(2)">확인</div>
-        </div>
-
-        <input
-          type="search"
-          name="avatar-name"
-          id="avatar-name"
-          maxlength="10"
-        />
-      </div>
     </div>
 
     <!-- 사이드 메뉴 -->
@@ -211,6 +239,15 @@
         <img src="./images/footer_icon_4.png" alt="call" class="call-icon" />
       </div>
     </footer>
+
+    <!-- Initialize Swiper -->
+    <script>
+      var swiper = new Swiper(".swiper-container", {
+        slidesPerView: "auto",
+        spaceBetween: 12,
+      });
+    </script>
+
     <script src="./js/scripts.js"></script>
   </body>
 </html>

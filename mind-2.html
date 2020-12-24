@@ -69,40 +69,45 @@
   <div class="modal-background1 modal-background">
     <div class="modal-content">
       <div class="canvas-content">
-
         <!--canvas 공간-->
         <canvas id="drawCanvas" class="drawCanvas"></canvas>
         <!--canvas 공간-->
 
         <!--사진찍기-->
-        <div class=" take-photo" id="take-photo">
-          <div class="wrist-write"><img src="images/camera_gray.png" alt="사진찍기">
+        <div class="take-photo" id="take-photo">
+          <div class="wrist-write">
+            <img src="images/camera_gray.png" alt="사진찍기" />
             <label for="upImgFile" class="import-file-button"><span>사진찍기</span></label>
           </div>
-          <input type="file" id="camera" name="camera" capture="camera" accept="image/*" style="display:none" />
-
+          <input type="file" id="camera" name="camera" capture="camera" accept="image/*" style="display: none" />
         </div>
         <!--사진찍기-->
 
         <!--사진 불러오기-->
         <div class="import-photo" id="import-photo" onclick="uploadImgPreview()">
-
-          <div class="wrist-write"><img src="images/image_file.png" alt="사진 불러오기">
+          <div class="wrist-write">
+            <img src="images/image_file.png" alt="사진 불러오기" />
             <label for="upImgFile" class="import-file-button"><span>사진불러오기</span></label>
           </div>
-          <input type="file" id="upImgFile" class="upImgFile" onChange="uploadImgPreview();" accept="image/*"
-            style="display:none" />
+          <input 
+            type="file" 
+            id="upImgFile" 
+            class="upImgFile" 
+            onChange="uploadImgPreview();" 
+            accept="image/*"
+            style="display: none" />
         </div>
         <!--사진 불러오기-->
       </div>
 
-      <div class="wrist-write" onclick="drawing()">
+      <div class="wrist-write" id="wrist-write" onclick="drawing()" style="display:none">
         <img src="./images/wrist_write.png" alt="그리기" />
-        <span>그려보기 <span class="reset-button" onclick="clearCanvas()">| 초기화</span></span>
+        <span>그려보기
+          <span class="reset-button" onclick="clearCanvas()">| 초기화</span></span>
       </div>
 
       <div class="close" id="blue-close">
-        <a href="./mind-3.html" style="color:white">완료</a>
+        <a href="./mind-3.html" style="color: white">완료</a>
       </div>
     </div>
   </div>
@@ -161,7 +166,7 @@
 
         <!-- 메뉴 3 -->
         <div class="menu-column">
-          <a href="">
+          <a href="./you-1.html">
             <div>
               <span class="menu-strong">TAYM-you</span>
               <span class="menu-title">너는 어떤 친구이니?</span>
@@ -179,9 +184,8 @@
           </a>
         </div>
 
-        <!-- 메뉴 3 -->
         <div class="menu-column">
-          <a href="">
+          <a href="./info.html">
             <div>
               <span class="menu-strong">TAYM-info</span>
               <span class="menu-title">전문적인 정보</span>
@@ -210,10 +214,8 @@
         <img src="./images/footer_icon_3.png" alt="graph" class="graph-icon" />
       </a>
     </div>
-    <div>
-      <a href="">
-        <img src="./images/footer_icon_4.png" alt="call" class="call-icon" />
-      </a>
+    <div onclick="openModal(2);">
+      <img src="./images/footer_icon_4.png" alt="call" class="call-icon" />
     </div>
   </footer>
 

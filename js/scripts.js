@@ -220,7 +220,7 @@ function loadMindSelectList() {
   var getCheckListToArray = getCheckList.split(",");
   console.log(getCheckListToArray);
   for (var i = 0; i < selectList.length; i++) {
-    $(`#mind-${i < 8 ? 9 : 10} .mind-desc`).append(`
+    $(`#mind-${i < 9 ? 9 : 10} .mind-desc`).append(`
     <label class="wrapper-label">
       <input type="checkbox" id="cb" name="checkbox${i}" value="${i}" />
       <label for="cb"> 
@@ -331,12 +331,48 @@ function loadModal() {
   }
 }
 
+function listenOpenModal(num) {
+  $(".modal-next").removeClass("close");
+  $(".modal-next").text("다음");
+  openModal(num);
+  // 모달 텍스트 변경
+  if ($("body").hasClass("mind-1")) {
+    var mindInnerText = [
+      "“물론 가끔 자해 생각이 나기도 했지만, 스트레스를 다른 방법으로 풀었어요... 운동을 하면서 살을 빼고, 그렇게 자기 관리를 하면서 스트레스를 운동으로 풀게 되는 거예요...”",
+      "“만약에 제가 욕심이 없었다면 그 (자해를 하던) 모습을 계속 유지했을 거 같아요. 살아야겠다는.. 물론 매일 죽고 싶다는 생각을 하기는 했지만 한편에는 살고자 하는 마음이 더 있었던 거죠. 그러다보니깐 그걸 극복하려던 마음으로 살고자 하는 욕심이 있었어요”",
+      "“저 같은 경우에는 이야기를 하고 싶었거든요. 제 이야기를 누가 들어주니깐 엄청 도움이 되었어요. 주변에 이렇게 깊은 이야기를 친구나 선생님한테 할 수 없으니깐 상담이 도움이 많이 되었어요”",
+    ];
+  } else if ($("body").hasClass("you-intro")) {
+    var mindInnerText = [
+      "“자해와 목표는 실상 다른 점은 없어요. 둘다 절 옭아매고, 어떻게든 참아내려고 하는 거니깐, 수단의 차이이고… 조금 더 나은 방법으로 하는 거고… 혼자서 아파하는 것보다 남한테 조금 더 나은 결과를 보여주는게 더 낫다고 생각해요. 목표가 생기고 나서는 그냥 다른 거 신경을 안쓰니깐 별로 터질 일도 없어요 [미술관련 대학입학을 목표로 하는 이*호학생].”",
+      "“희망이 조금 있었던 것 같아요. 충분히 괜찮은 사람이고 다른 것을 할 수 있다라는 생각을 가질 수 있었던 게 가장 컸던 것 같아요. 나를 좋게 봐주는 거죠. 그대로 받아들이게 된 거 같아요”",
+    ];
+  }
+
+  $(".mind-modal-desc").text(mindInnerText[num]);
+  $(".modal-next").click(function () {
+    num++;
+    $(".mind-modal-desc").html(mindInnerText[num]);
+    if (num === mindInnerText.length - 1) {
+      $(".modal-next").text("닫기");
+      $(".modal-next").addClass("close");
+      $(".modal-next").addClass("you-next");
+    } else if (num === mindInnerText.length) {
+      if ($(".close").hasClass("you-next")) {
+        $(location).attr("href", "you-2.html");
+      } else {
+        $(".modal-background").fadeOut();
+      }
+    }
+  });
+}
+
 $(document).ready(function () {
-  $(".emergency-btn")
-    .parent()
-    .click(function (e) {
-      console.log("부모");
-    });
+  // $(".emergency-btn")
+  //   .parent()
+  //   .click(function (e) {
+  //     console.log("부모");
+  //   });
 
   $(".finger-icon").on("touchstart", function () {
     $(".finger-icon").attr("src", "./images/finger_end.png");
@@ -348,25 +384,6 @@ $(document).ready(function () {
   });
 
   $(".menu_2").hide();
-
-  // 모달 텍스트 변경
-  var mindInnerText = [
-    '"물론 가끔 자해 생각이 나기도 했지만, 스트레스를 다른 방법으로 풀었어요... 운동을 하면서 살을 빼고, 그렇게 자기 관리를 하면서 스트레스를 운동으로 풀게 되는 거예요...”',
-    '"만약에 제가 욕심이 없었다면 그 (자해를 하던) 모습을 계속 유지했을 거 같아요. 살아야겠다는.. 물론 매일 죽고 싶다는 생각을 하기는 했지만 한편에는 살고자 하는 마음이 더 있었던 거죠. 그러다보니깐 그걸 극복하려던 마음으로 살고자 하는 욕심이 있었어요"',
-    '"저 같은 경우에는 이야기를 하고 싶었거든요. 제 이야기를 누가 들어주니깐 엄청 도움이 되었어요. 주변에 이렇게 깊은 이야기를 친구나 선생님한테 할 수 없으니깐 상담이 도움이 많이 되었어요"',
-  ];
-  var i = 0;
-  $(".mind-modal-desc").text(mindInnerText[i]);
-  $(".modal-next").click(function () {
-    i++;
-    $(".mind-modal-desc").text(mindInnerText[i]);
-    if (i === mindInnerText.length - 1) {
-      $(".modal-next").text("닫기");
-      $(".modal-next").addClass("close");
-    } else if (i === mindInnerText.length) {
-      $(".modal-background").fadeOut();
-    }
-  });
 
   // footer menu 페이지에 따른 아이콘 변경
   var id_by_body = $("body").attr("id");
@@ -538,9 +555,13 @@ function uploadImgPreview() {
       "drawCanvas"
     ).style.backgroundImage = `url(${reader.result})`;
 
-    // 사진외에 화면은 다 지웁니다.
+    // 그림 그리기 화면은 보입니다.
+    $("#wrist-write").show();
+
+    // 사진찍기와 사진불러오기 화면은 다 지웁니다.
     $("#import-photo").hide();
     $("#take-photo").hide();
+
   };
 
   if (fileInfo) {
@@ -602,8 +623,18 @@ $(function () {
 
 function clearCanvas() {
   var canvas = document.getElementById("drawCanvas");
+
+  // 그려진 선 초기화 시키기
   canvas.getContext("2d").clearRect(0, 0, canvas.width, canvas.height);
   document.getElementById("drawCanvas").style.backgroundImage = "";
+
+  // 사진배열에 저장된 요소 없애기
+  $("#upImgFile").val('');
+  $("#camera").val('');
+  $("#wrist-write").hide();
+
+  // 사진찍기와 사진불러오기 화면 보이기
   $("#import-photo").show();
   $("#take-photo").show();
+
 }

@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
 
-  <body class="mind-content">
+  <body class="mind-content mind-1">
     <!-- Hearder nav -->
     <nav>
       <div onclick="ShowMenu()" class="menu-icon side">
@@ -290,7 +290,9 @@
                   </p>
                 </div>
 
-                <div class="listen-btn" onclick="openModal(2);">들어보기</div>
+                <div class="listen-btn" onclick="listenOpenModal(0);">
+                  들어보기
+                </div>
               </div>
             </div>
             <!-- Content -->
@@ -354,7 +356,7 @@
     </div>
 
     <!-- Layer Popup 2 -->
-    <div class="modal-background2 modal-background">
+    <div class="modal-background0 modal-background">
       <div class="modal-content">
         <div class="sound-icon">
           <img src="./images/sound.png" alt="듣기" />
@@ -362,7 +364,7 @@
 
         <div class="modal-desc mind-modal-desc"></div>
 
-        <div class="modal-next">다음</div>
+        <div class="modal-next"></div>
       </div>
     </div>
 
@@ -428,7 +430,7 @@
 
           <!-- 메뉴 3 -->
           <div class="menu-column">
-            <a href="">
+            <a href="./you-1.html">
               <div>
                 <span class="menu-strong">TAYM-you</span>
                 <span class="menu-title">너는 어떤 친구이니?</span>
@@ -446,9 +448,8 @@
             </a>
           </div>
 
-          <!-- 메뉴 3 -->
           <div class="menu-column">
-            <a href="">
+            <a href="./info.html">
               <div>
                 <span class="menu-strong">TAYM-info</span>
                 <span class="menu-title">전문적인 정보</span>

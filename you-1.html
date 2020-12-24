@@ -15,7 +15,7 @@
     ></script>
   </head>
 
-  <body id="junior" class="junior-intro blue-nav">
+  <body id="junior" class="junior-1 blue-nav you-intro">
     <div class="junior-content">
       <!-- Hearder nav -->
       <nav>
@@ -35,57 +35,37 @@
 
       <!-- Content -->
       <div class="content">
-        <div class="bubble-wrapper">
-          <img src="./images/center_bubble.png" alt="말풍선" />
-          <div class="junior-bubble-text">
-            <p>_____친구야,</p>
-            <p>안녕!</p>
-          </div>
+        <div class="mind-select-title you-intro">TAYM you</div>
+
+        <div class="junior-intro-desc you-intro">
+          <p>
+            ____친구와 비슷한 고민으로 불안하고 힘들어했던 친구들이 반복적인
+            자해를 극복하기 위해 많은 노력을 시도했습니다.
+          </p>
+          <p>
+            그리고 그 노력들이 쌓여 얻은 결실 중 하나가 바로 ‘미래에 대한
+            꿈’이었습니다.
+          </p>
+          <p>여기 그들의 실제 이야기가 있습니다.</p>
         </div>
 
-        <div class="junior-intro-desc avatar">
-          <img src="./images/hello_avatar.png" alt="avatar" class="avatar" />
-        </div>
-
-        <div class="listen-btn move-mood">
-          <a href="./junior-4.html">주니어 만나기</a>
+        <div class="listen-btn you-intro" onclick="listenOpenModal(0)">
+          들어보기
         </div>
       </div>
       <!-- Content -->
     </div>
 
-    <!-- Layer Popup -->
-    <div class="modal-background1 modal-background">
+    <!-- Layer Popup 2 -->
+    <div class="modal-background0 modal-background">
       <div class="modal-content">
-        <div class="cheer-title">위로해줄까?</div>
-
-        <div class="cheer-btn-wrapper">
-          <div class="cheer-btn cheer-list">운동하기</div>
-          <div class="cheer-btn cheer-list">산책하기</div>
-          <div class="cheer-btn cheer-list">맛있는 거 먹기</div>
-          <div class="cheer-btn cheer-list">나의 STOP 방법 사용하기</div>
-          <div class="cheer-btn cheer-list close">괜찮아</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 아바타 이름 수정 -->
-    <div class="modal-background2 modal-background modify-background">
-      <div class="modal-content" id="modify-name">
-        <div class="modify-name-title">
-          <div class="side-btn close">
-            <img src="./images/cancel.png" alt="닫기" />
-          </div>
-          <div class="cheer-title">이름변경</div>
-          <div class="confirm-btn" onclick="avatarNameChange(2)">확인</div>
+        <div class="sound-icon">
+          <img src="./images/sound.png" alt="듣기" />
         </div>
 
-        <input
-          type="search"
-          name="avatar-name"
-          id="avatar-name"
-          maxlength="10"
-        />
+        <div class="modal-desc mind-modal-desc you-intro"></div>
+
+        <div class="modal-next"></div>
       </div>
     </div>
 
