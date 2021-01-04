@@ -402,14 +402,19 @@ function listenOpenModal(num) {
 }
 
 $(document).ready(function () {
+  $(".login-btn").click(function () {
+    window.location.href = "./intro.html";
+    console.log("로그인");
+  });
+
   // taym-4 image가져오기
   var imagePath;
-  if (localStorage.getItem("path") === null) {
-    imagePath = "./images/wrist_bg.png";
-  } else {
-    imagePath = localStorage.getItem("path");
-  }
-  $(".get-image").attr("src", imagePath);
+  // if (localStorage.getItem("path") === null) {
+  //   imagePath = "./images/wrist_bg.png";
+  // } else {
+  //   imagePath = localStorage.getItem("path");
+  // }
+  // $(".get-image").attr("src", imagePath);
 
   // textarea, input 클릭시 footer 숨김 처리 및 키패드에 따른 화면 조절
   $(".focus-input").click(function () {
@@ -710,7 +715,9 @@ function yearValidation(year) {
   var current_year = new Date().getFullYear();
   if (year < 1920 || year > current_year) {
     $("#year").val(""); // 빈값으로 처리하기
-    $("#year").focus(); // 빈공간(연도)에 다시 포커스 시키기
+    // $("#year").focus(); // 빈공간(연도)에 다시 포커스 시키기
+    alert("입력을 그만하시겠습니까?");
+    $(":focus").blur();
   } else
     (event) => {
       event.preventDefault();
@@ -721,7 +728,9 @@ function yearValidation(year) {
 function monthValidation(month) {
   if (month < 1 || month > 12) {
     $("#month").val("");
-    $("#month").focus();
+    // $("#month").focus();
+    alert("입력을 그만하시겠습니까?");
+    $(":focus").blur();
   } else
     (event) => {
       event.preventDefault();
@@ -732,7 +741,9 @@ function monthValidation(month) {
 function dayValidation(day) {
   if (day < 1 || day > 31) {
     $("#day").val("");
-    $("#day").focus();
+    // $("#day").focus();
+    alert("입력을 그만하시겠습니까?");
+    $(":focus").blur();
   } else
     (event) => {
       event.preventDefault();
