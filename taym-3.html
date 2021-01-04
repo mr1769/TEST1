@@ -41,7 +41,7 @@
     <div class="content">
       <div class="taym-title">그 때 나의 기분</div>
       <textarea
-        class="mind-write"
+        class="mind-write modufy-input"
         id="mind-write-2"
         onclick="hiddenTeatarea(2)"
         placeholder="내 기분은..."
@@ -78,13 +78,37 @@
             <!-- 펼침 메뉴 -->
             <div class="menu_2" id="sub1">
               <ul>
-                <li><a href="">상황인식</a></li>
-                <li><a href="">감정인식</a></li>
-                <li><a href="">stop 방법찾기</a></li>
-                <li><a href="">사회적 지지체계</a></li>
-                <li><a href="">위기사항 119</a></li>
-                <li><a href="">자해방지서약서 작성해보기</a></li>
-                <li><a href="" class="last">완성된 '내 마음, TAYM'</a></li>
+                <li>
+                  <a href="./mind-1.html" onclick="setSwiperPage(1)"
+                    >상황인식</a
+                  >
+                </li>
+                <li>
+                  <a href="./mind-1.html" onclick="setSwiperPage(2)"
+                    >감정인식</a
+                  >
+                </li>
+                <li><a href="./mind-2.html">stop 방법찾기</a></li>
+                <li>
+                  <a href="./mind-3.html" onclick="setSwiperPage(1)"
+                    >사회적 지지체계</a
+                  >
+                </li>
+                <li>
+                  <a href="./mind-3.html" onclick="setSwiperPage(2)"
+                    >위기사항 119</a
+                  >
+                </li>
+                <li>
+                  <a href="./mind-3.html" onclick="setSwiperPage(3)"
+                    >자해방지서약서</a
+                  >
+                </li>
+                <li>
+                  <a href="./taym-1.html" class="last"
+                    >완성된 '내 마음, TAYM'</a
+                  >
+                </li>
               </ul>
             </div>
           </div>
@@ -106,8 +130,10 @@
             <!-- 펼침 메뉴 -->
             <div class="menu_2" id="sub2">
               <ul>
-                <li><a href="">오늘의 감정 확인, 표현해보기</a></li>
-                <li><a href="">우울척도 검사해보기</a></li>
+                <li>
+                  <a href="./mood-1.html">오늘의 감정 확인, 표현해보기</a>
+                </li>
+                <li><a href="./mood-2.html">우울척도 검사해보기</a></li>
               </ul>
             </div>
           </div>
@@ -147,6 +173,20 @@
 
     <!-- Footer nav -->
     <footer>
+      <!-- Layer Popup 2 -->
+      <div class="modal-background2 modal-background close"></div>
+      <div class="modal-content emergency modal-content2">
+        <div class="modal-content-inner">
+          <div class="cheer-title emergency">119에 전화하기</div>
+
+          <div class="emergency-btn">
+            <a href="tel:119">
+              <img src="./images/call.png" alt="긴급전화" />
+              <span>119</span>
+            </a>
+          </div>
+        </div>
+      </div>
       <div>
         <a href="./home.html">
           <img src="./images/footer_icon_1.png" alt="home" class="home-icon" />
@@ -162,7 +202,7 @@
         </a>
       </div>
       <div>
-        <a href="">
+        <a href="./chart.html">
           <img
             src="./images/footer_icon_3.png"
             alt="graph"

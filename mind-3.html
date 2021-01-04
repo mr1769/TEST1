@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
 
-  <body class="mind-content">
+  <body class="mind-content swiper scroll-content">
     <!-- Hearder nav -->
     <nav>
       <div onclick="ShowMenu()" class="menu-icon side">
@@ -72,6 +72,7 @@
                   내가 믿고 의지하는 사람
                   <div>
                     <input
+                      class="focus-input"
                       type="text"
                       name="trust-name"
                       id="trust-name"
@@ -81,6 +82,7 @@
                   연락처
                   <div>
                     <input
+                      class="focus-input"
                       type="tel"
                       name="trust-tel"
                       id="trust-tel"
@@ -266,13 +268,37 @@
             <!-- 펼침 메뉴 -->
             <div class="menu_2" id="sub1">
               <ul>
-                <li><a href="">상황인식</a></li>
-                <li><a href="">감정인식</a></li>
-                <li><a href="">stop 방법찾기</a></li>
-                <li><a href="">사회적 지지체계</a></li>
-                <li><a href="">위기사항 119</a></li>
-                <li><a href="">자해방지서약서 작성해보기</a></li>
-                <li><a href="" class="last">완성된 '내 마음, TAYM'</a></li>
+                <li>
+                  <a href="./mind-1.html" onclick="setSwiperPage(1)"
+                    >상황인식</a
+                  >
+                </li>
+                <li>
+                  <a href="./mind-1.html" onclick="setSwiperPage(2)"
+                    >감정인식</a
+                  >
+                </li>
+                <li><a href="./mind-2.html">stop 방법찾기</a></li>
+                <li>
+                  <a href="./mind-3.html" onclick="setSwiperPage(1)"
+                    >사회적 지지체계</a
+                  >
+                </li>
+                <li>
+                  <a href="./mind-3.html" onclick="setSwiperPage(2)"
+                    >위기사항 119</a
+                  >
+                </li>
+                <li>
+                  <a href="./mind-3.html" onclick="setSwiperPage(3)"
+                    >자해방지서약서</a
+                  >
+                </li>
+                <li>
+                  <a href="./taym-1.html" class="last"
+                    >완성된 '내 마음, TAYM'</a
+                  >
+                </li>
               </ul>
             </div>
           </div>
@@ -294,8 +320,10 @@
             <!-- 펼침 메뉴 -->
             <div class="menu_2" id="sub2">
               <ul>
-                <li><a href="">오늘의 감정 확인, 표현해보기</a></li>
-                <li><a href="">우울척도 검사해보기</a></li>
+                <li>
+                  <a href="./mood-1.html">오늘의 감정 확인, 표현해보기</a>
+                </li>
+                <li><a href="./mood-2.html">우울척도 검사해보기</a></li>
               </ul>
             </div>
           </div>
@@ -335,6 +363,20 @@
 
     <!-- Footer nav -->
     <footer>
+      <!-- Layer Popup 2 -->
+      <div class="modal-background2 modal-background close"></div>
+      <div class="modal-content emergency modal-content2">
+        <div class="modal-content-inner">
+          <div class="cheer-title emergency">119에 전화하기</div>
+
+          <div class="emergency-btn">
+            <a href="tel:119">
+              <img src="./images/call.png" alt="긴급전화" />
+              <span>119</span>
+            </a>
+          </div>
+        </div>
+      </div>
       <div>
         <a href="./home.html">
           <img src="./images/footer_icon_1.png" alt="home" class="home-icon" />
@@ -350,7 +392,7 @@
         </a>
       </div>
       <div>
-        <a href="">
+        <a href="./chart.html">
           <img
             src="./images/footer_icon_3.png"
             alt="graph"
@@ -362,35 +404,6 @@
         <img src="./images/footer_icon_4.png" alt="call" class="call-icon" />
       </div>
     </footer>
-
-    <!-- Initialize Swiper -->
-    <script>
-      var swiper = new Swiper(".swiper-container", {
-        on: {
-          transitionEnd: function () {
-            var firstPage = $(".swiper-slide-active")
-              .attr("aria-label")
-              .charAt(0);
-            var lastPageLength = $(".swiper-slide-active").attr("aria-label")
-              .length;
-            var lastPage = $(".swiper-slide-active")
-              .attr("aria-label")
-              .charAt(lastPageLength - 1);
-
-            if (firstPage === "1") {
-              $(".btn.left").css("visibility", "hidden");
-              $(".btn.right").css("visibility", "visible");
-            } else if (firstPage === lastPage) {
-              $(".btn.right").css("visibility", "hidden");
-              $(".btn.left").css("visibility", "visible");
-            } else {
-              $(".btn.left").css("visibility", "visible");
-              $(".btn.right").css("visibility", "visible");
-            }
-          },
-        },
-      });
-    </script>
 
     <script src="./js/scripts.js"></script>
   </body>

@@ -54,41 +54,6 @@
       <!-- Content -->
     </div>
 
-    <!-- Layer Popup -->
-    <div class="modal-background1 modal-background">
-      <div class="modal-content">
-        <div class="cheer-title">위로해줄까?</div>
-
-        <div class="cheer-btn-wrapper">
-          <div class="cheer-btn cheer-list">운동하기</div>
-          <div class="cheer-btn cheer-list">산책하기</div>
-          <div class="cheer-btn cheer-list">맛있는 거 먹기</div>
-          <div class="cheer-btn cheer-list">나의 STOP 방법 사용하기</div>
-          <div class="cheer-btn cheer-list close">괜찮아</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 아바타 이름 수정 -->
-    <div class="modal-background2 modal-background modify-background">
-      <div class="modal-content" id="modify-name">
-        <div class="modify-name-title">
-          <div class="side-btn close">
-            <img src="./images/cancel.png" alt="닫기" />
-          </div>
-          <div class="cheer-title">이름변경</div>
-          <div class="confirm-btn" onclick="avatarNameChange(2)">확인</div>
-        </div>
-
-        <input
-          type="search"
-          name="avatar-name"
-          id="avatar-name"
-          maxlength="10"
-        />
-      </div>
-    </div>
-
     <!-- 사이드 메뉴 -->
     <div class="menu_bg">
       <div class="menu">
@@ -115,13 +80,37 @@
             <!-- 펼침 메뉴 -->
             <div class="menu_2" id="sub1">
               <ul>
-                <li><a href="">상황인식</a></li>
-                <li><a href="">감정인식</a></li>
-                <li><a href="">stop 방법찾기</a></li>
-                <li><a href="">사회적 지지체계</a></li>
-                <li><a href="">위기사항 119</a></li>
-                <li><a href="">자해방지서약서 작성해보기</a></li>
-                <li><a href="" class="last">완성된 '내 마음, TAYM'</a></li>
+                <li>
+                  <a href="./mind-1.html" onclick="setSwiperPage(1)"
+                    >상황인식</a
+                  >
+                </li>
+                <li>
+                  <a href="./mind-1.html" onclick="setSwiperPage(2)"
+                    >감정인식</a
+                  >
+                </li>
+                <li><a href="./mind-2.html">stop 방법찾기</a></li>
+                <li>
+                  <a href="./mind-3.html" onclick="setSwiperPage(1)"
+                    >사회적 지지체계</a
+                  >
+                </li>
+                <li>
+                  <a href="./mind-3.html" onclick="setSwiperPage(2)"
+                    >위기사항 119</a
+                  >
+                </li>
+                <li>
+                  <a href="./mind-3.html" onclick="setSwiperPage(3)"
+                    >자해방지서약서</a
+                  >
+                </li>
+                <li>
+                  <a href="./taym-1.html" class="last"
+                    >완성된 '내 마음, TAYM'</a
+                  >
+                </li>
               </ul>
             </div>
           </div>
@@ -143,8 +132,10 @@
             <!-- 펼침 메뉴 -->
             <div class="menu_2" id="sub2">
               <ul>
-                <li><a href="">오늘의 감정 확인, 표현해보기</a></li>
-                <li><a href="">우울척도 검사해보기</a></li>
+                <li>
+                  <a href="./mood-1.html">오늘의 감정 확인, 표현해보기</a>
+                </li>
+                <li><a href="./mood-2.html">우울척도 검사해보기</a></li>
               </ul>
             </div>
           </div>
@@ -184,6 +175,20 @@
 
     <!-- Footer nav -->
     <footer>
+      <!-- Layer Popup 2 -->
+      <div class="modal-background2 modal-background close"></div>
+      <div class="modal-content emergency modal-content2">
+        <div class="modal-content-inner">
+          <div class="cheer-title emergency">119에 전화하기</div>
+
+          <div class="emergency-btn">
+            <a href="tel:119">
+              <img src="./images/call.png" alt="긴급전화" />
+              <span>119</span>
+            </a>
+          </div>
+        </div>
+      </div>
       <div>
         <a href="./home.html">
           <img src="./images/footer_icon_1.png" alt="home" class="home-icon" />
@@ -199,7 +204,7 @@
         </a>
       </div>
       <div>
-        <a href="">
+        <a href="./chart.html">
           <img
             src="./images/footer_icon_3.png"
             alt="graph"
@@ -211,6 +216,7 @@
         <img src="./images/footer_icon_4.png" alt="call" class="call-icon" />
       </div>
     </footer>
+
     <script src="./js/scripts.js"></script>
   </body>
 </html>

@@ -20,104 +20,124 @@
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
 
-  <body id="mood" class="info">
-    <div class="mood-content">
-      <!-- Hearder nav -->
-      <nav>
-        <div onclick="ShowMenu()" class="menu-icon side">
-          <div></div>
-          <div></div>
-          <div></div>
+  <body id="chart" class="blue-nav chart-result">
+    <!-- Hearder nav -->
+    <nav>
+      <div onclick="ShowMenu()" class="menu-icon side">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+
+      <div class="center">
+        <img src="./images/logo.png" alt="logo" class="logo" />
+      </div>
+
+      <div class="side"></div>
+    </nav>
+    <!-- Hearder nav -->
+
+    <!-- Content -->
+    <div class="content">
+      <div class="mind-select-container">
+        <div class="mind-select-title graph">
+          5일동안 어땠나요? <br />
+          ___친구의 mood 그래프에요!
         </div>
-
-        <div class="center">
-          <img src="./images/logo.png" alt="logo" class="logo" />
-        </div>
-
-        <div class="side"></div>
-      </nav>
-      <!-- Hearder nav -->
-
-      <!-- Content -->
-      <div class="content mood-result info-content">
-        <div class="mind-select-container info-container">
-          <div class="taym-title info-title">
-            항상 여러분 곁에, <br />
-            여러분이 힘들 때마다 <br />
-            힘이 되어주고, <br />
-            이야기를 들어 주기 위하여 <br />
-            노력하는 분들이 있습니다.
+        <div class="mind-desc graph-container">
+          <div class="graph-state">
+            <span>우울</span>
+            <div style="height: 100%; margin: 8px 0">
+              <img src="./images/graph_arrow.png" alt="화살표" />
+            </div>
+            <span>기쁨</span>
           </div>
-
-          <!-- Swiper -->
-          <div class="swiper-container info-swiper-container">
-            <div class="swiper-wrapper">
-              <div class="swiper-slide info-swiper-slide">
-                <h1>경상북도 정신건강복지센터</h1>
-                <div class="desc">
-                  마음이 힘든 청소년들을 위한 상담, 응급출동을 통한
-                  위기개입<span class="tel-num"> 1577-0199</span>
-                </div>
-                <div class="listen-btn intro-place">
-                  <a href="https://place.map.kakao.com/27109921">위치보기</a>
-                </div>
-              </div>
-
-              <div class="swiper-slide info-swiper-slide">
-                <h1>경주시 정신건강복지센터</h1>
-                <div class="desc">
-                  정신건강검진, 상담, 교육 및 사례관리<span class="tel-num">
-                    054-777-1577</span
-                  >
-                </div>
-                <div class="listen-btn intro-place">
-                  <a href="https://place.map.kakao.com/18310973">위치보기</a>
-                </div>
-              </div>
-
-              <div class="swiper-slide info-swiper-slide">
-                <h1>경주시 청소년상담복지센터</h1>
-                <div class="desc">
-                  청소년 동반자 찾아가는 상담
-                  <span class="tel-num"> 054-760-7771</span>
-                </div>
-                <div class="listen-btn intro-place">
-                  <a href="https://place.map.kakao.com/26017891">위치보기</a>
-                </div>
-              </div>
-
-              <div class="swiper-slide info-swiper-slide">
-                <h1>경북남부 아동보호전문기관</h1>
-                <div class="desc long">
-                  만 18세 미만 아동학대피해 <br />
-                  아동-상담/의료지원/심리검사 및 <br />
-                  치료/수사지원/사회복지서비스<br />
-                  연계/문화체험 및 일상생활지원, <br />
-                  학대행위자-상담/처분에 따른 <br />
-                  부모교육 및 양육기술 <br />
-                  상담/심리치료<span class="tel-num"> 054-745-1391</span>
-                </div>
-                <div class="listen-btn intro-place">
-                  <a href="https://place.map.kakao.com/27171840">위치보기</a>
-                </div>
-              </div>
-
-              <div class="swiper-slide info-swiper-slide">
-                <h1>경주시 드림스타트</h1>
-                <div class="desc">
-                  초등학생을 위한 심리검사, 심리치료, 예체능학원 지원 <br />
-                  <span class="tel-num"> 054-760-2231</span>
-                </div>
-                <div class="listen-btn intro-place">
-                  <a href="https://place.map.kakao.com/10175596">위치보기</a>
-                </div>
-              </div>
+          <div class="chart-container">
+            <div class="bg-chart chart-bar">
+              <div class="chart-bar10 dayAgo4"></div>
+              <div class="chart-bar10 dayAgo3"></div>
+              <div class="chart-bar10 dayAgo2"></div>
+              <div class="chart-bar10 yesterday"></div>
+              <div class="chart-bar10 today"></div>
+            </div>
+            <div class="bg-chart chart-bar">
+              <div class="chart-bar9 dayAgo4"></div>
+              <div class="chart-bar9 dayAgo3"></div>
+              <div class="chart-bar9 dayAgo2"></div>
+              <div class="chart-bar9 yesterday"></div>
+              <div class="chart-bar9 today"></div>
+            </div>
+            <div class="bg-chart chart-bar">
+              <div class="chart-bar8 dayAgo4"></div>
+              <div class="chart-bar8 dayAgo3"></div>
+              <div class="chart-bar8 dayAgo2"></div>
+              <div class="chart-bar8 yesterday"></div>
+              <div class="chart-bar8 today"></div>
+            </div>
+            <div class="bg-chart chart-bar">
+              <div class="chart-bar7 dayAgo4"></div>
+              <div class="chart-bar7 dayAgo3"></div>
+              <div class="chart-bar7 dayAgo2"></div>
+              <div class="chart-bar7 yesterday"></div>
+              <div class="chart-bar7 today"></div>
+            </div>
+            <div class="bg-chart chart-bar">
+              <div class="chart-bar6 dayAgo4"></div>
+              <div class="chart-bar6 dayAgo3"></div>
+              <div class="chart-bar6 dayAgo2"></div>
+              <div class="chart-bar6 yesterday"></div>
+              <div class="chart-bar6 today"></div>
+            </div>
+            <div class="bg-chart chart-bar">
+              <div class="chart-bar5 dayAgo4"></div>
+              <div class="chart-bar5 dayAgo3"></div>
+              <div class="chart-bar5 dayAgo2"></div>
+              <div class="chart-bar5 yesterday"></div>
+              <div class="chart-bar5 today"></div>
+            </div>
+            <div class="bg-chart chart-bar">
+              <div class="chart-bar4 dayAgo4"></div>
+              <div class="chart-bar4 dayAgo3"></div>
+              <div class="chart-bar4 dayAgo2"></div>
+              <div class="chart-bar4 yesterday"></div>
+              <div class="chart-bar4 today"></div>
+            </div>
+            <div class="bg-chart chart-bar">
+              <div class="chart-bar3 dayAgo4"></div>
+              <div class="chart-bar3 dayAgo3"></div>
+              <div class="chart-bar3 dayAgo2"></div>
+              <div class="chart-bar3 yesterday"></div>
+              <div class="chart-bar3 today"></div>
+            </div>
+            <div class="bg-chart chart-bar">
+              <div class="chart-bar2 dayAgo4"></div>
+              <div class="chart-bar2 dayAgo3"></div>
+              <div class="chart-bar2 dayAgo2"></div>
+              <div class="chart-bar2 yesterday"></div>
+              <div class="chart-bar2 today"></div>
+            </div>
+            <div class="bg-chart chart-bar">
+              <div class="chart-bar1 dayAgo4"></div>
+              <div class="chart-bar1 dayAgo3"></div>
+              <div class="chart-bar1 dayAgo2"></div>
+              <div class="chart-bar1 yesterday"></div>
+              <div class="chart-bar1 today"></div>
+            </div>
+            <div class="bg-chart last-box">
+              <div>4일전</div>
+              <div>3일전</div>
+              <div>2일전</div>
+              <div>어제</div>
+              <div>오늘</div>
             </div>
           </div>
         </div>
+        <div class="listen-btn graph-btn">
+          <a href="./mood-1.html">mood 다시하기</a>
+        </div>
       </div>
-      <!-- Content -->
     </div>
+    <!-- Content -->
 
     <!-- 사이드 메뉴 -->
     <div class="menu_bg">
@@ -281,14 +301,6 @@
         <img src="./images/footer_icon_4.png" alt="call" class="call-icon" />
       </div>
     </footer>
-
-    <!-- Initialize Swiper -->
-    <script>
-      var swiper = new Swiper(".swiper-container", {
-        slidesPerView: "auto",
-        spaceBetween: 12,
-      });
-    </script>
 
     <script src="./js/scripts.js"></script>
   </body>

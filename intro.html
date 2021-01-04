@@ -20,16 +20,12 @@
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
 
-  <body id="intro">
+  <body class="mind-content mind-1 swiper" id="intro">
     <!-- Hearder nav -->
-    <nav>
-      <div class="menu-icon side"></div>
-
+    <nav class="intro-nav">
       <div class="center">
         <img src="./images/logo.png" alt="logo" class="logo" />
       </div>
-
-      <div class="side"></div>
     </nav>
     <!-- Hearder nav -->
 
@@ -41,7 +37,7 @@
       <div class="swiper-container">
         <div class="swiper-wrapper">
           <!-- intro 1 -->
-          <div class="swiper-slide">
+          <div class="swiper-slide" id="mind-1">
             <!-- Content -->
             <div class="content">
               <div class="mind-desc">
@@ -65,10 +61,10 @@
           </div>
 
           <!-- intro 2 -->
-          <div class="swiper-slide">
+          <div class="swiper-slide" id="mind-1">
             <!-- Content -->
             <div class="content">
-              <div class="intro-desc">
+              <div class="mind-desc">
                 <div>
                   괜찮아요. <br />
                   괜찮습니다.<br />
@@ -77,17 +73,17 @@
                   <span>____</span>친구에게 해 주고 싶은 말은,
                 </div>
 
-                <div class="strong">그래도 버텨줘서 고맙습니다.</div>
+                <div class="intro-strong-1">그래도 버텨줘서 고맙습니다.</div>
               </div>
             </div>
             <!-- Content -->
           </div>
 
           <!-- intro 3 -->
-          <div class="swiper-slide">
+          <div class="swiper-slide" id="mind-1">
             <!-- Content -->
             <div class="content">
-              <div class="intro-desc">
+              <div class="mind-desc">
                 <div>
                   <p>지금 이 시간,</p>
                   <p>
@@ -106,10 +102,10 @@
           </div>
 
           <!-- intro 4 -->
-          <div class="swiper-slide intro-4">
+          <div class="swiper-slide" id="mind-1">
             <!-- Content -->
             <div class="content">
-              <div class="intro-desc">
+              <div class="mind-desc">
                 <div>
                   <p>
                     또한 지금까지는 ___친구 스스로에게 고통을 주는 방법이
@@ -122,7 +118,7 @@
                   마음으로 만든,
                 </div>
 
-                <div class="strong">
+                <div class="intro-strong-2">
                   내 마음을 툭 터놓을 타임TAYM 어플리케이션이 있습니다.
                 </div>
               </div>
@@ -131,11 +127,11 @@
           </div>
 
           <!-- intro 5 -->
-          <div class="swiper-slide intro-5">
+          <div class="swiper-slide" id="mind-1">
             <!-- Content -->
             <div class="content">
-              <div class="intro-desc">
-                <div>
+              <div class="mind-desc">
+                <div class="intro-small">
                   <p>본 어플리케이션은</p>
                   <p>___친구의 마음을 스스로 알아가보고,</p>
                   <p class="small-desc">
@@ -161,11 +157,11 @@
           </div>
 
           <!-- intro 6 -->
-          <div class="swiper-slide intro-6">
+          <div class="swiper-slide" id="mind-1">
             <!-- Content -->
             <div class="content">
-              <div class="intro-desc">
-                <div class="start-column">
+              <div class="mind-desc">
+                <div class="start-column intro-small">
                   <p>너의 마음을 말해보는 타임,</p>
                   <p class="small-desc">
                     TAYM 어플리에션의 내용들은 실제 자해를 극복한 친구들의
@@ -194,34 +190,124 @@
       </div>
     </div>
 
-    <!-- Initialize Swiper -->
-    <script>
-      var swiper = new Swiper(".swiper-container", {
-        on: {
-          transitionEnd: function () {
-            var firstPage = $(".swiper-slide-active")
-              .attr("aria-label")
-              .charAt(0);
-            var lastPageLength = $(".swiper-slide-active").attr("aria-label")
-              .length;
-            var lastPage = $(".swiper-slide-active")
-              .attr("aria-label")
-              .charAt(lastPageLength - 1);
+    <!-- 사이드 메뉴 -->
+    <div class="menu_bg">
+      <div class="menu">
+        <!-- 닫기 -->
+        <div onclick="HideMenu()" class="cancel-icon">
+          <img src="./images/cancel.png" alt="cancel" />
+        </div>
 
-            if (firstPage === "1") {
-              $(".btn.left").css("visibility", "hidden");
-              $(".btn.right").css("visibility", "visible");
-            } else if (firstPage === lastPage) {
-              $(".btn.right").css("visibility", "hidden");
-              $(".btn.left").css("visibility", "visible");
-            } else {
-              $(".btn.left").css("visibility", "visible");
-              $(".btn.right").css("visibility", "visible");
-            }
-          },
-        },
-      });
-    </script>
+        <div class="menu-container">
+          <!-- 메뉴 1 -->
+          <div class="menu-column">
+            <div class="munu-wrapper" onclick="ShowSubMenu(1)">
+              <div>
+                <span class="menu-strong">TAYM-mind</span>
+                <span class="menu-title">너의 마음을 말할, 타임</span>
+              </div>
+              <img
+                src="./images/open_menu.png"
+                alt="펼치기"
+                class="show-icon1"
+              />
+            </div>
+
+            <!-- 펼침 메뉴 -->
+            <div class="menu_2" id="sub1">
+              <ul>
+                <li>
+                  <a href="./mind-1.html" onclick="setSwiperPage(1)"
+                    >상황인식</a
+                  >
+                </li>
+                <li>
+                  <a href="./mind-1.html" onclick="setSwiperPage(2)"
+                    >감정인식</a
+                  >
+                </li>
+                <li><a href="./mind-2.html">stop 방법찾기</a></li>
+                <li>
+                  <a href="./mind-3.html" onclick="setSwiperPage(1)"
+                    >사회적 지지체계</a
+                  >
+                </li>
+                <li>
+                  <a href="./mind-3.html" onclick="setSwiperPage(2)"
+                    >위기사항 119</a
+                  >
+                </li>
+                <li>
+                  <a href="./mind-3.html" onclick="setSwiperPage(3)"
+                    >자해방지서약서</a
+                  >
+                </li>
+                <li>
+                  <a href="./taym-1.html" class="last"
+                    >완성된 '내 마음, TAYM'</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- 메뉴 2 -->
+          <div class="menu-column">
+            <div class="munu-wrapper" onclick="ShowSubMenu(2)">
+              <div>
+                <span class="menu-strong">TAYM-mood</span>
+                <span class="menu-title">오늘 기분은 어때?</span>
+              </div>
+              <img
+                src="./images/open_menu.png"
+                alt="펼치기"
+                class="show-icon2"
+              />
+            </div>
+
+            <!-- 펼침 메뉴 -->
+            <div class="menu_2" id="sub2">
+              <ul>
+                <li>
+                  <a href="./mood-1.html">오늘의 감정 확인, 표현해보기</a>
+                </li>
+                <li><a href="./mood-2.html">우울척도 검사해보기</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- 메뉴 3 -->
+          <div class="menu-column">
+            <a href="./you-1.html">
+              <div>
+                <span class="menu-strong">TAYM-you</span>
+                <span class="menu-title">너는 어떤 친구이니?</span>
+              </div>
+            </a>
+          </div>
+
+          <!-- 메뉴 4 -->
+          <div class="menu-column">
+            <a href="./junior-1.html">
+              <div>
+                <span class="menu-strong">TAYM-junior</span>
+                <span class="menu-title">너는 어떤 친구이니?</span>
+              </div>
+            </a>
+          </div>
+
+          <div class="menu-column">
+            <a href="./info.html">
+              <div>
+                <span class="menu-strong">TAYM-info</span>
+                <span class="menu-title">전문적인 정보</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 사이드 메뉴 -->
 
     <script src="./js/scripts.js"></script>
   </body>

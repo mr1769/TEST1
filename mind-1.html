@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
 
-  <body class="mind-content mind-1">
+  <body class="mind-content mind-1 swiper">
     <!-- Hearder nav -->
     <nav>
       <div onclick="ShowMenu()" class="menu-icon side">
@@ -73,6 +73,7 @@
                   <textarea
                     id="mind-write-1"
                     onclick="hiddenTeatarea(1)"
+                    class="focus-input"
                   ></textarea>
                   <div
                     class="mind-write-container write-container write-container1"
@@ -97,14 +98,15 @@
           </div>
 
           <!-- mind 2-1 -->
-          <div class="swiper-slide" id="mind-2-1">
+          <div class="swiper-slide" id="mind-3">
             <!-- Content -->
             <div class="content">
-              <div>
+              <div id="feelings">
                 <div class="mind-desc">
                   <p>그 때 ____친구의 기분은 어땠을까요.</p>
                   <p>
-                    불안, 외로움, 슬픔, 두려움, 무서움, 무기력함 등이었나요?
+                    불안, 외로움, 슬픔, 두려움, <br />
+                    무서움, 무기력함 등이었나요?
                   </p>
                   <p>그 때 들었던 기분에 대해 적어보세요.</p>
                 </div>
@@ -112,6 +114,7 @@
                 <div class="write-column">
                   <textarea
                     id="mind-write-2"
+                    class="focus-input"
                     onclick="hiddenTeatarea(2)"
                   ></textarea>
                   <div
@@ -144,6 +147,7 @@
                     <textarea
                       id="mind-write-3"
                       onclick="hiddenTeatarea(3)"
+                      class="focus-input"
                     ></textarea>
                     <div
                       class="mind-write-container write-container write-container3"
@@ -155,12 +159,21 @@
                     </div>
                   </div>
                   <div class="write-column">
-                    <div class="mind-camera-container"></div>
-                    <div class="mind-write-container">
+                    <div class="mind-camera-container camera-bg"></div>
+                    <div class="mind-write-container camera-icon">
                       <div class="write-icon">
                         <img src="./images/camera.png" alt="카메라" />
                       </div>
                       <h1>사진으로 찍어보기</h1>
+                    </div>
+                    <div class="mind-write-container">
+                      <input
+                        type="file"
+                        id="mind-camera-input"
+                        name="camera"
+                        capture="camera"
+                        accept="image/*"
+                      />
                     </div>
                   </div>
                 </div>
@@ -394,13 +407,37 @@
             <!-- 펼침 메뉴 -->
             <div class="menu_2" id="sub1">
               <ul>
-                <li><a href="">상황인식</a></li>
-                <li><a href="">감정인식</a></li>
-                <li><a href="">stop 방법찾기</a></li>
-                <li><a href="">사회적 지지체계</a></li>
-                <li><a href="">위기사항 119</a></li>
-                <li><a href="">자해방지서약서 작성해보기</a></li>
-                <li><a href="" class="last">완성된 '내 마음, TAYM'</a></li>
+                <li>
+                  <a href="./mind-1.html" onclick="setSwiperPage(1)"
+                    >상황인식</a
+                  >
+                </li>
+                <li>
+                  <a href="./mind-1.html" onclick="setSwiperPage(2)"
+                    >감정인식</a
+                  >
+                </li>
+                <li><a href="./mind-2.html">stop 방법찾기</a></li>
+                <li>
+                  <a href="./mind-3.html" onclick="setSwiperPage(1)"
+                    >사회적 지지체계</a
+                  >
+                </li>
+                <li>
+                  <a href="./mind-3.html" onclick="setSwiperPage(2)"
+                    >위기사항 119</a
+                  >
+                </li>
+                <li>
+                  <a href="./mind-3.html" onclick="setSwiperPage(3)"
+                    >자해방지서약서</a
+                  >
+                </li>
+                <li>
+                  <a href="./taym-1.html" class="last"
+                    >완성된 '내 마음, TAYM'</a
+                  >
+                </li>
               </ul>
             </div>
           </div>
@@ -422,8 +459,10 @@
             <!-- 펼침 메뉴 -->
             <div class="menu_2" id="sub2">
               <ul>
-                <li><a href="">오늘의 감정 확인, 표현해보기</a></li>
-                <li><a href="">우울척도 검사해보기</a></li>
+                <li>
+                  <a href="./mood-1.html">오늘의 감정 확인, 표현해보기</a>
+                </li>
+                <li><a href="./mood-2.html">우울척도 검사해보기</a></li>
               </ul>
             </div>
           </div>
@@ -463,6 +502,20 @@
 
     <!-- Footer nav -->
     <footer>
+      <!-- Layer Popup 2 -->
+      <div class="modal-background2 modal-background close"></div>
+      <div class="modal-content emergency modal-content2">
+        <div class="modal-content-inner">
+          <div class="cheer-title emergency">119에 전화하기</div>
+
+          <div class="emergency-btn">
+            <a href="tel:119">
+              <img src="./images/call.png" alt="긴급전화" />
+              <span>119</span>
+            </a>
+          </div>
+        </div>
+      </div>
       <div>
         <a href="./home.html">
           <img src="./images/footer_icon_1.png" alt="home" class="home-icon" />
@@ -478,7 +531,7 @@
         </a>
       </div>
       <div>
-        <a href="">
+        <a href="./chart.html">
           <img
             src="./images/footer_icon_3.png"
             alt="graph"
@@ -491,32 +544,17 @@
       </div>
     </footer>
 
-    <!-- Initialize Swiper -->
     <script>
-      var swiper = new Swiper(".swiper-container", {
-        on: {
-          transitionEnd: function () {
-            var firstPage = $(".swiper-slide-active")
-              .attr("aria-label")
-              .charAt(0);
-            var lastPageLength = $(".swiper-slide-active").attr("aria-label")
-              .length;
-            var lastPage = $(".swiper-slide-active")
-              .attr("aria-label")
-              .charAt(lastPageLength - 1);
+      $(function () {
+        $("#mind-camera-input").change(function (e) {
+          $(".mind-camera-container").css(
+            "background-image",
+            `url(${URL.createObjectURL(e.target.files[0])})`
+          );
+          $(".camera-icon").css("display", "none");
 
-            if (firstPage === "1") {
-              $(".btn.left").css("visibility", "hidden");
-              $(".btn.right").css("visibility", "visible");
-            } else if (firstPage === lastPage) {
-              $(".btn.right").css("visibility", "hidden");
-              $(".btn.left").css("visibility", "visible");
-            } else {
-              $(".btn.left").css("visibility", "visible");
-              $(".btn.right").css("visibility", "visible");
-            }
-          },
-        },
+          localStorage.setItem("path", URL.createObjectURL(e.target.files[0]));
+        });
       });
     </script>
 

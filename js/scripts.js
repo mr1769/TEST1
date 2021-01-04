@@ -8,24 +8,30 @@ function ShowMenu() {
   $(".menu").css({
     left: "-100%",
   });
-  $(".menu").animate({
-    left: "0px",
-  }, {
-    duration: giMenuDuration,
-  });
+  $(".menu").animate(
+    {
+      left: "0px",
+    },
+    {
+      duration: giMenuDuration,
+    }
+  );
 }
 
 function HideMenu() {
-  $(".menu").animate({
-    left: "-100%",
-  }, {
-    duration: giMenuDuration,
-    complete: function () {
-      $(".menu_bg").css({
-        display: "none",
-      });
+  $(".menu").animate(
+    {
+      left: "-100%",
     },
-  });
+    {
+      duration: giMenuDuration,
+      complete: function () {
+        $(".menu_bg").css({
+          display: "none",
+        });
+      },
+    }
+  );
 }
 
 function ShowSubMenu(num) {
@@ -40,6 +46,7 @@ function ShowSubMenu(num) {
   }
 }
 
+// Modal창 열기
 function openModal(num) {
   $(".modal-background" + num).fadeIn();
   $(".modal-content" + num).fadeIn();
@@ -50,6 +57,10 @@ function openModal(num) {
   });
 }
 
+// mood bar 결과 저장
+var getMood = localStorage.getItem("moodScore");
+var jsonMood = JSON.parse(getMood);
+var moodScore = jsonMood || [];
 function clickMoodBar(num) {
   for (var i = 1; i <= num; i++) {
     $(`.mood-bar${i}`).addClass(`mood-bar-color${i}`);
@@ -75,7 +86,20 @@ function clickMoodBar(num) {
 
   $(".show-graph").fadeIn();
 
-  localStorage.setItem("moodScore", num);
+  var now = new Date(); // 현재 날짜 및 시간
+  var formatDate = now.getMonth() + 1 + "/" + now.getDate();
+
+  if (moodScore.indexOf(formatDate) > -1) {
+    moodScore[moodScore.indexOf(formatDate) + 1] = num;
+  } else {
+    if (moodScore.length >= 10) {
+      moodScore.splice(0, 2);
+      moodScore.push(formatDate, num);
+    } else {
+      moodScore.push(formatDate, num);
+    }
+  }
+  localStorage.setItem("moodScore", JSON.stringify(moodScore));
 }
 
 // 아바타 이름변경
@@ -91,7 +115,7 @@ function avatarNameChange(num) {
   $(".avatar-name").text(changeName);
 }
 
-// 아바타 이름변경
+// 의지하는 사람 이름변경
 function trustNameChange(num) {
   var changeName = $("#trust-name").val();
   var changeTel = $("#trust-tel").val();
@@ -108,9 +132,12 @@ function trustNameChange(num) {
 
   localStorage.setItem("trust-name", changeName);
   localStorage.setItem("trust-tel", changeTel);
+
+  $(".taym-call-connect").attr("href", `tel:${changeTel}`);
   $(".modal-background" + num).fadeOut();
 }
 
+// textarea 클릭시 아이콘 숨김처리
 function hiddenTeatarea(num) {
   $(`.write-container${num}`).css("display", "none");
   $(`#mind-write-${num}`).on(
@@ -122,13 +149,14 @@ function hiddenTeatarea(num) {
   );
 }
 
+// textarea 저장된 값 가져오기
 function getTeatarea(num) {
   var getMindWrite = localStorage.getItem(`mind-write-${num}`);
   $(`#mind-write-${num}`).val(getMindWrite);
 }
 
+// 의지하는 사람 연락처 및 이름 저장
 function changeInput(id) {
-  console.log(id);
   $(`#${id}`).on("propertychange change keyup paste input", function () {
     var currentVal = $(this).val();
     localStorage.setItem(id, currentVal);
@@ -158,13 +186,12 @@ var surveyList = [
   "중요한 일에 집중할 수가 없었다.",
 ];
 
+// 4점 척도 뿌리기
 var radioTotal = 0;
-
 function loadList(num) {
   if (num > 0) {
     for (var i = 1; i < 6; i++) {
       var radioVal = $(`input[name="radio${i}"]:checked`).val();
-      // console.log(radioVal);
       if (radioVal === undefined) {
         alert("모든 항목에 체크해주세요.");
         return;
@@ -181,7 +208,6 @@ function loadList(num) {
   }
 
   for (var i = num; i < num + 5; i++) {
-    // console.log(i);
     $(`.survey${i}`).text(surveyList[i]);
     if (i === 17) {
       $(".survey17").addClass("small");
@@ -190,9 +216,9 @@ function loadList(num) {
   $(".btn-container")
     .empty()
     .append(
-      num === 15 ?
-      `<div class="listen-btn" onclick="loadList(${num + 5})">제출</div>` :
-      `<div class="listen-btn" onclick="loadList(${num + 5})">다음</div>`
+      num === 15
+        ? `<div class="listen-btn" onclick="loadList(${num + 5})">제출</div>`
+        : `<div class="listen-btn" onclick="loadList(${num + 5})">다음</div>`
     );
 }
 
@@ -215,10 +241,11 @@ var selectList = [
   "내 손목 사진 위에 빨간색으로 칠해보기",
 ];
 
+// 체크리스트 뿌리기
 function loadMindSelectList() {
   var getCheckList = localStorage.getItem("checkList");
   var getCheckListToArray = getCheckList.split(",");
-  console.log(getCheckListToArray);
+
   for (var i = 0; i < selectList.length; i++) {
     $(`#mind-${i < 9 ? 9 : 10} .mind-desc`).append(`
     <label class="wrapper-label">
@@ -243,6 +270,7 @@ function loadMindSelectList() {
     `);
 }
 
+// 선택된 체크리스트 뿌리기
 function loadSelectList() {
   var getCheckList = localStorage.getItem("checkList");
   var getCheckListToArray;
@@ -280,6 +308,7 @@ function loadSelectList() {
     `);
 }
 
+// 체크리스트 클릭 시 선택 값 저장
 function selectConfirm() {
   var checkArr = [];
   for (var i = 0; i < 17; i++) {
@@ -297,6 +326,7 @@ function selectConfirm() {
   localStorage.setItem("checkList", checkArr);
 }
 
+// 지문 touch시 진동
 navigator.vibrate =
   navigator.vibrate ||
   navigator.webkitVibrate ||
@@ -309,13 +339,13 @@ function vibrate() {
   }
 }
 
+// 다시보지 않기 버튼 클릭시 상태 저장
 function selectView() {
   var selectBtn = document.querySelector(".check-view");
   var CLICKED_CLASS = "clicked";
 
   selectBtn.classList.toggle(CLICKED_CLASS);
 
-  console.log(selectBtn.classList.contains(CLICKED_CLASS));
   if (selectBtn.classList.contains(CLICKED_CLASS)) {
     localStorage.setItem("selectView", false);
   } else {
@@ -323,14 +353,15 @@ function selectView() {
   }
 }
 
+// 모달 다시 보지 않기 설정(taym)
 function loadModal() {
   var getSelectView = localStorage.getItem("selectView");
-  console.log(getSelectView);
   if (getSelectView === "true") {
     openModal(1);
   }
 }
 
+// 모달 안에 텍스트 자동 변경
 function listenOpenModal(num) {
   $(".modal-next").removeClass("close");
   $(".modal-next").text("다음");
@@ -355,8 +386,11 @@ function listenOpenModal(num) {
     $(".mind-modal-desc").html(mindInnerText[num]);
     if (num === mindInnerText.length - 1) {
       $(".modal-next").text("닫기");
+
       $(".modal-next").addClass("close");
-      $(".modal-next").addClass("you-next");
+      if ($("body").hasClass("you-intro")) {
+        $(".modal-next").addClass("you-next");
+      }
     } else if (num === mindInnerText.length) {
       if ($(".close").hasClass("you-next")) {
         $(location).attr("href", "you-2.html");
@@ -368,17 +402,60 @@ function listenOpenModal(num) {
 }
 
 $(document).ready(function () {
-  // $(".emergency-btn")
-  //   .parent()
-  //   .click(function (e) {
-  //     console.log("부모");
-  //   });
+  // taym-4 image가져오기
+  var imagePath;
+  if (localStorage.getItem("path") === null) {
+    imagePath = "./images/wrist_bg.png";
+  } else {
+    imagePath = localStorage.getItem("path");
+  }
+  $(".get-image").attr("src", imagePath);
 
+  // textarea, input 클릭시 footer 숨김 처리 및 키패드에 따른 화면 조절
+  $(".focus-input").click(function () {
+    $(".content").css("align-items", "start");
+    $(".content").css("height", "auto");
+    $(".content").css("padding-bottom", "0");
+    $("#mind-2 .mind-desc").css("margin-bottom", "0");
+    $("footer").css("visibility", "hidden");
+    $("html").css("height", "auto");
+    $("body").css("height", "auto");
+    if ($("body").hasClass("scroll-content")) {
+      console.log("sc");
+      $(".content").css("overflow-y", "scroll");
+    }
+  });
+  $(".focus-input").blur(function () {
+    $(".content").css("align-items", "center");
+    $(".content").css("height", "100vh");
+    $(".content").css("padding-bottom", "160px");
+    $("#mind-2 .mind-desc").css("margin-bottom", "12vh");
+    $("footer").css("visibility", "visible");
+    $("html").css("height", "100vh");
+    $("body").css("height", "100vh");
+    if ($("body").hasClass("scroll-content")) {
+      console.log("sc");
+      $(".content").css("overflow-y", "unset");
+    }
+  });
+  $(".modufy-input").click(function () {
+    console.log("modufy-input");
+    $("footer").css("visibility", "hidden");
+  });
+
+  $(".modufy-input").blur(function () {
+    $("footer").css("visibility", "visible");
+    $("html").css("height", "auto");
+    $("body").css("height", "auto");
+  });
+
+  // 지문 touch시 진동
   $(".finger-icon").on("touchstart", function () {
     $(".finger-icon").attr("src", "./images/finger_end.png");
     vibrate();
   });
 
+  // 지문 종료 시 openModal
   $(".finger-icon").on("touchend", function () {
     openModal(1);
   });
@@ -390,7 +467,6 @@ $(document).ready(function () {
   var class_by_body = $("body").attr("class");
 
   if ($("body").hasClass("blue-nav")) {
-    // console.log(id_by_body);
     $("footer").css("background-color", "#73d1e6");
     $(".home-icon").attr("src", "./images/footer_icon_1_white.png");
     $(".modify-icon").attr("src", "./images/footer_icon_2_blue.png");
@@ -400,9 +476,14 @@ $(document).ready(function () {
       $(".home-icon").attr("src", "./images/footer_icon_1_blue.png");
       $(".modify-icon").attr("src", "./images/footer_icon_2_white.png");
     }
+    if (id_by_body === "chart") {
+      $(".home-icon").attr("src", "./images/footer_icon_1_blue.png");
+      $(".graph-icon").attr("src", "./images/footer_icon_3_white.png");
+    }
   }
 
   if ($("body").hasClass("taym-call")) {
+    // 저장된 신뢰하는 사람 연락처 이름 가져오기 및 링크
     var getTrustTel = localStorage.getItem("trust-tel");
     var getTrustName = localStorage.getItem("trust-name");
     $(".taym-call-connect").attr("href", `tel:${getTrustTel}`);
@@ -411,28 +492,32 @@ $(document).ready(function () {
   }
 
   switch (id_by_body) {
+    // 초기 데이터 저장
     case "intro":
       localStorage.setItem("avatarName", "TAYM");
       localStorage.setItem("selectView", true);
       localStorage.setItem("checkList", "");
+      localStorage.setItem("moodScore", "[]");
       break;
 
+    // footer icon 및 bg변경
     case "home":
       $(".logo").attr("src", "./images/logo_home.png");
       $(".menu-icon div").css("background-color", "#ffffff");
       break;
 
     case "taym-detail":
-      console.log("taym-detail");
       $(".home-icon").attr("src", "./images/footer_icon_1_gray.png");
       $(".modify-icon").attr("src", "./images/footer_icon_2_blue_select.png");
       break;
   }
 
-  var getMoodScore = localStorage.getItem("moodScore");
   if ($("body").hasClass("junior-1")) {
-    console.log(getMoodScore);
-    if (getMoodScore === null) {
+    var getMoodScore = localStorage.getItem("moodScore");
+    var jsonMood = JSON.parse(getMoodScore);
+    var todayMood = jsonMood[jsonMood.length - 1];
+    // mood 검사 여부에 따른 페이지 이동
+    if (jsonMood.length === 0) {
       $(".meet-btn").click(function () {
         $(location).attr("href", "junior-2.html");
       });
@@ -444,21 +529,25 @@ $(document).ready(function () {
   }
 
   if ($("body").hasClass("junior-4")) {
-    if (getMoodScore <= 4) {
+    var getMoodScore = localStorage.getItem("moodScore");
+    var jsonMood = JSON.parse(getMoodScore);
+    var todayMood = jsonMood[jsonMood.length - 1];
+    // mood 점수에 따른 junior 상태 변경
+    if (todayMood <= 4) {
       $(".junior-content").css(
         "background-image",
         "url('../images/junior_smile_bg.png')"
       );
       $(".junior-bubble-text").text("오늘 기분 좋아!");
       $(".avatar").attr("src", "./images/smail_avatar.png");
-    } else if (5 <= getMoodScore && getMoodScore <= 7) {
+    } else if (5 <= todayMood && todayMood <= 7) {
       $(".junior-content").css(
         "background-image",
         "url('../images/junior_bg.png')"
       );
       $(".junior-bubble-text").text("안녕 잘지내?!");
       $(".avatar").attr("src", "./images/hello_avatar.png");
-    } else if (getMoodScore >= 7) {
+    } else if (todayMood >= 7) {
       $(".junior-content").css(
         "background-image",
         "url('../images/junior_sad_bg.png')"
@@ -469,22 +558,147 @@ $(document).ready(function () {
     }
 
     var getAvatarName = localStorage.getItem("avatarName");
+    // 아바타 이름 가져오기
     $(".avatar-name").text(getAvatarName);
     $("#avatar-name").val(getAvatarName);
   }
 
-  if (class_by_body === "mood-result-page") {
+  if ($("body").hasClass("mood-result-page")) {
     var getSurveyResult = localStorage.getItem("surveyResult");
-    console.log(getSurveyResult);
+    // mood 척도 검사 13점 이하일 경우 openModal
     $(".survey-result").text(getSurveyResult);
     if (getSurveyResult <= 13) {
       openModal(1);
     }
   }
+
+  if ($("body").hasClass("chart-result")) {
+    var getMood = localStorage.getItem("moodScore");
+    var jsonMood = JSON.parse(getMood);
+    var moodScore = jsonMood || [];
+
+    var now = new Date(); // 현재 날짜 및 시간
+    var formatNow = now.getMonth() + 1 + "/" + now.getDate();
+    var nowScore =
+      moodScore.indexOf(formatNow) > -1
+        ? moodScore[moodScore.indexOf(formatNow) + 1]
+        : 0;
+
+    var yesterday = new Date(now.setDate(now.getDate() - 1)); // 어제
+    var formatYesterday = yesterday.getMonth() + 1 + "/" + yesterday.getDate();
+    var yesterdayScore =
+      moodScore.indexOf(formatYesterday) > -1
+        ? moodScore[moodScore.indexOf(formatYesterday) + 1]
+        : 0;
+
+    var dayAgo2 = new Date(yesterday.setDate(yesterday.getDate() - 1)); // 2일전
+    var formatDayAgo2 = dayAgo2.getMonth() + 1 + "/" + dayAgo2.getDate();
+    var dayAgo2Score =
+      moodScore.indexOf(formatDayAgo2) > -1
+        ? moodScore[moodScore.indexOf(formatDayAgo2) + 1]
+        : 0;
+
+    var dayAgo3 = new Date(dayAgo2.setDate(dayAgo2.getDate() - 1)); // 3일전
+    var formatDayAgo3 = dayAgo3.getMonth() + 1 + "/" + dayAgo3.getDate();
+    var dayAgo3Score =
+      moodScore.indexOf(formatDayAgo3) > -1
+        ? moodScore[moodScore.indexOf(formatDayAgo3) + 1]
+        : 0;
+
+    var dayAgo4 = new Date(dayAgo3.setDate(dayAgo3.getDate() - 1)); // 4일전
+    var formatDayAgo4 = dayAgo4.getMonth() + 1 + "/" + dayAgo4.getDate();
+    var dayAgo4Score =
+      moodScore.indexOf(formatDayAgo4) > -1
+        ? moodScore[moodScore.indexOf(formatDayAgo4) + 1]
+        : 0;
+
+    for (var i = 0; i < nowScore; i++) {
+      $(`.today.chart-bar${i + 1}`).css("visibility", "visible");
+      if (i === nowScore - 1) {
+        $(`.today.chart-bar${i + 1}`).css("border-top-left-radius", "15px");
+        $(`.today.chart-bar${i + 1}`).css("border-top-right-radius", "15px");
+      }
+    }
+
+    for (var i = 0; i < yesterdayScore; i++) {
+      $(`.yesterday.chart-bar${i + 1}`).css("visibility", "visible");
+      if (i === yesterdayScore - 1) {
+        $(`.yesterday.chart-bar${i + 1}`).css("border-top-left-radius", "15px");
+        $(`.yesterday.chart-bar${i + 1}`).css(
+          "border-top-right-radius",
+          "15px"
+        );
+      }
+    }
+
+    for (var i = 0; i < dayAgo2Score; i++) {
+      $(`.dayAgo2.chart-bar${i + 1}`).css("visibility", "visible");
+      if (i === dayAgo2Score - 1) {
+        $(`.dayAgo2.chart-bar${i + 1}`).css("border-top-left-radius", "15px");
+        $(`.dayAgo2.chart-bar${i + 1}`).css("border-top-right-radius", "15px");
+      }
+    }
+
+    for (var i = 0; i < dayAgo3Score; i++) {
+      $(`.dayAgo3.chart-bar${i + 1}`).css("visibility", "visible");
+      if (i === dayAgo3Score - 1) {
+        $(`.dayAgo3.chart-bar${i + 1}`).css("border-top-left-radius", "15px");
+        $(`.dayAgo3.chart-bar${i + 1}`).css("border-top-right-radius", "15px");
+      }
+    }
+
+    for (var i = 0; i < dayAgo4Score; i++) {
+      $(`.dayAgo4.chart-bar${i + 1}`).css("visibility", "visible");
+      if (i === dayAgo4Score - 1) {
+        $(`.dayAgo4.chart-bar${i + 1}`).css("border-top-left-radius", "15px");
+        $(`.dayAgo4.chart-bar${i + 1}`).css("border-top-right-radius", "15px");
+      }
+    }
+  }
+
+  if ($("body").hasClass("no-move")) {
+    localStorage.setItem("swiperPage", "0");
+  }
+
+  if ($("body").hasClass("swiper")) {
+    var getSwiperPage = localStorage.getItem("swiperPage");
+    var swiper = new Swiper(".swiper-container", {
+      on: {
+        transitionEnd: function () {
+          var firstPage = $(".swiper-slide-active")
+            .attr("aria-label")
+            .charAt(0);
+          var lastPageLength = $(".swiper-slide-active").attr("aria-label")
+            .length;
+          var lastPage = $(".swiper-slide-active")
+            .attr("aria-label")
+            .charAt(lastPageLength - 1);
+
+          if (firstPage === "1") {
+            $(".btn.left").css("visibility", "hidden");
+            $(".btn.right").css("visibility", "visible");
+          } else if (firstPage === lastPage) {
+            $(".btn.right").css("visibility", "hidden");
+            $(".btn.left").css("visibility", "visible");
+          } else {
+            $(".btn.left").css("visibility", "visible");
+            $(".btn.right").css("visibility", "visible");
+          }
+        },
+      },
+    });
+
+    swiper.slideTo(getSwiperPage);
+  } else if (localStorage.getItem("swiperPage") > 0) {
+    localStorage.setItem("swiperPage", "0");
+  }
 });
 
-// input type이 number일 때 입력 글자 수 제한하기
+function setSwiperPage(num) {
+  localStorage.setItem("swiperPage", num);
+}
 
+// input type이 number일 때 입력 글자 수 제한하기
 function maxLengthCheck(e) {
   if (e.value.length > e.maxLength) {
     e.value = e.value.slice(0, e.maxLength);
@@ -492,35 +706,40 @@ function maxLengthCheck(e) {
 }
 
 // 연도가 1920년 이전 날짜가 입력되지 않도록 제한하기
-
 function yearValidation(year) {
   var current_year = new Date().getFullYear();
   if (year < 1920 || year > current_year) {
     $("#year").val(""); // 빈값으로 처리하기
     $("#year").focus(); // 빈공간(연도)에 다시 포커스 시키기
-  } else {}
+  } else
+    (event) => {
+      event.preventDefault();
+    };
 }
 
 // 월은 1월 부터 12월 까지만 입력 되도록 처리
-
 function monthValidation(month) {
   if (month < 1 || month > 12) {
     $("#month").val("");
     $("#month").focus();
-  } else {}
+  } else
+    (event) => {
+      event.preventDefault();
+    };
 }
 
 // 일은 1일 부터 31일 까지만 입력 되도록 처리
-
 function dayValidation(day) {
   if (day < 1 || day > 31) {
     $("#day").val("");
     $("#day").focus();
-  } else {}
+  } else
+    (event) => {
+      event.preventDefault();
+    };
 }
 
 // 가져온 현재날짜와 입력날짜 차이를 구하기
-
 function printDiff() {
   var today = new Date();
 
@@ -536,57 +755,60 @@ function printDiff() {
   }
 
   // 계산된 연도 값이 들어가도록 하기
-  console.log(year);
   $("#result-year").text(year);
-
-  console.log(month);
   $("#result-month").text(month);
 }
 
 // 파일 업로드
-
-// 자바스크립트 사용 할 때
 function uploadImgPreview() {
   let fileInfo = document.getElementById("upImgFile").files[0];
   let reader = new FileReader();
 
   reader.onload = function () {
     document.getElementById(
-      "drawCanvas"
+      "canvas"
     ).style.backgroundImage = `url(${reader.result})`;
-
-    // 그림 그리기 화면은 보입니다.
-    $("#wrist-write").show();
-
-    // 사진찍기와 사진불러오기 화면은 다 지웁니다.
-    $("#import-photo").hide();
-    $("#take-photo").hide();
-
   };
 
   if (fileInfo) {
     reader.readAsDataURL(fileInfo);
+
+    // 그림 그리기 화면은 보입니다.
+    $(".canvas-wrapper").append(`
+    <canvas id="canvas" class="canvas" width="234" height="190" style="display: none;"></canvas>
+    `);
+    $("#canvas").show();
+    $("#drawing-reset").show();
+
+    // 사진찍기와 사진불러오기 화면은 다 지웁니다.
+    $("#canvas-content").hide();
   }
 }
 
+// 사진 찍기
+$(function () {
+  $("#camera").change(function (e) {
+    $("#pic").attr("src", URL.createObjectURL(e.target.files[0]));
+  });
+});
+
 // 그림 그리기
-
 function drawing() {
-  var drawCanvas = document.getElementById("drawCanvas");
+  var canvas = document.getElementById("canvas");
 
-  if (typeof drawCanvas.getContext == "function") {
-    var ctx = drawCanvas.getContext("2d");
+  if (typeof canvas.getContext == "function") {
+    var ctx = canvas.getContext("2d");
     var width = 10;
     var color = "red";
-    var pDraw = $("#drawCanvas").offset();
+    var pDraw = $("#canvas").offset();
     var currP = null;
 
-    $("#drawCanvas").bind("touchstart", function (e) {
+    $("#canvas").bind("touchstart", function (e) {
       e.preventDefault();
       ctx.beginPath();
     });
 
-    $("#drawCanvas").bind("touchmove", function (e) {
+    $("#canvas").bind("touchmove", function (e) {
       var event = e.originalEvent;
       e.preventDefault();
       currP = {
@@ -596,7 +818,7 @@ function drawing() {
       draw_line(currP);
     });
 
-    $("#drawCanvas").bind("touchend", function (e) {
+    $("#canvas").bind("touchend", function (e) {
       e.preventDefault();
     });
 
@@ -611,30 +833,21 @@ function drawing() {
   }
 }
 
-// 사진 찍기
-
-$(function () {
-  $("#camera").change(function (e) {
-    $("#pic").attr("src", URL.createObjectURL(e.target.files[0]));
-  });
-});
-
 // 리셋 버튼 누르면 사진찍기와 사진불러오기 화면으로 가기
-
 function clearCanvas() {
-  var canvas = document.getElementById("drawCanvas");
+  var canvas = document.getElementById("canvas");
 
   // 그려진 선 초기화 시키기
   canvas.getContext("2d").clearRect(0, 0, canvas.width, canvas.height);
-  document.getElementById("drawCanvas").style.backgroundImage = "";
+  document.getElementById("canvas").style.backgroundImage = "";
 
   // 사진배열에 저장된 요소 없애기
-  $("#upImgFile").val('');
-  $("#camera").val('');
-  $("#wrist-write").hide();
+  $("#upImgFile").val("");
+  $("#camera").val("");
+  $("#canvas").hide();
+  $("#drawing-reset").hide();
 
   // 사진찍기와 사진불러오기 화면 보이기
-  $("#import-photo").show();
-  $("#take-photo").show();
-
+  $("#canvas-content").show();
+  $(".canvas-wrapper").empty();
 }

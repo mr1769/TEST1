@@ -1,258 +1,301 @@
 <!DOCTYPE html>
 <html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no, maximun-scale=1"
+    />
+    <title>너의 마음을 말해보는, 타임</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.js"
+      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximun-scale=1" />
-  <title>너의 마음을 말해보는, 타임</title>
-  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-    crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="./css/styles.css" />
-</head>
-
-<body class="mind-content mind-2-select" onload="loadMindSelectList()">
-  <!-- Hearder nav -->
-  <nav>
-    <div onclick="ShowMenu()" class="menu-icon side">
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-
-    <div class="center">
-      <img src="./images/logo.png" alt="logo" class="logo" />
-    </div>
-
-    <div class="side"></div>
-  </nav>
-  <!-- Hearder nav -->
-
-  <!-- Content -->
-  <div id="mind-2-select">
-    <div class="mind-select-title">STOP 방법들을 선택해볼까?</div>
-
-    <div class="main-swiper-container">
-      <div class="btn left">
-        <img src="./images/prev_blue.png" alt="next" />
+  <body
+    class="mind-content mind-2-select swiper no-move"
+    onload="loadMindSelectList()"
+  >
+    <!-- Hearder nav -->
+    <nav>
+      <div onclick="ShowMenu()" class="menu-icon side">
+        <div></div>
+        <div></div>
+        <div></div>
       </div>
-      <!-- Swiper -->
-      <div class="swiper-container">
-        <div class="swiper-wrapper">
-          <!-- mind 9 -->
-          <div class="swiper-slide" id="mind-9">
-            <!-- Content -->
-            <div class="mind-desc" id="select-desc">
-              <div style="width: 9999px"></div>
+
+      <div class="center">
+        <img src="./images/logo.png" alt="logo" class="logo" />
+      </div>
+
+      <div class="side"></div>
+    </nav>
+    <!-- Hearder nav -->
+
+    <!-- Content -->
+    <div id="mind-2-select">
+      <div class="mind-select-title">STOP 방법들을 선택해볼까?</div>
+
+      <div class="main-swiper-container">
+        <div class="btn left">
+          <img src="./images/prev_blue.png" alt="next" />
+        </div>
+        <!-- Swiper -->
+        <div class="swiper-container">
+          <div class="swiper-wrapper">
+            <!-- mind 9 -->
+            <div class="swiper-slide" id="mind-9">
+              <!-- Content -->
+              <div class="mind-desc" id="select-desc">
+                <div style="width: 9999px"></div>
+              </div>
+              <!-- Content -->
             </div>
-            <!-- Content -->
-          </div>
 
-          <!-- mind 10 -->
-          <div class="swiper-slide" id="mind-10">
-            <!-- Content -->
-            <div class="mind-desc" id="select-desc"></div>
-            <!-- Content -->
-          </div>
-        </div>
-      </div>
-
-      <div class="btn right">
-        <img src="./images/next_blue.png" alt="next" />
-      </div>
-    </div>
-  </div>
-  <!-- Content -->
-
-  <!-- Layer Popup 1 -->
-  <div class="modal-background1 modal-background">
-    <div class="modal-content">
-      <div class="canvas-content">
-        <!--canvas 공간-->
-        <canvas id="drawCanvas" class="drawCanvas"></canvas>
-        <!--canvas 공간-->
-
-        <!--사진찍기-->
-        <div class="take-photo" id="take-photo">
-          <div class="wrist-write">
-            <img src="images/camera_gray.png" alt="사진찍기" />
-            <label for="upImgFile" class="import-file-button"><span>사진찍기</span></label>
-          </div>
-          <input type="file" id="camera" name="camera" capture="camera" accept="image/*" style="display: none" />
-        </div>
-        <!--사진찍기-->
-
-        <!--사진 불러오기-->
-        <div class="import-photo" id="import-photo" onclick="uploadImgPreview()">
-          <div class="wrist-write">
-            <img src="images/image_file.png" alt="사진 불러오기" />
-            <label for="upImgFile" class="import-file-button"><span>사진불러오기</span></label>
-          </div>
-          <input 
-            type="file" 
-            id="upImgFile" 
-            class="upImgFile" 
-            onChange="uploadImgPreview();" 
-            accept="image/*"
-            style="display: none" />
-        </div>
-        <!--사진 불러오기-->
-      </div>
-
-      <div class="wrist-write" id="wrist-write" onclick="drawing()" style="display:none">
-        <img src="./images/wrist_write.png" alt="그리기" />
-        <span>그려보기
-          <span class="reset-button" onclick="clearCanvas()">| 초기화</span></span>
-      </div>
-
-      <div class="close" id="blue-close">
-        <a href="./mind-3.html" style="color: white">완료</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- 사이드 메뉴 -->
-  <div class="menu_bg">
-    <div class="menu">
-      <!-- 닫기 -->
-      <div onclick="HideMenu()" class="cancel-icon">
-        <img src="./images/cancel.png" alt="cancel" />
-      </div>
-
-      <div class="menu-container">
-        <!-- 메뉴 1 -->
-        <div class="menu-column">
-          <div class="munu-wrapper" onclick="ShowSubMenu(1)">
-            <div>
-              <span class="menu-strong">TAYM-mind</span>
-              <span class="menu-title">너의 마음을 말할, 타임</span>
+            <!-- mind 10 -->
+            <div class="swiper-slide" id="mind-10">
+              <!-- Content -->
+              <div class="mind-desc" id="select-desc"></div>
+              <!-- Content -->
             </div>
-            <img src="./images/open_menu.png" alt="펼치기" class="show-icon1" />
-          </div>
-
-          <!-- 펼침 메뉴 -->
-          <div class="menu_2" id="sub1">
-            <ul>
-              <li><a href="">상황인식</a></li>
-              <li><a href="">감정인식</a></li>
-              <li><a href="">stop 방법찾기</a></li>
-              <li><a href="">사회적 지지체계</a></li>
-              <li><a href="">위기사항 119</a></li>
-              <li><a href="">자해방지서약서 작성해보기</a></li>
-              <li><a href="" class="last">완성된 '내 마음, TAYM'</a></li>
-            </ul>
           </div>
         </div>
 
-        <!-- 메뉴 2 -->
-        <div class="menu-column">
-          <div class="munu-wrapper" onclick="ShowSubMenu(2)">
-            <div>
-              <span class="menu-strong">TAYM-mood</span>
-              <span class="menu-title">오늘 기분은 어때?</span>
-            </div>
-            <img src="./images/open_menu.png" alt="펼치기" class="show-icon2" />
-          </div>
-
-          <!-- 펼침 메뉴 -->
-          <div class="menu_2" id="sub2">
-            <ul>
-              <li><a href="">오늘의 감정 확인, 표현해보기</a></li>
-              <li><a href="">우울척도 검사해보기</a></li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- 메뉴 3 -->
-        <div class="menu-column">
-          <a href="./you-1.html">
-            <div>
-              <span class="menu-strong">TAYM-you</span>
-              <span class="menu-title">너는 어떤 친구이니?</span>
-            </div>
-          </a>
-        </div>
-
-        <!-- 메뉴 4 -->
-        <div class="menu-column">
-          <a href="./junior-1.html">
-            <div>
-              <span class="menu-strong">TAYM-junior</span>
-              <span class="menu-title">너는 어떤 친구이니?</span>
-            </div>
-          </a>
-        </div>
-
-        <div class="menu-column">
-          <a href="./info.html">
-            <div>
-              <span class="menu-strong">TAYM-info</span>
-              <span class="menu-title">전문적인 정보</span>
-            </div>
-          </a>
+        <div class="btn right">
+          <img src="./images/next_blue.png" alt="next" />
         </div>
       </div>
     </div>
-  </div>
-  <!-- 사이드 메뉴 -->
+    <!-- Content -->
 
-  <!-- Footer nav -->
-  <footer>
-    <div>
-      <a href="./home.html">
-        <img src="./images/footer_icon_1.png" alt="home" class="home-icon" />
-      </a>
+    <!-- Layer Popup 1 -->
+    <div class="modal-background1 modal-background">
+      <div class="modal-content">
+        <div class="canvas-content" id="canvas-content">
+          <div class="take-photo">
+            <img src="/images/camera_gray.png" alt="사진찍기" />
+            <label for="upImgFile"><span>사진찍기</span></label>
+            <input
+              type="file"
+              id="camera"
+              name="camera"
+              capture="camera"
+              accept="image/*"
+              style="display: none"
+              onchange="uploadImgPreview()"
+            />
+          </div>
+          <div class="import-photo">
+            <img src="/images/image_file.png" alt="사진불러오기" />
+            <label for="upImgFile"><span>사진불러오기</span></label>
+
+            <input
+              type="file"
+              id="upImgFile"
+              class="upImgFile"
+              accept="image/*"
+              onchange="uploadImgPreview()"
+              style="display: none"
+            />
+          </div>
+        </div>
+
+        <div class="canvas-wrapper"></div>
+
+        <div
+          class="drawing-reset"
+          id="drawing-reset"
+          style="display: none; margin-top: 10px"
+        >
+          <img src="/images/wrist_write.png" alt="그려보기" />
+          <span class="drawing start" id="drawing" onclick="drawing()"
+            >그려보기</span
+          >
+          <span class="bar"></span>
+          <span class="reset" style="color: #ccc" onclick="clearCanvas()"
+            >초기화</span
+          >
+        </div>
+
+        <div class="close" id="blue-close">
+          <a href="./mind-3.html" style="color: white; font-weight: 500"
+            >완료</a
+          >
+        </div>
+      </div>
     </div>
-    <div>
-      <a href="./taym-1.html">
-        <img src="./images/footer_icon_2.png" alt="modify" class="modify-icon" />
-      </a>
+
+    <!-- 사이드 메뉴 -->
+    <div class="menu_bg">
+      <div class="menu">
+        <!-- 닫기 -->
+        <div onclick="HideMenu()" class="cancel-icon">
+          <img src="./images/cancel.png" alt="cancel" />
+        </div>
+
+        <div class="menu-container">
+          <!-- 메뉴 1 -->
+          <div class="menu-column">
+            <div class="munu-wrapper" onclick="ShowSubMenu(1)">
+              <div>
+                <span class="menu-strong">TAYM-mind</span>
+                <span class="menu-title">너의 마음을 말할, 타임</span>
+              </div>
+              <img
+                src="./images/open_menu.png"
+                alt="펼치기"
+                class="show-icon1"
+              />
+            </div>
+
+            <!-- 펼침 메뉴 -->
+            <div class="menu_2" id="sub1">
+              <ul>
+                <li>
+                  <a href="./mind-1.html" onclick="setSwiperPage(1)"
+                    >상황인식</a
+                  >
+                </li>
+                <li>
+                  <a href="./mind-1.html" onclick="setSwiperPage(2)"
+                    >감정인식</a
+                  >
+                </li>
+                <li><a href="./mind-2.html">stop 방법찾기</a></li>
+                <li>
+                  <a href="./mind-3.html" onclick="setSwiperPage(1)"
+                    >사회적 지지체계</a
+                  >
+                </li>
+                <li>
+                  <a href="./mind-3.html" onclick="setSwiperPage(2)"
+                    >위기사항 119</a
+                  >
+                </li>
+                <li>
+                  <a href="./mind-3.html" onclick="setSwiperPage(3)"
+                    >자해방지서약서</a
+                  >
+                </li>
+                <li>
+                  <a href="./taym-1.html" class="last"
+                    >완성된 '내 마음, TAYM'</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- 메뉴 2 -->
+          <div class="menu-column">
+            <div class="munu-wrapper" onclick="ShowSubMenu(2)">
+              <div>
+                <span class="menu-strong">TAYM-mood</span>
+                <span class="menu-title">오늘 기분은 어때?</span>
+              </div>
+              <img
+                src="./images/open_menu.png"
+                alt="펼치기"
+                class="show-icon2"
+              />
+            </div>
+
+            <!-- 펼침 메뉴 -->
+            <div class="menu_2" id="sub2">
+              <ul>
+                <li>
+                  <a href="./mood-1.html">오늘의 감정 확인, 표현해보기</a>
+                </li>
+                <li><a href="./mood-2.html">우울척도 검사해보기</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- 메뉴 3 -->
+          <div class="menu-column">
+            <a href="./you-1.html">
+              <div>
+                <span class="menu-strong">TAYM-you</span>
+                <span class="menu-title">너는 어떤 친구이니?</span>
+              </div>
+            </a>
+          </div>
+
+          <!-- 메뉴 4 -->
+          <div class="menu-column">
+            <a href="./junior-1.html">
+              <div>
+                <span class="menu-strong">TAYM-junior</span>
+                <span class="menu-title">너는 어떤 친구이니?</span>
+              </div>
+            </a>
+          </div>
+
+          <div class="menu-column">
+            <a href="./info.html">
+              <div>
+                <span class="menu-strong">TAYM-info</span>
+                <span class="menu-title">전문적인 정보</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
-    <div>
-      <a href="">
-        <img src="./images/footer_icon_3.png" alt="graph" class="graph-icon" />
-      </a>
-    </div>
-    <div onclick="openModal(2);">
-      <img src="./images/footer_icon_4.png" alt="call" class="call-icon" />
-    </div>
-  </footer>
+    <!-- 사이드 메뉴 -->
 
-  <!-- Initialize Swiper -->
-  <script>
-    var swiper = new Swiper(".swiper-container", {
-      direction: "horizontal",
-      on: {
-        transitionEnd: function () {
-          var firstPage = $(".swiper-slide-active")
-            .attr("aria-label")
-            .charAt(0);
-          var lastPageLength = $(".swiper-slide-active").attr("aria-label")
-            .length;
-          var lastPage = $(".swiper-slide-active")
-            .attr("aria-label")
-            .charAt(lastPageLength - 1);
+    <!-- Footer nav -->
+    <footer>
+      <!-- Layer Popup 2 -->
+      <div class="modal-background2 modal-background close"></div>
+      <div class="modal-content emergency modal-content2">
+        <div class="modal-content-inner">
+          <div class="cheer-title emergency">119에 전화하기</div>
 
-          if (firstPage === "1") {
-            console.log("첫페이지");
-            $(".btn.left").css("visibility", "hidden");
-            $(".btn.right").css("visibility", "visible");
-          } else if (firstPage === lastPage) {
-            console.log("마지막페이지");
-            $(".btn.right").css("visibility", "hidden");
-            $(".btn.left").css("visibility", "visible");
-          } else {
-            console.log("가운데페이지");
-            $(".btn.left").css("visibility", "visible");
-            $(".btn.right").css("visibility", "visible");
-          }
-        },
-      },
-    });
-  </script>
+          <div class="emergency-btn">
+            <a href="tel:119">
+              <img src="./images/call.png" alt="긴급전화" />
+              <span>119</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div>
+        <a href="./home.html">
+          <img src="./images/footer_icon_1.png" alt="home" class="home-icon" />
+        </a>
+      </div>
+      <div>
+        <a href="./taym-1.html">
+          <img
+            src="./images/footer_icon_2.png"
+            alt="modify"
+            class="modify-icon"
+          />
+        </a>
+      </div>
+      <div>
+        <a href="">
+          <img
+            src="./images/footer_icon_3.png"
+            alt="graph"
+            class="graph-icon"
+          />
+        </a>
+      </div>
+      <div onclick="openModal(2);">
+        <img src="./images/footer_icon_4.png" alt="call" class="call-icon" />
+      </div>
+    </footer>
 
-  <script src="./js/scripts.js"></script>
-</body>
-
+    <script src="./js/scripts.js"></script>
+  </body>
 </html>
