@@ -402,19 +402,54 @@ function listenOpenModal(num) {
 }
 
 $(document).ready(function () {
+  $(".logout-btn").click(function () {
+    window.location.href = "./index.html";
+  });
+
+  var friendName = localStorage.getItem("userName");
+  $(".friend-name").text(friendName);
+
   $(".login-btn").click(function () {
-    window.location.href = "./intro.html";
-    console.log("로그인");
+    var userName = $("#user-name").val().substr(1);
+    var userNumber = $("#user-number").val();
+    var loginNumber = localStorage.getItem("userNumber");
+
+    if (!userName) {
+      $(".login-text").text("이름을 적어주세요.");
+      // $("#user-name").focus();
+    } else {
+      if (loginNumber) {
+        if (loginNumber === userNumber) {
+          window.location.href = "./home.html";
+        } else {
+          $(".login-text").text("인증번호가 일치하지 않습니다.");
+          $("#user-number").val("");
+          // $("#user-number").focus();
+        }
+      } else {
+        $.getJSON("json/user.json", function (data) {
+          if (data.includes(userNumber)) {
+            localStorage.setItem("userNumber", userNumber);
+            localStorage.setItem("userName", userName);
+            window.location.href = "./intro.html";
+          } else {
+            $(".login-text").text("인증번호가 일치하지 않습니다.");
+            $("#user-number").val("");
+            // $("#user-number").focus();
+          }
+        });
+      }
+    }
   });
 
   // taym-4 image가져오기
-  var imagePath;
-  // if (localStorage.getItem("path") === null) {
-  //   imagePath = "./images/wrist_bg.png";
-  // } else {
-  //   imagePath = localStorage.getItem("path");
-  // }
-  // $(".get-image").attr("src", imagePath);
+  var imagePath = "./images/wrist_bg.png";
+  if (localStorage.getItem("path") === null) {
+    imagePath = "./images/wrist_bg.png";
+  } else {
+    imagePath = localStorage.getItem("path");
+  }
+  $(".get-image").attr("src", imagePath);
 
   // textarea, input 클릭시 footer 숨김 처리 및 키패드에 따른 화면 조절
   $(".focus-input").click(function () {
@@ -426,7 +461,6 @@ $(document).ready(function () {
     $("html").css("height", "auto");
     $("body").css("height", "auto");
     if ($("body").hasClass("scroll-content")) {
-      console.log("sc");
       $(".content").css("overflow-y", "scroll");
     }
   });
@@ -439,7 +473,6 @@ $(document).ready(function () {
     $("html").css("height", "100vh");
     $("body").css("height", "100vh");
     if ($("body").hasClass("scroll-content")) {
-      console.log("sc");
       $(".content").css("overflow-y", "unset");
     }
   });
@@ -715,39 +748,25 @@ function yearValidation(year) {
   var current_year = new Date().getFullYear();
   if (year < 1920 || year > current_year) {
     $("#year").val(""); // 빈값으로 처리하기
-    // $("#year").focus(); // 빈공간(연도)에 다시 포커스 시키기
     alert("입력을 그만하시겠습니까?");
-    $(":focus").blur();
-  } else
-    (event) => {
-      event.preventDefault();
-    };
+  } else $("#month").focus(); // 정상입력 하였다면 월 입력칸으로 이동
 }
 
 // 월은 1월 부터 12월 까지만 입력 되도록 처리
 function monthValidation(month) {
   if (month < 1 || month > 12) {
     $("#month").val("");
-    // $("#month").focus();
     alert("입력을 그만하시겠습니까?");
-    $(":focus").blur();
-  } else
-    (event) => {
-      event.preventDefault();
-    };
+  } else $("#day").focus(); // 정상입력 하였다면 일 입력칸으로 이동
 }
 
 // 일은 1일 부터 31일 까지만 입력 되도록 처리
 function dayValidation(day) {
   if (day < 1 || day > 31) {
     $("#day").val("");
-    // $("#day").focus();
     alert("입력을 그만하시겠습니까?");
-    $(":focus").blur();
-  } else
-    (event) => {
-      event.preventDefault();
-    };
+  } else {
+  }
 }
 
 // 가져온 현재날짜와 입력날짜 차이를 구하기
@@ -800,6 +819,13 @@ function uploadImgPreview() {
 $(function () {
   $("#camera").change(function (e) {
     $("#pic").attr("src", URL.createObjectURL(e.target.files[0]));
+  });
+});
+
+$(function () {
+  $("#mind-camera-input").change(function (e) {
+    var path = URL.createObjectURL(e.target.files[0]);
+    localStorage.setItem("path", path);
   });
 });
 

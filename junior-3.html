@@ -38,7 +38,7 @@
         <div class="bubble-wrapper">
           <img src="./images/center_bubble.png" alt="말풍선" />
           <div class="junior-bubble-text">
-            <p>_____친구야,</p>
+            <p><span class="friend-name"></span>친구야,</p>
             <p>안녕!</p>
           </div>
         </div>
@@ -58,8 +58,9 @@
     <div class="menu_bg">
       <div class="menu">
         <!-- 닫기 -->
-        <div onclick="HideMenu()" class="cancel-icon">
-          <img src="./images/cancel.png" alt="cancel" />
+        <div class="cancel-icon">
+          <img src="./images/cancel.png" alt="cancel" onclick="HideMenu()" />
+          <div class="logout-btn">로그아웃</div>
         </div>
 
         <div class="menu-container">

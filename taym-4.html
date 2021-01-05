@@ -43,7 +43,12 @@
         그럴 때 내가 나에게 했던 상처들
       </div>
       <div class="scratch">
-        <img src="./images/wrist_bg.png" alt="상처" class="get-image" />
+        <img
+          src="./images/wrist_bg.png"
+          alt="상처"
+          class="get-image"
+          onerror="this.src='./images/wrist_bg.png';"
+        />
         <textarea
           class="mind-write modufy-input"
           id="mind-write-3"
@@ -61,8 +66,9 @@
     <div class="menu_bg">
       <div class="menu">
         <!-- 닫기 -->
-        <div onclick="HideMenu()" class="cancel-icon">
-          <img src="./images/cancel.png" alt="cancel" />
+        <div class="cancel-icon">
+          <img src="./images/cancel.png" alt="cancel" onclick="HideMenu()" />
+          <div class="logout-btn">로그아웃</div>
         </div>
 
         <div class="menu-container">

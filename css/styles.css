@@ -90,7 +90,7 @@ input {
   width: 70%;
 }
 
-#login-page form button {
+#login-page form .login-btn {
   width: 214px;
   height: 44px;
   border-radius: 12px;
@@ -100,6 +100,16 @@ input {
   font-weight: bold;
   line-height: 1.5;
   color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-text {
+  color: red;
+  text-align: center;
+  margin-top: 16px;
+  font-size: 14px;
 }
 
 #login-page .btn-column {
@@ -178,8 +188,9 @@ nav .center img {
 }
 
 .menu .cancel-icon {
-  width: 96%;
-  text-align: left;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
 
 .menu .cancel-icon img {
@@ -1869,7 +1880,7 @@ footer img {
   font-size: 24px;
   font-weight: 900;
   line-height: 1.5;
-  padding: 46px 0;
+  padding: 5.7vh 0;
 }
 
 .taym-title.info-title {
@@ -2395,4 +2406,12 @@ input[type="file"] {
   width: 214px;
   height: 174px;
   border-radius: 14px;
+}
+
+.logout-btn {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.31;
+  text-align: left;
+  color: #999999;
 }

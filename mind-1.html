@@ -103,7 +103,10 @@
             <div class="content">
               <div id="feelings">
                 <div class="mind-desc">
-                  <p>그 때 ____친구의 기분은 어땠을까요.</p>
+                  <p>
+                    그 때 <span class="friend-name"></span>친구의 기분은
+                    어땠을까요.
+                  </p>
                   <p>
                     불안, 외로움, 슬픔, 두려움, <br />
                     무서움, 무기력함 등이었나요?
@@ -137,9 +140,10 @@
             <div class="content">
               <div>
                 <div class="mind-desc">
-                  이런 상황과 부정적인 감정에서 벗어나고 싶어서 ____친구는 어떤
-                  방법으로 스스로에게 상처를 주었나요? 몸에 상처가 없다면 글로
-                  적어도 되고, 상처가 있다면 한번 사진으로 찍어보세요.
+                  이런 상황과 부정적인 감정에서 벗어나고 싶어서
+                  <span class="friend-name"></span>친구는 어떤 방법으로
+                  스스로에게 상처를 주었나요? 몸에 상처가 없다면 글로 적어도
+                  되고, 상처가 있다면 한번 사진으로 찍어보세요.
                 </div>
 
                 <div class="write-and-camera">
@@ -251,8 +255,9 @@
                     어떤가요.
                   </p>
                   <p>
-                    여기 _____친구처럼 힘들 때 자해를 했지만 이를 극복한 친구가
-                    ‘자신의 몸에 난 자해 상처’에 대한 이런 이야기를 했어요.
+                    여기 _<span class="friend-name"></span>친구처럼 힘들 때
+                    자해를 했지만 이를 극복한 친구가 ‘자신의 몸에 난 자해
+                    상처’에 대한 이런 이야기를 했어요.
                   </p>
                 </div>
 
@@ -269,11 +274,11 @@
               <div>
                 <div class="mind-desc">
                   <p>
-                    ____친구를 힘들게 하는 상황과 부정적인 감정을 어떻게
-                    해소해야 할지 몰라서 선택했던 자해, 지금까지는 유일한
-                    방법이었지만.. 지금부터는 자해충동이 들 때 즉시 그 자리에서
-                    해볼 수 있는 기분이 편안해지는 나만의 방법, 한번
-                    생각해볼까요?
+                    <span class="friend-name"></span>친구를 힘들게 하는 상황과
+                    부정적인 감정을 어떻게 해소해야 할지 몰라서 선택했던 자해,
+                    지금까지는 유일한 방법이었지만.. 지금부터는 자해충동이 들 때
+                    즉시 그 자리에서 해볼 수 있는 기분이 편안해지는 나만의 방법,
+                    한번 생각해볼까요?
                   </p>
                   <p>이제 우리는 이 방법들을</p>
                   <br />
@@ -298,8 +303,8 @@
                   </p>
                   <p>생각해본 적이 없나요?</p>
                   <p>
-                    그럼 여기 ____친구와 비슷한 경험을 가진 친구의 이야기를
-                    들어볼까요?
+                    그럼 여기 <span class="friend-name"></span>친구와 비슷한
+                    경험을 가진 친구의 이야기를 들어볼까요?
                   </p>
                 </div>
 
@@ -322,8 +327,8 @@
                     실제로 사용하고 효과가 있었던 STOP방법들이 있습니다.
                   </p>
                   <p>
-                    ____친구가 생각했던 방법들과 비슷하거나 혹시 전혀 예상치
-                    못한 방법들이 있나요?
+                    <span class="friend-name"></span>친구가 생각했던 방법들과
+                    비슷하거나 혹시 전혀 예상치 못한 방법들이 있나요?
                   </p>
                   <p>
                     나만의 방법으로 시도해보고 싶은 활동들이 있다면
@@ -385,8 +390,9 @@
     <div class="menu_bg">
       <div class="menu">
         <!-- 닫기 -->
-        <div onclick="HideMenu()" class="cancel-icon">
-          <img src="./images/cancel.png" alt="cancel" />
+        <div class="cancel-icon">
+          <img src="./images/cancel.png" alt="cancel" onclick="HideMenu()" />
+          <div class="logout-btn">로그아웃</div>
         </div>
 
         <div class="menu-container">

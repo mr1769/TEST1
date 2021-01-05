@@ -42,7 +42,7 @@
       <div class="mind-select-container">
         <div class="mind-select-title graph">
           5일동안 어땠나요? <br />
-          ___친구의 mood 그래프에요!
+          <span class="friend-name"></span>친구의 mood 그래프에요!
         </div>
         <div class="mind-desc graph-container">
           <div class="graph-state">
@@ -143,8 +143,9 @@
     <div class="menu_bg">
       <div class="menu">
         <!-- 닫기 -->
-        <div onclick="HideMenu()" class="cancel-icon">
-          <img src="./images/cancel.png" alt="cancel" />
+        <div class="cancel-icon">
+          <img src="./images/cancel.png" alt="cancel" onclick="HideMenu()" />
+          <div class="logout-btn">로그아웃</div>
         </div>
 
         <div class="menu-container">

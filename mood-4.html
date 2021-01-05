@@ -53,7 +53,8 @@
                   <p>마음과 생각이 복잡한데..</p>
                   <p>이게 어떤 기분인지..</p>
                   <p>
-                    어떻게 해야 할지 ___친구 <br />
+                    어떻게 해야 할지 <span class="friend-name"></span>친구
+                    <br />
                     스스로 잘 모르는 경우가 있습니다.
                   </p>
 
@@ -63,8 +64,8 @@
                     감정과 생각이기 때문에 스스로 들여다보고, 관심가지면서 왜
                     그럴까라고 곰곰이 생각해보면 어렴풋이 보일 수 있어요.
                   </p>
-                  ____친구의 감정을 읽는데, 도움이 될 만한 책을 추전합니다. 한번
-                  꼭, 읽어보길 권해요.
+                  <span class="friend-name"></span>친구의 감정을 읽는데, 도움이
+                  될 만한 책을 추전합니다. 한번 꼭, 읽어보길 권해요.
                 </div>
               </div>
             </div>
@@ -219,8 +220,9 @@
     <div class="menu_bg">
       <div class="menu">
         <!-- 닫기 -->
-        <div onclick="HideMenu()" class="cancel-icon">
-          <img src="./images/cancel.png" alt="cancel" />
+        <div class="cancel-icon">
+          <img src="./images/cancel.png" alt="cancel" onclick="HideMenu()" />
+          <div class="logout-btn">로그아웃</div>
         </div>
 
         <div class="menu-container">

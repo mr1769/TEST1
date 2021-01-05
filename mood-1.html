@@ -58,7 +58,9 @@
                     즐거움으로 웃었나요?
                   </p>
                   <br />
-                  <p>오늘 하루, ____친구의 감정을</p>
+                  <p>
+                    오늘 하루, <span class="friend-name"></span>친구의 감정을
+                  </p>
                   <p>스스로 공감해 주는 시간</p>
                   <p>TAYM mood를 가져보세요.</p>
                 </div>
@@ -78,8 +80,8 @@
                   </div>
                   <div class="mind-desc">
                     <p>
-                      오늘 하루, 나의 기분에 __________ 친구 스스로
-                      공감해주세요.
+                      오늘 하루, 나의 기분에
+                      <span class="friend-name"></span>친구 스스로 공감해주세요.
                     </p>
                     <p>기쁨과 우울 중 어느 쪽에 더 가까웠나요?</p>
                   </div>
@@ -268,8 +270,9 @@
     <div class="menu_bg">
       <div class="menu">
         <!-- 닫기 -->
-        <div onclick="HideMenu()" class="cancel-icon">
-          <img src="./images/cancel.png" alt="cancel" />
+        <div class="cancel-icon">
+          <img src="./images/cancel.png" alt="cancel" onclick="HideMenu()" />
+          <div class="logout-btn">로그아웃</div>
         </div>
 
         <div class="menu-container">
