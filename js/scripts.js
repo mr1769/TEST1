@@ -61,6 +61,7 @@ function openModal(num) {
 var getMood = localStorage.getItem("moodScore");
 var jsonMood = JSON.parse(getMood);
 var moodScore = jsonMood || [];
+
 function clickMoodBar(num) {
   for (var i = 1; i <= num; i++) {
     $(`.mood-bar${i}`).addClass(`mood-bar-color${i}`);
@@ -188,6 +189,7 @@ var surveyList = [
 
 // 4점 척도 뿌리기
 var radioTotal = 0;
+
 function loadList(num) {
   if (num > 0) {
     for (var i = 1; i < 6; i++) {
@@ -749,7 +751,8 @@ function yearValidation(year) {
   if (year < 1920 || year > current_year) {
     alert("입력을 그만하시겠습니까?");
     $("#year").val(""); // 빈값으로 처리하기
-    $("#swiper-slide").focus();
+    $("#year").focus();
+  } else if ((year.length = 4)) {
   } else {
     alert("입력한 년도가 맞습니까?");
     $("#month").focus();
@@ -760,18 +763,25 @@ function yearValidation(year) {
 function monthValidation(month) {
   if (month < 1 || month > 12) {
     $("#month").val("");
+    $("#month").focus();
     alert("입력을 그만하시겠습니까?");
+  } else if (month.length >= 2) {
   } else {
     alert("입력한 월이 맞습니까?");
     $("#day").focus();
-  } // 정상입력 하였다면 일 입력칸으로 이동
+  }
 }
 
 // 일은 1일 부터 31일 까지만 입력 되도록 처리
 function dayValidation(day) {
   if (day < 1 || day > 31) {
     $("#day").val("");
+    $("#day").focus();
     alert("입력을 그만하시겠습니까?");
+  } else if (day.length >= 2) {
+  } else {
+    alert("입력한 일이 맞습니까?");
+    $("#year").focus();
   }
 }
 
