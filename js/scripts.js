@@ -749,7 +749,7 @@ function yearValidation(year) {
   if (year < 1920 || year > current_year) {
     alert("입력을 그만하시겠습니까?");
     $("#year").val(""); // 빈값으로 처리하기
-    $("#year").focus();
+    $("#swiper-slide").focus();
   } else {
     alert("입력한 년도가 맞습니까?");
     $("#month").focus();
