@@ -753,19 +753,19 @@ function yearValidation(year) {
     $("#year").val(""); // 빈값으로 처리하기
     $("#year").focus();
   } else if ((year.length = 4)) {
-  } else {
     alert("입력한 년도가 맞습니까?");
     $("#month").focus();
+  } else {
   }
 }
 
 // 월은 1월 부터 12월 까지만 입력 되도록 처리
 function monthValidation(month) {
   if (month < 1 || month > 12) {
+    alert("입력을 그만하시겠습니까?");
     $("#month").val("");
     $("#month").focus();
-    alert("입력을 그만하시겠습니까?");
-  } else if (month.length >= 2) {
+  } else if (month.length <= 2) {
   } else {
     alert("입력한 월이 맞습니까?");
     $("#day").focus();
@@ -778,7 +778,7 @@ function dayValidation(day) {
     $("#day").val("");
     $("#day").focus();
     alert("입력을 그만하시겠습니까?");
-  } else if (day.length >= 2) {
+  } else if (day.length <= 2) {
   } else {
     alert("입력한 일이 맞습니까?");
     $("#year").focus();
