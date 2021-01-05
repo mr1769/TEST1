@@ -747,9 +747,13 @@ function maxLengthCheck(e) {
 function yearValidation(year) {
   var current_year = new Date().getFullYear();
   if (year < 1920 || year > current_year) {
-    $("#year").val(""); // 빈값으로 처리하기
     alert("입력을 그만하시겠습니까?");
-  } else $("#month").focus(); // 정상입력 하였다면 월 입력칸으로 이동
+    $("#year").val(""); // 빈값으로 처리하기
+    $("#year").focus();
+  } else {
+    alert("입력한 년도가 맞습니까?");
+    $("#month").focus();
+  }
 }
 
 // 월은 1월 부터 12월 까지만 입력 되도록 처리
@@ -757,7 +761,10 @@ function monthValidation(month) {
   if (month < 1 || month > 12) {
     $("#month").val("");
     alert("입력을 그만하시겠습니까?");
-  } else $("#day").focus(); // 정상입력 하였다면 일 입력칸으로 이동
+  } else {
+    alert("입력한 월이 맞습니까?");
+    $("#day").focus();
+  } // 정상입력 하였다면 일 입력칸으로 이동
 }
 
 // 일은 1일 부터 31일 까지만 입력 되도록 처리
@@ -765,7 +772,6 @@ function dayValidation(day) {
   if (day < 1 || day > 31) {
     $("#day").val("");
     alert("입력을 그만하시겠습니까?");
-  } else {
   }
 }
 
